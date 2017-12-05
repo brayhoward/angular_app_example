@@ -12,6 +12,7 @@
 <link rel="import" href="px-sample-layout.html" />
 <link rel="import" href="px-sample-dashboard.html" />
 <link rel="import" href="px-sample-inbox.html" />
+<link rel="import" href="px-sample-report.html" />
 
 <!-- Load styles -->
 <link rel="import" href="../css/px-sample-app-styles.html" />
@@ -23,9 +24,9 @@
     <!-- If you're using px-app-nav in its vertical configuration, you should use px-branding-bar instead of px-app-header -->
     <px-app-header>
 
-      <px-app-nav slot="app-nav" selected-route="{{selected}}"
-        items='[{"label": "Dashboard","path": "dashboard","icon": "px-fea:dashboard", "id": "dashboard"}, {"label": "Analytics","id": "tabs","icon": "px-fea:analysis"}, {"label": "Alerts","path": "inbox","icon": "px-fea:alerts", "id": "inbox"}]'>
-      </px-app-nav>
+        <px-app-nav slot="app-nav" selected-route="{{selected}}"
+        items='[{"label": "Reports","path": "reports","icon": "px-fea:alerts", "id": "reports"}, {"label": "Dashboard","path": "dashboard","icon": "px-fea:dashboard", "id": "dashboard"}, {"label": "Analytics","id": "tabs","icon": "px-fea:analysis"}, {"label": "Alerts","path": "inbox","icon": "px-fea:alerts", "id": "inbox"}]'>
+        </px-app-nav>
       <div>
 
         <!-- The px-context-browser and px-breadcrumbs can be used in combination to provide both the traditional drilldown navigation
@@ -52,9 +53,12 @@
         <template is="dom-if" if="{{isEqual(selected,'inbox')}}" restamp>
           <px-sample-inbox></px-sample-inbox>
         </template>
+        <template is="dom-if" if="{{isEqual(selected,'reports')}}" restamp>
+          <px-sample-report></px-sample-report>
+        </template>
 
         <div class="footer flex flex--left flex--middle u-p">
-          <a class="actionable" href="https://github.com/PredixDev/px-sample-app" target="_blank">Get the code for this sample application on GitHub</a>
+          <a class="actionable" href="#" target="_blank">Footer text</a>
         </div>
 
       </div>

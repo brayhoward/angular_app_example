@@ -4,7 +4,7 @@
     properties: {
       title: {
         type: String,
-        value: ""
+        value: "L7044GSI Report Forecast #2"
       },
       chartData: {
         type: Array,

@@ -4,7 +4,8 @@
   "fragments": [
     "src/px-sample-dashboard.html",
     "src/px-sample-inbox.html",
-    "src/px-sample-layout.html"
+    "src/px-sample-layout.html",
+    "src/px-sample-report.html"
   ],
   "sources": [
     "src/**/*",
