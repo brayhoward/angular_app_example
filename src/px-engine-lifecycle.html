@@ -1,0 +1,58 @@
+<link rel="import" href="../bower_components/polymer/polymer.html" />
+
+<!-- Predix components used in this app view -->
+
+
+<!-- Load styles -->
+<link rel="import" href="../css/px-sample-app-styles.html" />
+
+<dom-module id="px-engine-lifecycle">
+  <template>
+    <style include="px-sample-app-styles"></style>
+
+    <div class="flex flex--row flex--justify flex--middle">
+        <div class=" u-p">
+            <px-key-value-pair
+                key="Total Parts"
+                value="$135,480"
+                uom=""
+                size="gamma">
+            </px-key-value-pair> 
+        </div>
+        <div class="u-p">
+            <px-key-value-pair
+                key="Total Labor"
+                value="$71,090"
+                uom=""
+                size="gamma">
+            </px-key-value-pair> 
+        </div>
+        <div class="u-p">
+            <px-key-value-pair
+                key="Total Fuel"
+                value="$739,440"
+                uom=""
+                size="gamma">
+            </px-key-value-pair> 
+        </div>
+        <div class="u-p">
+            <px-key-value-pair
+                key="Total Lubrication"
+                value="$53,720"
+                uom=""
+                size="gamma">
+            </px-key-value-pair> 
+        </div>
+        <div class="u-p">
+            <px-key-value-pair
+                key="Total LifeCycle Cost (52000 Hours)"
+                value="12345"
+                uom=""
+                size="gamma">
+            </px-key-value-pair> 
+        </div>
+    </div>
+
+  </template>
+</dom-module>
+<script src="px-engine-lifecycle.js"></script>
