@@ -12,7 +12,6 @@
 @import "px-colors-design/_settings.colors.scss";
 @import "px-defaults-design/_settings.defaults.scss";
 
-
 // Tools
 @import "px-mixins-design/_tools.mixins.scss";
 
@@ -30,6 +29,7 @@ $inuit-enable-input--small    : true;
 @import "px-forms-design/_base.forms.scss";
 @import "px-viewport-design/_base.viewport.scss";
 @import "px-typography-design/_base.typography.scss";
+@import "px-tables-design/_base.tables.scss";
 
 // Meta
 @import "px-meta-lists-design/_meta.lists.scss";
@@ -38,31 +38,35 @@ $inuit-enable-input--small    : true;
 // Objects
 @import "px-shadows-design/_objects.shadows.scss";
 $inuit-enable-btn--call-to-action : true;
+$inuit-enable-btn--primary : true;
+$inuit-enable-btn--small : true;
+$inuit-enable-btn--icon : true;
+//$inuit-call-to-action-background: aqua;
 @import 'px-buttons-design/_objects.buttons.scss';
 @import 'px-actionable-design/_objects.actionable.scss';
+@import "px-box-design/_objects.box.scss";
 
 // Component
 html, body {
-  background-color: $black;
+  background-color: aqua;
 }
-// The main content views of the px-sample-app
-px-sample-dashboard, px-sample-layout, px-sample-inbox {
+// The main content views of the px-lcc-app
+px-dashboard, px-reports, px-report-detail, px-settings {
   display: block;
+  background-color: $white;
   overflow: auto;
   -webkit-overflow-scrolling: touch;
   position: relative;
   width: 100%;
-  // If you wish to use the navigation in vertical configuration, uncomment this code and add the vertical class to your views
-  // &.vertical {
-  //   padding-left: 4rem;
-  //   height: calc(100% - 8rem);
-  // }
 }
-px-sample-dashboard, px-sample-inbox {
-  background-color: var(--px-base-background-color);
+px-reports {
+    --px-data-table-cell-background-color--selected: $select-light;
+    .tr {
+        background-color: white;
+    }
 }
-px-sample-layout {
-  background-color: var(--px-card-background-color);
+px-reports px-data-table-cell {
+    background-color: white;
 }
 // Need to make sure that the app-nav shows up above everything else, especially when expanded
 px-app-nav {
@@ -74,44 +78,61 @@ px-app-nav {
   //   position: fixed;
   // }
 }
-// Set height of px-inbox to fully fill parent view
-px-inbox {
-  --px-inbox-height: 87vh;
+.report-header {
+    border-bottom: 1px solid $gray1;
 }
-// Container for the px-context-browser and px-breadcrumbs to sit in
-.context-browser {
-  position: relative;
-  z-index: 1;
-  height: 2.4rem;
-  background-color: var(--px-card-background-color);
-  // If you wish to use the navigation in vertical configuration, uncomment this code and add the vertical class to your CB
-  // &.vertical {
-  //   padding-left: 4.66667rem !important;
-  // }
+.report-body {
+    background-color: $gray1;
+    .box {
+        background-color: white;
+    }
+}
+.lifecycle-summary {
+    border-bottom: 1px solid $gray1;
+}
+//This isnt working...
+.accordion__header {
+    background-color: white;
+    border: 1px 0 1px 0 solid $gray3;
+}
+.data-header-key {
+    background-color: $gray1;
+    font-size: 12px;
+    .swatch {
+        display: inline-block;
+        margin-right: 5px;
+        width: 10px;
+        height: 7px;
+        border: 1px solid $gray5;
+        background-color: black;
+        &.swatch-parts {background-color: $blue5;}
+        &.swatch-labor {background-color: $orange5;}
+        &.swatch-fuel {background-color: $green5;}
+        &.swatch-lube {background-color: $pink5;}
+    }
+}
+.data-row {
+    padding: 20px 7px;
+    border-bottom: 1px solid #979797;
+    &:hover {
+        background-color: $select-light;
+    }
+}
+//Get numbers to align
+.data-header-key,
+.data-row {
+    div{
+        text-align: left;
+        min-width: 90px;  
+    }
+    div:last-child{
+        text-align: right;
+        min-width: 90px;       
+    }
 }
 // The overview area at the top of a dashboard containing kpis or key-value-pairs and other visualizations
 .spine {
   background-color: var(--px-card-background-color);
-}
-// An artifact of the demo, a container we've created to layout a few dashboard elements
-.gaugeContainer {
-  width: 20%;
-  min-width: 16rem;
-  px-gauge {
-    flex: 0 1 12rem;
-  }
-}
-.gauge1 {
-  --px-gauge-fill-normal-color: green;
-}
-.gauge2 {
-  --px-gauge-fill-normal-color: $green5;
-}
-.gauge3 {
-  --px-gauge-fill-normal-color: $purple5;
-}
-.gauge4 {
-  --px-gauge-fill-normal-color: $orange5;
 }
 px-vis-timeseries {
   --px-vis-series-color-0: $blue5;
@@ -131,14 +152,7 @@ px-vis-timeseries {
   --px-card-background-color: white;
 }
 @media(min-width: 720px) {
-  // When px-app-nav is vertical, you need to bump it down by 30px to make room for px-branding-bar,
-  // but px-branding-bar only shows up on larger screens
-  // px-app-nav[vertical] {
-  //   top: 2rem;
-  // }
-  px-inbox {
-    --px-inbox-height: 84.7vh;
-  }
+
 }
 
 // Trumps
@@ -148,6 +162,9 @@ $inuit-enable-margins--small : true;
 $inuit-enable-margins--large : true;
 $inuit-enable-margins--huge  : true;
 $inuit-enable-paddings       : true;
+$inuit-enable-paddings--tiny : true;
+$inuit-enable-paddings--small : true;
 $inuit-enable-paddings--huge : true;
+$inuit-enable-paddings--large : true;
 @import "px-spacing-design/_trumps.spacing.scss";
 @import "px-widths-responsive-design/_trumps.widths-responsive.scss";

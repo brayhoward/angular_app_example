@@ -1,9 +1,17 @@
 (function () {
   Polymer({
 
-    is: 'px-sample-report',
+    is: 'px-report-detail',
 
     properties: {
+      title: {
+        type: String,
+        value: "L7044GSI Report Forecast #2"
+      },
+      selected: {
+        type: String,
+        value: "0"
+      },
       /**
        * Items to be displayed in the left nav list.
        * @property listItems
@@ -18,4 +26,4 @@
     }
   });
 })();
-//# sourceMappingURL=px-sample-report.js.map
+//# sourceMappingURL=px-report-detail.js.map

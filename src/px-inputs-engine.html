@@ -1,0 +1,71 @@
+<link rel="import" href="../bower_components/polymer/polymer.html" />
+
+<!-- Predix components used in this app view -->
+<link rel="import" href="../bower_components/px-dropdown/px-dropdown.html" />
+<link rel="import" href="../bower_components/px-toggle/px-toggle.html" />
+
+<!-- Load styles -->
+<link rel="import" href="../css/px-lcc-app-styles.html" />
+
+<!-- Views used by the app -->
+
+
+<dom-module id="px-inputs-engine">
+  <template>
+    <style include="px-lcc-app-styles"></style>
+<!--
+    <label class="label--inline" for="inline1">From</label>
+    <input id="inline1" type="text" class="text-input input--tiny">
+-->
+
+    <div class="">
+        <div class="flex flex--row flex--justify flex--middle u-mb">
+            <label class="label--inline" for="">Model</label>
+            <px-dropdown id="" items='["L7044GSI","Other","Other"]' selected="0"></px-dropdown>
+        </div>
+        
+        <div class="flex flex--row flex--justify flex--middle u-mv">
+            <label class="label--inline" for="">Speed</label>
+            <px-dropdown id="" items='["900RPM","Other","Other"]' selected="0"></px-dropdown>
+        </div>
+        
+        <div class="flex flex--row flex--justify flex--middle u-mv">
+            <label class="label--inline" for="">Site Load</label>
+            <input id="" placeholder="" class="text-input input--small" type="number" />
+        </div>
+    
+        <div class="flex flex--row flex--justify flex--middle u-mv">
+            <label class="label--inline" for="">Date of Commissioning</label>
+            <px-datetime-field
+                hide-time
+                allow-wrap
+                block-past-dates
+                date-format="YYYY/MM/DD"
+                time-format="hh:mm:ss A"
+                time-zone="UTC"
+                show-time-zone="none">
+            </px-datetime-field>
+        </div>
+        
+        <div class="flex flex--row flex--justify flex--middle u-mv">
+            <label class="label--inline" for="">Operating Hours per Year</label>
+            <input id="" placeholder="" class="text-input input--small" type="number" />
+        </div>
+        
+        <div class="flex flex--row flex--justify flex--middle u-mv">
+            <label class="label--inline" for=""># of Engines</label>
+            <input id="" placeholder="" class="text-input input--small" type="number" />
+        </div>
+        
+        <div class="flex flex--row flex--justify flex--middle u-mv">
+            <label class="label--inline" for="">Cooling System</label>
+            <px-dropdown id="" items='["Standard","Other","Other"]' selected="0"></px-dropdown>
+        </div>
+        
+        <div class="flex flex--right">
+            <button class="btn btn--call-to-action u-mv+">Apply</button>
+        </div>
+    </div>
+  </template>
+</dom-module>
+<script src="px-inputs-engine.js"></script>
