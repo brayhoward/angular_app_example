@@ -3,6 +3,7 @@
 <!-- Predix components used in this app view -->
 <link rel="import" href="../bower_components/px-card/px-card.html" />
 <link rel="import" href="../bower_components/px-tabs/px-tab.html" />
+<link rel="import" href="../bower_components/px-accordion/px-accordion.html" />
 
 <!-- Load styles -->
 <link rel="import" href="../css/px-lcc-app-styles.html" />
@@ -35,39 +36,53 @@
     <div class="layout">
       <!-- INPUTS -->
       <div class="report-inputs layout__item u-1/6-desk">
-        <accordion-with-toggle icons='{"more":"px-utl:chevron-right","less":"px-utl:chevron"}' header-value="Engine" status="" show-action>
+        <accordion-with-toggle
+            icons='{"more":"px-utl:add","less":"px-utl:remove"}'
+            header-value="Engine",
+            on-switch="_toggleEngine"
+        >
           <div class="box box--small">
-            <px-toggle size="small"></px-toggle>
             <px-inputs-engine></px-inputs-engine>
           </div>
         </accordion-with-toggle>
-        <!-- <accordion-with-toggle icons='{"more":"px-utl:chevron-right","less":"px-utl:chevron"}' header-value="Parts" status="" show-action>
+
+         <accordion-with-toggle
+            icons='{"more":"px-utl:add","less":"px-utl:remove"}'
+            header-value="Parts"
+        >
           <div class="box box--small">
-            <px-toggle size="small"></px-toggle>
             <px-inputs-parts></px-inputs-parts>
           </div>
         </accordion-with-toggle>
-        <accordion-with-toggle icons='{"more":"px-utl:chevron-right","less":"px-utl:chevron"}' header-value="Fuel" status="On" show-action>
+
+        <accordion-with-toggle
+            icons='{"more":"px-utl:add","less":"px-utl:remove"}'
+            header-value="Fuel"
+        >
           <div class="box box--small">
-            <px-toggle size="small"></px-toggle>
             <px-inputs-fuel></px-inputs-fuel>
           </div>
         </accordion-with-toggle>
-        <accordion-with-toggle icons='{"more":"px-utl:chevron-right","less":"px-utl:chevron"}' header-value="Lubrication" status="On"
-          show-action>
+
+        <accordion-with-toggle
+            icons='{"more":"px-utl:add","less":"px-utl:remove"}'
+            header-value="Lubrication"
+        >
           <div class="box box--small">
-            <px-toggle size="small"></px-toggle>
             <px-inputs-lubrication></px-inputs-lubrication>
           </div>
         </accordion-with-toggle>
-        <accordion-with-toggle icons='{"more":"px-utl:chevron-right","less":"px-utl:chevron","action":"px-utl:edit"}' header-value="Labor"
-          status="On" show-action>
+
+        <accordion-with-toggle
+            icons='{"more":"px-utl:add","less":"px-utl:remove"}'
+            header-value="Labor"
+        >
           <div class="box box--small">
-            <px-toggle size="small"></px-toggle>
             <px-inputs-labor></px-inputs-labor>
           </div>
-        </accordion-with-toggle> -->
+        </accordion-with-toggle>
       </div>
+
       <!-- MAIN CONTENT -->
       <div class="report-body layout__item">
         <div class="box box--flush">

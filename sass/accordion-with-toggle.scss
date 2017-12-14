@@ -1,3 +1,4 @@
+// Copied styels from px-accordion component
 .heading--subsection,
 .label {
   letter-spacing: var(--px-headings-letter-spacing, 0.3px);
@@ -711,4 +712,13 @@ a {
 
 .u-p-- {
   padding: 0.33333rem !important;
+}
+
+// Added styels
+@import "variables-mixins.scss";
+
+#header-value {
+  color: $royal-blue;
+  font-weight: bold;
+  margin-left: .5em;
 }

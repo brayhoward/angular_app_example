@@ -17,7 +17,7 @@
        */
       icons: {
         type: Object,
-        value: function() {
+        value: function () {
           return {
             more: "px-utl:chevron-right",
             less: "px-utl:chevron",
@@ -54,7 +54,7 @@
 
       /**
        * If `true` the accordion is opened. If `false` it is closed. Use to
-       * observe the user opening/closing the accordion, or set to programatically
+       * observe the user opening/closing the accordion, or set to programmatically
        * change the accordion state.
        */
       opened: {
@@ -62,6 +62,11 @@
         value: false,
         notify: true,
         observer: "_handleOpenedChanged"
+      },
+
+      onSwitch: {
+        type: Function,
+        value: (e) => console.log(e)
       },
 
       /**
@@ -72,6 +77,8 @@
         computed: "_getExpandCollapseIcon(opened, icons.more, icons.less)"
       }
     },
+
+    _onSwitchPrivate: (e) => e.preventDefault() && console.log('_onSwitchPrivate Fired!'),
 
     _getExpandCollapseIcon: function(opened, iconMore, iconLess) {
       if (
@@ -88,7 +95,7 @@
      */
     toggle: function() {
       if (this.disabled) return;
-      this.opened = !this.opened;
+      return this.opened = !this.opened;
     },
 
     /**
@@ -99,15 +106,10 @@
      * @param  {Event} e - Source tap/click event that triggered this handler
      */
     _toggleHandler: function(e) {
-      if (this.disabled) return;
-      this.opened = !this.opened;
+      const opened = this.toggle()
 
-      if (this.opened === true) {
-        this.fire("accordion-expanded", e);
-      }
-      if (this.opened === false) {
-        this.fire("accordion-collapsed", e);
-      }
+      opened ? this.fire("accordion-expanded", e) : this.fire("accordion-collapsed", e);
+
     },
     /**
      * Fired when the accordion is expanded by user interaction. This event is
@@ -134,31 +136,6 @@
       if (typeof openedState === "boolean") {
         this.fire("accordion-opened-state-changed", { value: openedState });
       }
-    },
-    /**
-     * Fired when the accordion's opened state is changed, either by user
-     * interaction or programatically via. its `opened` API. To only listen
-     * for accordion state changes triggered by user interaction, use
-     * `accordion-expanded` and `accordion-collapsed` events.
-     *
-     * e.detail.value will be a boolean, `true` if the accordion is opened,
-     * `false` if the accordion is closed.
-     *
-     * @event accordion-opened-state-changed
-     */
-
-    _onEditIconClick: function(e) {
-      e.preventDefault();
-      e.stopPropagation();
-      this.fire("accordion-action-clicked", e);
     }
-    /**
-     * Event fired when the accordion action icon is clicked.
-     *
-     * e.target will be a reference to the accordion that was interacted with,
-     * and e.detail will be a reference to the original DOM tap/click event.
-     *
-     * @event accordion-action-clicked
-     */
   });
 })();
