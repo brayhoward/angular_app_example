@@ -1,0 +1,78 @@
+<link rel="import" href="../bower_components/polymer/polymer.html" />
+
+<!-- Predix components used in this app view -->
+<link rel="import" href="../bower_components/px-card/px-card.html" />
+<link rel="import" href="../bower_components/px-data-table/px-data-table.html" />
+
+<!-- Load styles -->
+<link rel="import" href="../css/px-lcc-app-styles.html" />
+
+<!-- Views used by the app -->
+
+
+<dom-module id="px-reports">
+  <template>
+    <style include="px-lcc-app-styles"></style>
+    
+    <div class="spine u-p++">
+      <span class="heading--page u-p">Reports</span>
+    </div>
+    <div class="layout">
+        <div class="layout__item u-m++">
+            <px-data-table
+                table-data='[
+                {
+                    "engine":"L7044GSI",
+                    "report-name":"L7044GSI Report Forecast #1",
+                    "contact":"Jay Williams",
+                    "company":"ACME Corporation",
+                    "date":"08-18-2018"
+                },
+                {
+                    "engine":"L7044GSI",
+                    "report-name":"L7044GSI Report Forecast #1",
+                    "contact":"Tim Williams",
+                    "company":"Cinco",
+                    "date":"08-18-2018"
+                },
+                {
+                    "engine":"L7044GSI",
+                    "report-name":"L7044GSI Report Forecast #1",
+                    "contact":"James Williams",
+                    "company":"Globo Chem",
+                    "date":"08-12-2018"
+                },
+                {
+                    "engine":"L7044GSI",
+                    "report-name":"L7044GSI Report Forecast #1",
+                    "contact":"Cindy Williams",
+                    "company":"ACME Corporation",
+                    "date":"08-18-2018"
+                },
+                {
+                    "engine":"L7044GSI",
+                    "report-name":"L7044GSI Report Forecast #1",
+                    "contact":"Jay Williams",
+                    "company":"ACME Corporation",
+                    "date":"08-12-2018"
+                },
+                {
+                    "engine":"L7044GSI",
+                    "report-name":"L7044GSI Report Forecast #1",
+                    "contact":"Sam Williams",
+                    "company":"Cinco",
+                    "date":"08-19-2018"
+                }]'
+                language="en"
+                filterable
+                sortable
+                selectable
+                include-all-columns
+                data-remote>
+            </px-data-table>
+        </div>
+    </div>
+    
+  </template>
+</dom-module>
+<script src="px-reports.js"></script>

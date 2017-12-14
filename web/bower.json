@@ -39,7 +39,9 @@
     "px-helpers-design": "^1.0.3",
     "px-widths-responsive-design": "^1.0.2",
     "px-actionable-design": "^2.0.4",
-    "px-layout-design": "^1.0.1"
+    "px-layout-design": "^1.0.1",
+    "px-tables-design": "^2.0.1",
+    "px-box-design": "^1.0.2"
   },
   "resolutions": {
     "webcomponentsjs": "^0.7.0"

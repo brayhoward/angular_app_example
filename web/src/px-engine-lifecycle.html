@@ -4,19 +4,19 @@
 
 
 <!-- Load styles -->
-<link rel="import" href="../css/px-sample-app-styles.html" />
+<link rel="import" href="../css/px-lcc-app-styles.html" />
 
 <dom-module id="px-engine-lifecycle">
   <template>
-    <style include="px-sample-app-styles"></style>
+    <style include="px-lcc-app-styles"></style>
 
-    <div class="flex flex--row flex--justify flex--middle">
-        <div class=" u-p">
+    <div class="lifecycle-summary flex flex--row flex--justify flex--middle">
+        <div class="u-p">
             <px-key-value-pair
                 key="Total Parts"
                 value="$135,480"
                 uom=""
-                size="gamma">
+                size="delta">
             </px-key-value-pair> 
         </div>
         <div class="u-p">
@@ -24,7 +24,7 @@
                 key="Total Labor"
                 value="$71,090"
                 uom=""
-                size="gamma">
+                size="delta">
             </px-key-value-pair> 
         </div>
         <div class="u-p">
@@ -32,7 +32,7 @@
                 key="Total Fuel"
                 value="$739,440"
                 uom=""
-                size="gamma">
+                size="delta">
             </px-key-value-pair> 
         </div>
         <div class="u-p">
@@ -40,7 +40,7 @@
                 key="Total Lubrication"
                 value="$53,720"
                 uom=""
-                size="gamma">
+                size="delta">
             </px-key-value-pair> 
         </div>
         <div class="u-p">
@@ -51,6 +51,52 @@
                 size="gamma">
             </px-key-value-pair> 
         </div>
+    </div>
+    
+    <div class="chart-controls flex flex--row flex--right flex--middle u-p-">
+        <label class="label--inline u-ml+" for="">Currency</label>
+        <px-dropdown id="" class="u-mh" items='["USD","Other","Other"]' selected="0"></px-dropdown>
+        <label class="label--inline u-ml+" for="">Inflation</label>
+        <px-dropdown id="" class="u-mh" items='["2%","3%","4%"]' selected="0"></px-dropdown>
+        <label class="label--inline u-ml+" for="">Show Data by</label>
+        <px-dropdown id="" class="u-mh" items='["Hours","Years"]' selected="0"></px-dropdown> 
+    </div>
+    
+    <div class="box box--large" style="background-color: gray; height: 300px;">
+         CHART GOES HERE
+    </div>
+    
+    <div id="" class="data-header-key flex flex--row flex--justify flex--middle u-p--">
+        <div>Year</div>
+        <div><span class="swatch swatch-parts"></span>Parts (List Price)</div>
+        <div><span class="swatch swatch-labor"></span>Labor</div>
+        <div><span class="swatch swatch-fuel"></span>Fuel</div>
+        <div><span class="swatch swatch-lube"></span>Lubrication</div>
+        <div>Total</div>
+    </div>
+    <div id="" class="data-row flex flex--row flex--justify flex--middle epsilon">
+        <div><a class="actionable actionable"><px-icon icon="px-utl:add"></px-icon>Year 1</a></div>
+        <div>$5,710</div>
+        <div>$1,500</div>
+        <div>$113,760</div>
+        <div>$8,280</div>
+        <div>$129,250</div>
+    </div>
+    <div id="" class="data-row flex flex--row flex--justify flex--middle epsilon">
+        <div><a class="actionable actionable"><px-icon icon="px-utl:add"></px-icon>Year 2</a></div>
+        <div>$1,710</div>
+        <div>$500</div>
+        <div>$2,760</div>
+        <div>$8,280</div>
+        <div>$12,250</div>
+    </div>
+    <div id="" class="data-row flex flex--row flex--justify flex--middle epsilon">
+        <div><a class="actionable actionable"><px-icon icon="px-utl:add"></px-icon>Year 3</a></div>
+        <div>$5,710</div>
+        <div>$1,500</div>
+        <div>$113,760</div>
+        <div>$8,280</div>
+        <div>$129,250</div>
     </div>
 
   </template>
