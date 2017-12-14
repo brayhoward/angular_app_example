@@ -30,7 +30,7 @@ apply plugin: 'io.spring.dependency-management'
 apply plugin: 'com.bmuschko.docker-remote-api'
 
 
-project.webAppDirName = 'WebContent'
+project.webAppDirName = 'public_html'
 
 group = 'com.gewaukesha.lifecycle'
 version = '1.0.0'
@@ -43,7 +43,7 @@ targetCompatibility = 1.8
 [compileJava, compileTestJava]*.options*.encoding = 'UTF-8'
 
 processResources {
-    ['banner.txt'].each { filesMatching(it) { filter ReplaceTokens, tokens: ["app.version": rootProject.version] } }
+    ['banner.txt'].each { filesMatching(it) { filter ReplaceTokens, tokens: ["app.version": "testinga awouefhawuioeghouawrhgoarwhgohiarw"] } }
 }
 
 
@@ -56,6 +56,7 @@ bootRun {
 }
 
 task local { doFirst { bootRun.ext.activeProfiles = "dev" } }
+task staging { doFirst { bootRun.ext.activeProfiles = "staging" } }
 
 configurations {
     compile.exclude module: "spring-boot-starter-tomcat"
