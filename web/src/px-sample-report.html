@@ -1,0 +1,73 @@
+<link rel="import" href="../bower_components/polymer/polymer.html" />
+
+<!-- Predix components used in this app view -->
+<link rel="import" href="../bower_components/px-card/px-card.html" />
+<link rel="import" href="../bower_components/px-accordion/px-accordion.html" />
+<link rel="import" href="../bower_components/px-tabs/px-tab.html" />
+
+<!-- Load styles -->
+<link rel="import" href="../css/px-sample-app-styles.html" />
+
+<!-- Views used by the app -->
+<link rel="import" href="px-engine-lifecycle.html" />
+
+
+<dom-module id="px-sample-report">
+  <template>
+    <style include="px-sample-app-styles"></style>
+
+    <div class="layout">
+        <div class="layout__item u-1/4-desk">
+            <px-accordion 
+                icons='{"more":"px-utl:chevron-right","less":"px-utl:chevron","action":"px-utl:edit"}'
+                header-value="Engine"
+                status="On" 
+                show-action>
+                form goes here
+            </px-accordion>
+            <px-accordion 
+                icons='{"more":"px-utl:chevron-right","less":"px-utl:chevron","action":"px-utl:edit"}'
+                header-value="Parts"
+                status="On" 
+                show-action>
+                form goes here
+            </px-accordion>
+            <px-accordion 
+                icons='{"more":"px-utl:chevron-right","less":"px-utl:chevron","action":"px-utl:edit"}'
+                header-value="Fuel"
+                status="On" 
+                show-action>
+                form goes here
+            </px-accordion>
+            <px-accordion 
+                icons='{"more":"px-utl:chevron-right","less":"px-utl:chevron","action":"px-utl:edit"}'
+                header-value="Lubrication"
+                status="On" 
+                show-action>
+                form goes here
+            </px-accordion>
+            <px-accordion 
+                icons='{"more":"px-utl:chevron-right","less":"px-utl:chevron","action":"px-utl:edit"}'
+                header-value="Labor"
+                status="On" 
+                show-action>
+                form goes here
+            </px-accordion>   
+        </div>
+        <div class="layout__item">
+            <px-tabs selected="{{selected}}">
+                <px-tab>Engine Lifecycle</px-tab>
+                <px-tab>Service Intervals</px-tab>
+                <px-tab>Parts</px-tab>
+            </px-tabs>
+            <iron-pages selected="{{selected}}">
+                <px-engine-lifecycle></px-engine-lifecycle>
+                <div>Tab 2 content</div>
+                <div>Tab 3 content</div>
+            </iron-pages>
+        </div>
+    </div>
+    
+  </template>
+</dom-module>
+<script src="px-sample-report.js"></script>

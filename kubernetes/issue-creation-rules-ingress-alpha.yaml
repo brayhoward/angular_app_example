@@ -1,0 +1,16 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: issue-creation-rules-ingress-alpha
+  namespace: web-service-alpha
+  annotations:
+    ingress.kubernetes.io/rewrite-target: "/"
+    ingress.kubernetes.io/ssl-redirect: "false"
+spec:
+  rules:
+    - http:
+        paths:
+        - path: /alpha/ws/issue-creation-rules
+          backend:
+            serviceName: issue-creation-rules-service-alpha
+            servicePort: 8080

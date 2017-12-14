@@ -1,2 +1,4 @@
-bower_components
-node_modules
+WebRoot/bower_components
+WebRoot/node_modules
+/bin/
+/.gradle/
