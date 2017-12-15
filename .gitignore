@@ -1,5 +1,10 @@
+<<<<<<< HEAD
 WebRoot/bower_components
 WebRoot/node_modules
 /bin/
 /.gradle/
+=======
+bower_components
+node_modules
+>>>>>>> feature/custom_project_components
 .history/
