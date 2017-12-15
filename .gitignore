@@ -2,3 +2,4 @@ WebRoot/bower_components
 WebRoot/node_modules
 /bin/
 /.gradle/
+.history/
