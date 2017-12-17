@@ -1,5 +1,11 @@
+# Dependencies
 web/bower_components
 web/node_modules
+
+# temporary
+web-angular/src/assets/bower_components
+web-angular/node_modules
+
 /bin/
 /.gradle/
 .history/
