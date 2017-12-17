@@ -10,34 +10,34 @@
  */
 
 // Settings
-@import "assets/bower_components/px-colors-design/_settings.colors.scss";
-@import "assets/bower_components/px-defaults-design/_settings.defaults.scss";
+@import "px-colors-design/_settings.colors.scss";
+@import "px-defaults-design/_settings.defaults.scss";
 
 // Tools
-@import "assets/bower_components/px-mixins-design/_tools.mixins.scss";
+@import "px-mixins-design/_tools.mixins.scss";
 
 // Generic
-@import "assets/bower_components/px-normalize-design/_generic.normalize.scss";
-@import "assets/bower_components/px-box-sizing-design/_generic.box-sizing.scss";
-@import "assets/bower_components/px-helpers-design/_generic.helpers.scss";
+@import "px-normalize-design/_generic.normalize.scss";
+@import "px-box-sizing-design/_generic.box-sizing.scss";
+@import "px-helpers-design/_generic.helpers.scss";
 
 // Base
-@import "assets/bower_components/px-flexbox-design/_base.flexbox.scss";
-@import "assets/bower_components/px-headings-design/_base.headings.scss";
-@import "assets/bower_components/px-layout-design/_objects.layout.scss";
+@import "px-flexbox-design/_base.flexbox.scss";
+@import "px-headings-design/_base.headings.scss";
+@import "px-layout-design/_objects.layout.scss";
 $inuit-enable-input--tiny    : true;
 $inuit-enable-input--small    : true;
-@import "assets/bower_components/px-forms-design/_base.forms.scss";
-@import "assets/bower_components/px-viewport-design/_base.viewport.scss";
-@import "assets/bower_components/px-typography-design/_base.typography.scss";
-@import "assets/bower_components/px-tables-design/_base.tables.scss";
+@import "px-forms-design/_base.forms.scss";
+@import "px-viewport-design/_base.viewport.scss";
+@import "px-typography-design/_base.typography.scss";
+@import "px-tables-design/_base.tables.scss";
 
 // Meta
-@import "assets/bower_components/px-meta-lists-design/_meta.lists.scss";
-@import "assets/bower_components/px-meta-buttons-design/_meta.meta-buttons.scss";
+@import "px-meta-lists-design/_meta.lists.scss";
+@import "px-meta-buttons-design/_meta.buttons.scss";
 
 // Objects
-@import "assets/bower_components/px-shadows-design/_objects.shadows.scss";
+@import "px-shadows-design/_objects.shadows.scss";
 $inuit-enable-btn--call-to-action : true;
 $inuit-enable-btn--primary : true;
 $inuit-enable-btn--small : true;
@@ -45,7 +45,7 @@ $inuit-enable-btn--icon : true;
 //$inuit-call-to-action-background: aqua;
 @import 'px-buttons-design/_objects.buttons.scss';
 @import 'px-actionable-design/_objects.actionable.scss';
-@import "assets/bower_components/px-box-design/_objects.box.scss";
+@import "px-box-design/_objects.box.scss";
 
 // Component
 html, body {
@@ -60,8 +60,18 @@ px-dashboard, px-reports, px-report-detail, px-settings {
   position: relative;
   width: 100%;
 }
-px-reports {
+
+// assign all vars at root level so they work with postcss-cssnext -> https://github.com/MoOx/postcss-cssnext/issues/186
+:root {
     --px-data-table-cell-background-color--selected: $select-light;
+    --px-vis-series-color-0: $blue5;
+    --px-vis-series-color-1: $green5;
+    --px-vis-series-color-2: $purple5;
+    --px-vis-series-color-3: $orange5;
+    --px-card-background-color: white;
+}
+
+px-reports {
     .tr {
         background-color: white;
     }
@@ -135,25 +145,13 @@ px-app-nav {
 .spine {
   background-color: var(--px-card-background-color);
 }
-px-vis-timeseries {
-  --px-vis-series-color-0: $blue5;
-  --px-vis-series-color-1: $green5;
-  --px-vis-series-color-2: $purple5;
-  --px-vis-series-color-3: $orange5;
-}
+
 // A footer for the demo
 .footer {
   bottom: 0;
   width: 100%;
   height: 3rem;
   background: $gray16;
-}
-// Some cards should have a white background so they stand out better
-.light-card {
-  --px-card-background-color: white;
-}
-@media(min-width: 720px) {
-
 }
 
 // Trumps
@@ -167,5 +165,5 @@ $inuit-enable-paddings--tiny : true;
 $inuit-enable-paddings--small : true;
 $inuit-enable-paddings--huge : true;
 $inuit-enable-paddings--large : true;
-@import "assets/bower_components/px-spacing-design/_trumps.spacing.scss";
-@import "assets/bower_components/px-widths-responsive-design/_trumps.widths-responsive.scss";
+@import "px-spacing-design/_trumps.spacing.scss";
+@import "px-widths-responsive-design/_trumps.widths-responsive.scss";
