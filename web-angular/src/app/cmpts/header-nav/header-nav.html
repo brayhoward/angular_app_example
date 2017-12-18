@@ -1,0 +1,35 @@
+<div>
+  <style>
+    px-app-nav { margin-top: 2em; }
+  </style>
+
+  <px-app-header>
+    <px-app-nav slot="app-nav"
+      [items]='[
+          {
+              "label": "Dashboard",
+              "path": "dashboard",
+              "icon": "px-fea:dashboard",
+              "id": "dashboard"
+          },
+          {
+              "label": "Reports",
+              "path": "reports",
+              "icon": "px-fea:alerts",
+              "id": "reports"
+          },
+          {
+              "label": "Report Detail",
+              "path": "report-detail",
+              "icon": "px-fea:alerts",
+              "id": "report-detail"
+          },
+          {
+              "label": "Settings",
+              "path": "settings",
+              "icon": "px-fea:alerts",
+              "id": "settings"
+          }]'>
+    </px-app-nav>
+  </px-app-header>
+</div>

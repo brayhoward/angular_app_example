@@ -47,10 +47,6 @@ $inuit-enable-btn--icon : true;
 @import 'px-actionable-design/_objects.actionable.scss';
 @import "px-box-design/_objects.box.scss";
 
-// Component
-html, body {
-  background-color: aqua;
-}
 // The main content views of the px-lcc-app
 px-dashboard, px-reports, px-report-detail, px-settings {
   display: block;

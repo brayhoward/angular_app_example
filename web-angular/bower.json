@@ -26,7 +26,8 @@
     "px-spinner": "^2.2.0",
     "px-viewport-design": "^1.0.2",
     "px-meta-lists-design": "https://github.com/PredixDev/px-meta-lists-design.git#^1.0.1",
-    "px-meta-buttons-design": "^1.0.3"
+    "px-meta-buttons-design": "^1.0.3",
+    "px-app-helpers": "^2.0.2"
   },
   "devDependencies": {
     "web-component-tester": "^5.0.0",
