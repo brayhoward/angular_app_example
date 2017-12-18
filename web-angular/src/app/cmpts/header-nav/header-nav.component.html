@@ -1,4 +1,6 @@
 <div>
+    <!-- Styles added like this are scoped to this component level -->
+    <!-- This is the Angular convention for small components with minimal, component specific styles -->
   <style>
     px-app-nav { margin-top: 2em; }
   </style>
@@ -31,5 +33,8 @@
               "id": "settings"
           }]'>
     </px-app-nav>
+
+    <!-- Render Children -->
+    <ng-content></ng-content>
   </px-app-header>
 </div>

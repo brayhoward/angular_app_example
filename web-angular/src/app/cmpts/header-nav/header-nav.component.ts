@@ -1,8 +1,10 @@
-import { Component } from '@angular/core';
+import { Component, QueryList } from '@angular/core';
 
 @Component({
   selector: 'header-nav',
   templateUrl: './header-nav.component.html',
   styleUrls: ['./header-nav.component.scss']
 })
-export class HeaderNavComponent {}
+export class HeaderNavComponent {
+
+}

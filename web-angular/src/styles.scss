@@ -97,11 +97,7 @@ px-app-nav {
 .lifecycle-summary {
     border-bottom: 1px solid $gray1;
 }
-//This isnt working...
-.accordion__header {
-    background-color: white;
-    border: 1px 0 1px 0 solid $gray3;
-}
+
 .data-header-key {
     background-color: $gray1;
     font-size: 12px;
@@ -130,11 +126,11 @@ px-app-nav {
 .data-row {
     div{
         text-align: left;
-        min-width: 90px;  
+        min-width: 90px;
     }
     div:last-child{
         text-align: right;
-        min-width: 90px;       
+        min-width: 90px;
     }
 }
 // The overview area at the top of a dashboard containing kpis or key-value-pairs and other visualizations
@@ -163,3 +159,5 @@ $inuit-enable-paddings--huge : true;
 $inuit-enable-paddings--large : true;
 @import "px-spacing-design/_trumps.spacing.scss";
 @import "px-widths-responsive-design/_trumps.widths-responsive.scss";
+
+@import "global-styles.scss";
