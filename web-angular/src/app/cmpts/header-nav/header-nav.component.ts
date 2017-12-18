@@ -1,4 +1,4 @@
-import { Component, QueryList } from '@angular/core';
+import { Component, QueryList, Input} from '@angular/core';
 
 @Component({
   selector: 'header-nav',
@@ -6,5 +6,5 @@ import { Component, QueryList } from '@angular/core';
   styleUrls: ['./header-nav.component.scss']
 })
 export class HeaderNavComponent {
-
+  @Input() handleRouteChanged: Function;
 }
