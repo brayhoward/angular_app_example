@@ -45,6 +45,8 @@ $inuit-enable-btn--icon : true;
 //$inuit-call-to-action-background: aqua;
 @import 'px-buttons-design/_objects.buttons.scss';
 @import 'px-actionable-design/_objects.actionable.scss';
+$inuit-enable-box--large : true;
+$inuit-enable-box--huge : true;
 @import "px-box-design/_objects.box.scss";
 
 @import "global-styles/variables-mixins.scss";
@@ -58,8 +60,9 @@ $inuit-enable-btn--icon : true;
     --px-card-background-color: white;
     --touch-o-gray: #ebeff2;
     --royal-blue: $royal-blue;
+    --gray1: $gray1;
+    --select-light: $select-light;
 }
-
 .report-header {
     border-bottom: 1px solid $gray1;
 }
@@ -87,13 +90,6 @@ $inuit-enable-btn--icon : true;
         &.swatch-labor {background-color: $orange5;}
         &.swatch-fuel {background-color: $green5;}
         &.swatch-lube {background-color: $pink5;}
-    }
-}
-.data-row {
-    padding: 20px 7px;
-    border-bottom: 1px solid #979797;
-    &:hover {
-        background-color: $select-light;
     }
 }
 //Get numbers to align
