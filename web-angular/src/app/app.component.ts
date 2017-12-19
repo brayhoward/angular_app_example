@@ -1,6 +1,5 @@
 import { Component, SimpleChanges, Input } from '@angular/core';
-import { Location } from '@angular/common';
-import { ActivatedRoute } from '@angular/router';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -9,24 +8,16 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class AppComponent {
 
-  constructor(
-    private route: ActivatedRoute,
-    private location: Location
-  ) {
+  constructor( private router: Router ) {
     // Bind the this ref to this cmpt
-    this.handleRouteChanged.bind(this);
+    // this.handleRouteChanged.bind(this);
   }
 
-  ngOnChanges(changes: SimpleChanges) {
+  private handleRouteChanged = ({ detail: { value: route_array } }) => {
+    // Convert [ 'dash', 'sub' ] => '/dash/sub'
+    const path = route_array.reduce((acc, val ) => `${acc}/${val}`, '');
 
-    console.log(`selectedRoute changed: ${changes.selectedRoute.currentValue}`);
-    // You can also use categoryId.previousValue and
-    // categoryId.firstChange for comparing old and new values
-  }
-
-  handleRouteChanged(event) {
-
-    console.log('detect header-nav selected-route-changed in app.component')
-    console.log(event.detail.value)
+    // Manually trigger navigation when route changed event fired from header-nav > px-app-nav cmpt.
+    this.router.navigateByUrl(path)
   }
 }
