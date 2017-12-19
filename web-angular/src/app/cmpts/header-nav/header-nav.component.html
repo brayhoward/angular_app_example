@@ -2,7 +2,12 @@
     <!-- Styles added like this are scoped to this component level -->
     <!-- This is the Angular convention for small components with minimal, component specific styles -->
   <style>
-    px-app-nav { margin-top: 2em; }
+    /* Need to make sure that the app-nav shows up above everything else, especially when expanded */
+    px-app-nav {
+        margin-top: 2em;
+        z-index: 2;
+        position: relative;
+    }
   </style>
 
   <px-app-header>
@@ -40,5 +45,6 @@
 
     <!-- Render Children -->
     <ng-content></ng-content>
+
   </px-app-header>
 </div>
