@@ -68,16 +68,8 @@
     <!-- MAIN CONTENT -->
     <div class="report-body layout__item">
       <div class="box box--flush">
-        <px-tabs selected="{{selected}}">
-          <px-tab>Engine Lifecycle</px-tab>
-          <px-tab>Service Intervals</px-tab>
-          <px-tab>Parts</px-tab>
-        </px-tabs>
-        <iron-pages selected="{{selected}}" class="">
-          <engine-lifecycle></engine-lifecycle>
-          <div>Tab 2 content</div>
-          <div>Tab 3 content</div>
-        </iron-pages>
+        <!-- TABS -->
+        <report-detail-tabs></report-detail-tabs>
       </div>
     </div>
   </div>

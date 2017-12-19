@@ -9,6 +9,7 @@ export class ReportDetailComponent implements OnInit {
   private showLubrication: boolean = true;
   private showFuel: boolean = true;
   private showLabor: boolean = true;
+  private selected: String = '';
 
   ngOnInit() {
   }

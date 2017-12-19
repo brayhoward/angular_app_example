@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { MatTabsModule } from '@angular/material/tabs';
 
 // Routes
 import { AppRoutingModule } from './app-routing.module';
@@ -19,6 +20,7 @@ import { InputsPartsComponent } from './cmpts/inputs-parts/inputs-parts.componen
 import { InputsFuelComponent } from './cmpts/inputs-fuel/inputs-fuel.component';
 import { InputsLubricationComponent } from './cmpts/inputs-lubrication/inputs-lubrication.component';
 import { InputsLaborComponent } from './cmpts/inputs-labor/inputs-labor.component';
+import { ReportDetailTabsComponent } from './cmpts/report-detail-tabs/report-detail-tabs.component';
 
 @NgModule({
   declarations: [
@@ -34,12 +36,16 @@ import { InputsLaborComponent } from './cmpts/inputs-labor/inputs-labor.componen
     InputsPartsComponent,
     InputsFuelComponent,
     InputsLubricationComponent,
-    InputsLaborComponent
+    InputsLaborComponent,
+    ReportDetailTabsComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     CommonModule
+  ],
+  exports: [
+    MatTabsModule
   ],
   providers: [],
   bootstrap: [AppComponent],
