@@ -47,16 +47,7 @@ $inuit-enable-btn--icon : true;
 @import 'px-actionable-design/_objects.actionable.scss';
 @import "px-box-design/_objects.box.scss";
 
-// The main content views of the px-lcc-app
-px-dashboard, px-reports, px-report-detail, px-settings {
-  display: block;
-  background-color: $white;
-  overflow: auto;
-  -webkit-overflow-scrolling: touch;
-  position: relative;
-  width: 100%;
-}
-
+@import "global-styles/variables-mixins.scss";
 // assign all vars at root level so they work with postcss-cssnext -> https://github.com/MoOx/postcss-cssnext/issues/186
 :root {
     --px-data-table-cell-background-color--selected: $select-light;
@@ -65,26 +56,10 @@ px-dashboard, px-reports, px-report-detail, px-settings {
     --px-vis-series-color-2: $purple5;
     --px-vis-series-color-3: $orange5;
     --px-card-background-color: white;
+    --touch-o-gray: #ebeff2;
+    --royal-blue: $royal-blue;
 }
 
-px-reports {
-    .tr {
-        background-color: white;
-    }
-}
-px-reports px-data-table-cell {
-    background-color: white;
-}
-// Need to make sure that the app-nav shows up above everything else, especially when expanded
-px-app-nav {
-  z-index: 2;
-  position: relative;
-  // You could either use absolute or fixed for the vertical configuration depending how many options you have
-  // and whether you want it to scroll with the page or not.
-  // &[vertical] {
-  //   position: fixed;
-  // }
-}
 .report-header {
     border-bottom: 1px solid $gray1;
 }
@@ -157,7 +132,10 @@ $inuit-enable-paddings--tiny : true;
 $inuit-enable-paddings--small : true;
 $inuit-enable-paddings--huge : true;
 $inuit-enable-paddings--large : true;
+
+// Import predix styles
 @import "px-spacing-design/_trumps.spacing.scss";
 @import "px-widths-responsive-design/_trumps.widths-responsive.scss";
 
-@import "global-styles.scss";
+// Import local project styles
+@import "global-styles/global.scss";

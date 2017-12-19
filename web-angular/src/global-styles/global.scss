@@ -1,0 +1,14 @@
+// Hack fix for app-header-layout used by px-app-header in our HeaderNav cmpt
+app-header-layout[fullbleed] {
+  position: inherit !important;
+}
+
+// The main content views of the px-lcc-app
+.Dashboard, .Reports, .ReportDetail, .Settings {
+  display: block;
+  background-color: $white;
+  overflow: auto;
+  -webkit-overflow-scrolling: touch;
+  position: relative;
+  width: 100%;
+}
