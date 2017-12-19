@@ -14,6 +14,7 @@ import { ReportDetailComponent } from './cmpts/report-detail/report-detail.compo
 import { SettingsComponent } from './cmpts/settings/settings.component';
 import { EngineLifecycleComponent } from './cmpts/engine-lifecycle/engine-lifecycle.component';
 import { InputsEngineComponent } from './cmpts/inputs-engine/inputs-engine.component';
+import { AccordionWithToggleComponent } from './cmpts/accordion-with-toggle/accordion-with-toggle.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { InputsEngineComponent } from './cmpts/inputs-engine/inputs-engine.compo
     ReportDetailComponent,
     SettingsComponent,
     EngineLifecycleComponent,
-    InputsEngineComponent
+    InputsEngineComponent,
+    AccordionWithToggleComponent
   ],
   imports: [
     BrowserModule,

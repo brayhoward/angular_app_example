@@ -1,0 +1,22 @@
+<section class="AccordionWithToggle">
+  <div
+    id="header"
+    class="accordion__header heading--subsection flex flex--row flex--justify u-p--"
+    on-tap="_toggleHandler"
+  >
+    <div class="flex flex--middle">
+      <px-icon class="accordion__icon actionable--action" [icon]="icon" (click)="toggleExpanded()"></px-icon>
+      <span id="header-value">{{headerValue}}</span>
+    </div>
+
+    <div class="flex flex--middle">
+      <px-toggle size="small" id="accordion-toggle-switch"></px-toggle>
+    </div>
+  </div>
+
+  <iron-collapse id="collapse" [opened]="expanded">
+    <div class="accordion__body u-p--">
+      <slot></slot>
+    </div>
+  </iron-collapse>
+</section>
