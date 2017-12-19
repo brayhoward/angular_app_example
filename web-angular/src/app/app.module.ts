@@ -15,6 +15,7 @@ import { SettingsComponent } from './cmpts/settings/settings.component';
 import { EngineLifecycleComponent } from './cmpts/engine-lifecycle/engine-lifecycle.component';
 import { InputsEngineComponent } from './cmpts/inputs-engine/inputs-engine.component';
 import { AccordionWithToggleComponent } from './cmpts/accordion-with-toggle/accordion-with-toggle.component';
+import { InputsPartsComponent } from './cmpts/inputs-parts/inputs-parts.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { AccordionWithToggleComponent } from './cmpts/accordion-with-toggle/acco
     SettingsComponent,
     EngineLifecycleComponent,
     InputsEngineComponent,
-    AccordionWithToggleComponent
+    AccordionWithToggleComponent,
+    InputsPartsComponent
   ],
   imports: [
     BrowserModule,
