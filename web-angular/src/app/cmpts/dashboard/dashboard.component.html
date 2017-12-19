@@ -1,24 +1,112 @@
 <style>
-  .spine {
-    background-color: var(--touch-o-gray);
-    padding: 2em;
+  .about a{
+    display: block;
+    margin-bottom: 7px;
+  }
+  .report-preview .entry {
+    border-top: 1px solid var(--gray1);
+  }
+  .report-preview .entry .model {
+    text-align: center;
+    width: 100px;
+  }
+  .report-preview .entry .info {
+    
+  }
+  .report-preview .entry .info .meta {
+    display: block;
+    margin-top: 7px;
+  }
+  .report-preview .entry .info .meta .zeta {
+    display: block;
+    line-height: normal;
   }
 </style>
 
 <div class="Dashboard">
   <div class="spine u-p++">
-    <span class="heading--page u-p">Waukesha LifeCycle</span>
+    <span class="heading--page">Waukesha LifeCycle</span>
     <span class="epsilon">Get smarter about lorem ipsum</span>
   </div>
 
-  <px-card header-text="Productivity Details" icon="px-fea:alerts">
-      HEYO
-  </px-card>
-
-  <px-card class="light-card" header-text="Exhaust TC Differentials" icon="px-fea:orchestration">
-    <div class='actions'>
-      <px-icon icon='px-utl:app-settings'></px-icon>
+  <div class="layout">
+    <div class="about layout__item u-2/3-desk">
+      <div class="box">
+        <div class="flex flex--row flex--justify flex--top">
+          <div class="u-1/2 u-p">
+            <span class="heading--section">What job does it do?</span>
+            <p>LifeCycle is a forecasting tool that helps predict engine operating expenses over the entire life cycle of your Waukesha gas engine. Generate a custom report to show the cost of fuel, lubrication, parts, and labor based on your specific application.</p>
+            <a href="#">Watch 30-Second Tour Video</a>
+            <a href="#">Read Frequently Asked Questions</a>
+            <a href="#">Contact the Support Team</a>
+            <!-- <button class="btn btn--large btn--call-to-action u-mt">Create a New Report</button> -->
+            <button class="btn btn--large btn--call-to-action u-mt">
+              <px-icon style="width:12px" icon="px-utl:add"></px-icon> Create a New Report
+            </button>
+          </div>
+          <div class="u-1/2 u-p">
+            <img src="../../../../../assets/img/screenshot-fpo.png"/>
+          </div>
+        </div>
+      </div>
     </div>
-    HE-YA
-  </px-card>
+    <div class="report-preview layout__item u-1/3-desk">
+      <div class="box">
+        <div class="u-p">
+          <span class="heading--section">Your Latest Reports</span>
+          <div class="u-mt">
+            <!-- Entry -->
+            <div class="entry flex flex--row flex--left flex--top">
+              <div class="model u-p">
+                <img src="../../../../../assets/img/engine-tn-fpo.png"/><br/>
+                <span class="model-name weight--bold zeta">VGF - F18G</span>
+              </div>
+              <div class="info u-p">
+                <a href="#">Report Name #1</a><br/>
+                <span class="meta">
+                  <span class="zeta">For: James Ellis, ACME Corporation</span>
+                  <span class="zeta">Last Modified: August 18, 2018</span>
+                  <span class="zeta">Total LifeCycle Cost: $123,456</span>
+                </span>
+              </div>
+            </div>
+
+            <!-- Entry -->
+            <div class="entry flex flex--row flex--left flex--top">
+              <div class="model u-p">
+                <img src="../../../../../assets/img/engine-tn-fpo.png"/><br/>
+                <span class="model-name weight--bold zeta">VGF - F18G</span>
+              </div>
+              <div class="info u-p">
+                <a href="#">Report Name #2</a><br/>
+                <span class="meta">
+                  <span class="zeta">For: James Ellis, ACME Corporation</span>
+                  <span class="zeta">Last Modified: August 18, 2018</span>
+                  <span class="zeta">Total LifeCycle Cost: $123,456</span>
+                </span>
+              </div>
+            </div>
+
+            <!-- Entry -->
+            <div class="entry flex flex--row flex--left flex--top">
+              <div class="model u-p">
+                <img src="../../../../../assets/img/engine-tn-fpo.png"/><br/>
+                <span class="model-name weight--bold zeta">VGF - F18G</span>
+              </div>
+              <div class="info u-p">
+                <a href="#">Report Name #3</a><br/>
+                <span class="meta">
+                  <span class="zeta">For: James Ellis, ACME Corporation</span>
+                  <span class="zeta">Last Modified: August 18, 2018</span>
+                  <span class="zeta">Total LifeCycle Cost: $123,456</span>
+                </span>
+              </div>
+            </div>
+
+            <button class="btn btn--call-to-action u-mt">View All Reports</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
