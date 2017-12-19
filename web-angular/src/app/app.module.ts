@@ -16,6 +16,9 @@ import { EngineLifecycleComponent } from './cmpts/engine-lifecycle/engine-lifecy
 import { InputsEngineComponent } from './cmpts/inputs-engine/inputs-engine.component';
 import { AccordionWithToggleComponent } from './cmpts/accordion-with-toggle/accordion-with-toggle.component';
 import { InputsPartsComponent } from './cmpts/inputs-parts/inputs-parts.component';
+import { InputsFuelComponent } from './cmpts/inputs-fuel/inputs-fuel.component';
+import { InputsLubricationComponent } from './cmpts/inputs-lubrication/inputs-lubrication.component';
+import { InputsLaborComponent } from './cmpts/inputs-labor/inputs-labor.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +31,10 @@ import { InputsPartsComponent } from './cmpts/inputs-parts/inputs-parts.componen
     EngineLifecycleComponent,
     InputsEngineComponent,
     AccordionWithToggleComponent,
-    InputsPartsComponent
+    InputsPartsComponent,
+    InputsFuelComponent,
+    InputsLubricationComponent,
+    InputsLaborComponent
   ],
   imports: [
     BrowserModule,
