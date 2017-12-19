@@ -9,14 +9,21 @@
       <span id="header-value">{{headerValue}}</span>
     </div>
 
-    <div class="flex flex--middle">
-      <px-toggle size="small" id="accordion-toggle-switch"></px-toggle>
+    <div class="flex flex--middle" *ngIf="hasToggleSwitch">
+      <px-toggle
+        size="small"
+        id="accordion-toggle-switch"
+        [checked]="checked"
+        (checked-changed)="toggleSwitchCallback($event)"
+      >
+      </px-toggle>
     </div>
   </div>
 
   <iron-collapse id="collapse" [opened]="expanded">
     <div class="accordion__body u-p--">
-      <slot></slot>
+      <!-- Render Children -->
+      <ng-content></ng-content>
     </div>
   </iron-collapse>
 </section>

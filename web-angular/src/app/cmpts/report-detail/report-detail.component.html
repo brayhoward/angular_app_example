@@ -46,6 +46,8 @@
       <accordion-with-toggle
         icons='{"more":"px-utl:add","less":"px-utl:remove"}'
         headerValue="Fuel"
+        hasToggleSwitch="true"
+        [toggleSwitchCallback]="toggleFuel"
       >
         <div class="box box--small">
           <!-- <px-inputs-fuel></px-inputs-fuel> -->
@@ -56,6 +58,7 @@
       <accordion-with-toggle
         icons='{"more":"px-utl:add","less":"px-utl:remove"}'
         headerValue="Lubrication"
+        [toggleSwitchCallback]="toggleLubrication"
       >
         <div class="box box--small">
           <!-- <px-inputs-lubrication></px-inputs-lubrication> -->
@@ -66,6 +69,7 @@
       <accordion-with-toggle
         icons='{"more":"px-utl:add","less":"px-utl:remove"}'
         headerValue="Labor"
+        [toggleSwitchCallback]="toggleLabor"
       >
         <div class="box box--small">
           <!-- <px-inputs-labor></px-inputs-labor> -->
