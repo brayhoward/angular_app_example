@@ -12,3 +12,15 @@ app-header-layout[fullbleed] {
   position: relative;
   width: 100%;
 }
+
+// TODO: move back to report-detail specific styles once angular fixes its scoping bugs
+.report-inputs[_ngcontent-c2] {
+  font-size: 10px;
+
+  label {
+    font-size: 10px;
+  }
+  input {
+    max-width: 6em;
+  }
+}
