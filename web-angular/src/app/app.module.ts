@@ -12,6 +12,8 @@ import { DashboardComponent } from './cmpts/dashboard/dashboard.component';
 import { ReportsComponent } from './cmpts/reports/reports.component';
 import { ReportDetailComponent } from './cmpts/report-detail/report-detail.component';
 import { SettingsComponent } from './cmpts/settings/settings.component';
+import { EngineLifecycleComponent } from './cmpts/engine-lifecycle/engine-lifecycle.component';
+import { InputsEngineComponent } from './cmpts/inputs-engine/inputs-engine.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +22,9 @@ import { SettingsComponent } from './cmpts/settings/settings.component';
     DashboardComponent,
     ReportsComponent,
     ReportDetailComponent,
-    SettingsComponent
+    SettingsComponent,
+    EngineLifecycleComponent,
+    InputsEngineComponent
   ],
   imports: [
     BrowserModule,

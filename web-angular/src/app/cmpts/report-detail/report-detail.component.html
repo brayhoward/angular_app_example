@@ -1,5 +1,97 @@
 <div class="ReportDetail">
-  <p>
-    report-detail works!
-  </p>
+  <link rel="import" href="../bower_components/polymer/polymer.html" />
+
+  <!-- Predix components used in this app view -->
+  <link rel="import" href="../bower_components/px-card/px-card.html" />
+  <link rel="import" href="../bower_components/px-tabs/px-tab.html" />
+  <link rel="import" href="../bower_components/px-accordion/px-accordion.html" />
+
+  <!-- Load styles -->
+  <link rel="import" href="../css/px-lcc-app-styles.html" />
+
+  <!-- Views used by the app -->
+  <!-- <link rel="import" href="px-inputs-parts.html" />
+  <link rel="import" href="px-inputs-fuel.html" />
+  <link rel="import" href="px-inputs-lubrication.html" />
+  <link rel="import" href="px-inputs-labor.html" />
+  <link rel="import" href="accordion-with-toggle.html" /> -->
+
+  <!-- REPORT HEADER -->
+  <div class="report-header flex flex--row flex--justify flex--middle u-p++">
+    <!-- TODO: Create service and mock out all this data when the shape of the data is known -->
+    <div class="heading--page">Name of the Report
+      <br/>
+      <span class="epsilon">Prepared for James Ellis, ACME Corporation</span>
+    </div>
+    <div class="u-p">Share
+      <px-icon icon='px-utl:share'></px-icon>
+    </div>
+  </div>
+
+  <div class="layout">
+    <!-- INPUTS -->
+    <!-- <div class="report-inputs layout__item u-1/6-desk">
+      <accordion-with-toggle
+          icons='{"more":"px-utl:add","less":"px-utl:remove"}'
+          header-value="Engine",
+          on-switch="_toggleEngine"
+      >
+        <div class="box box--small">
+          <inputs-engine></inputs-engine>
+        </div>
+      </accordion-with-toggle>
+
+      <accordion-with-toggle
+          icons='{"more":"px-utl:add","less":"px-utl:remove"}'
+          header-value="Parts"
+      >
+        <div class="box box--small">
+          <px-inputs-parts></px-inputs-parts>
+        </div>
+      </accordion-with-toggle>
+
+      <accordion-with-toggle
+          icons='{"more":"px-utl:add","less":"px-utl:remove"}'
+          header-value="Fuel"
+      >
+        <div class="box box--small">
+          <px-inputs-fuel></px-inputs-fuel>
+        </div>
+      </accordion-with-toggle>
+
+      <accordion-with-toggle
+          icons='{"more":"px-utl:add","less":"px-utl:remove"}'
+          header-value="Lubrication"
+      >
+        <div class="box box--small">
+          <px-inputs-lubrication></px-inputs-lubrication>
+        </div>
+      </accordion-with-toggle>
+
+      <accordion-with-toggle
+          icons='{"more":"px-utl:add","less":"px-utl:remove"}'
+          header-value="Labor"
+      >
+        <div class="box box--small">
+          <px-inputs-labor></px-inputs-labor>
+        </div>
+      </accordion-with-toggle>
+    </div> -->
+
+    <!-- MAIN CONTENT -->
+    <div class="report-body layout__item">
+      <div class="box box--flush">
+        <px-tabs selected="{{selected}}">
+          <px-tab>Engine Lifecycle</px-tab>
+          <px-tab>Service Intervals</px-tab>
+          <px-tab>Parts</px-tab>
+        </px-tabs>
+        <iron-pages selected="{{selected}}" class="">
+          <engine-lifecycle></engine-lifecycle>
+          <div>Tab 2 content</div>
+          <div>Tab 3 content</div>
+        </iron-pages>
+      </div>
+    </div>
+  </div>
 </div>
