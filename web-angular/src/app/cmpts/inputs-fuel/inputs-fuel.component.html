@@ -1,3 +1,18 @@
-<p>
-  inputs-fuel works!
-</p>
+<section class="InputsFuel">
+  <div class="flex flex--row flex--justify flex--middle u-mb">
+    <label class="label--inline" for="">Fuel Type</label>
+    <px-dropdown [items]='["Natural Gas","Other","Other"]' selected="0"></px-dropdown>
+  </div>
+
+  <div class="flex flex--row flex--justify flex--middle u-mv">
+    <label for="">Fuel Cost</label>
+    <div class="flex">
+      <input id="" value="$1.00" class="text-input input--tiny u-mr--" type="text" />
+      <px-dropdown [items]='["MMBTU","Other","Other","Other"]' selected="0" button-style="bare"></px-dropdown>
+    </div>
+  </div>
+
+  <div class="flex flex--right">
+    <button class="btn btn--call-to-action u-mv+">Apply</button>
+  </div>
+</section>
