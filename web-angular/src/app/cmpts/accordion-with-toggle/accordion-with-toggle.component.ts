@@ -12,6 +12,7 @@ export class AccordionWithToggleComponent implements OnInit {
   expanded: boolean = false;
 
   @Input() headerValue: String
+  @Input() toggleSwitchCallback: (event: MouseEvent) => void
 
 
   ngOnInit() {
