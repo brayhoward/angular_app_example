@@ -10,13 +10,17 @@ import { AppComponent } from './app.component';
 import { HeaderNavComponent } from './cmpts/header-nav/header-nav.component';
 import { DashboardComponent } from './cmpts/dashboard/dashboard.component';
 import { ReportsComponent } from './cmpts/reports/reports.component';
+import { ReportDetailComponent } from './cmpts/report-detail/report-detail.component';
+import { SettingsComponent } from './cmpts/settings/settings.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderNavComponent,
     DashboardComponent,
-    ReportsComponent
+    ReportsComponent,
+    ReportDetailComponent,
+    SettingsComponent
   ],
   imports: [
     BrowserModule,
