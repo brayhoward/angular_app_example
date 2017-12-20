@@ -1,11 +1,19 @@
+<style>
+.mat-cell.mat-column-select,
+.mat-header-cell.mat-column-select {
+  flex: 0 0 25px;
+}
+.mat-cell.mat-column-select px-icon {
+  width: 13px;
+}
+</style>
+
 <section class="LifecycleTable example-container mat-elevation-z8">
   <mat-table #table [dataSource]="dataSource">
 
-    <!-- Checkbox Column -->
+    <!-- Select Column -->
     <ng-container matColumnDef="select">
-      <mat-header-cell *matHeaderCellDef>
-        <p>Hours</p>
-      </mat-header-cell>
+      <mat-header-cell *matHeaderCellDef></mat-header-cell>
       <mat-cell *matCellDef="let row">
         <px-icon
           [icon]="selection.isSelected(row) ? 'px-utl:remove' : 'px-utl:add'"
@@ -13,33 +21,45 @@
         >
         </px-icon>
 
-        <h1 class="wide" *ngIf="selection.isSelected(row)"> Opened!! </h1>
+        <h1 class="wide" *ngIf="selection.isSelected(row)"> Test </h1>
       </mat-cell>
     </ng-container>
 
-    <!-- Position Column -->
-    <ng-container matColumnDef="position" class="bg-gray">
-      <mat-header-cell *matHeaderCellDef class="data-header-key"> <span class="swatch swatch-labor"></span> Labor </mat-header-cell>
-      <mat-cell *matCellDef="let element"> {{element.position}} </mat-cell>
+    <!-- Hours Column -->
+    <ng-container matColumnDef="hours">
+        <mat-header-cell *matHeaderCellDef> Hours </mat-header-cell>
+        <mat-cell *matCellDef="let element"> <a href="#">{{element.hours}}</a> </mat-cell>
+      </ng-container>
+
+    <!-- Parts Column -->
+    <ng-container matColumnDef="parts">
+      <mat-header-cell *matHeaderCellDef> <span class="swatch swatch-parts"></span> Parts (List Price) </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.parts}} </mat-cell>
     </ng-container>
 
-    <!-- Name Column -->
-    <ng-container matColumnDef="name">
-      <mat-header-cell *matHeaderCellDef> Name </mat-header-cell>
-      <mat-cell *matCellDef="let element"> {{element.name}} </mat-cell>
+    <!-- Labor Column -->
+    <ng-container matColumnDef="labor">
+      <mat-header-cell *matHeaderCellDef> <span class="swatch swatch-labor"></span> Labor </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.labor}} </mat-cell>
     </ng-container>
 
-    <!-- Weight Column -->
-    <ng-container matColumnDef="weight">
-      <mat-header-cell *matHeaderCellDef> Weight </mat-header-cell>
-      <mat-cell *matCellDef="let element"> {{element.weight}} </mat-cell>
+    <!-- Fuel Column -->
+    <ng-container matColumnDef="fuel">
+      <mat-header-cell *matHeaderCellDef> <span class="swatch swatch-fuel"></span> Fuel </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.fuel}} </mat-cell>
     </ng-container>
 
-    <!-- Symbol Column -->
-    <ng-container matColumnDef="symbol">
-      <mat-header-cell *matHeaderCellDef> Symbol </mat-header-cell>
-      <mat-cell *matCellDef="let element"> {{element.symbol}} </mat-cell>
+    <!-- Lubrication Column -->
+    <ng-container matColumnDef="lubrication">
+      <mat-header-cell *matHeaderCellDef> <span class="swatch swatch-lubrication"></span> Lubrication </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.lubrication}} </mat-cell>
     </ng-container>
+
+    <!-- Total Column -->
+    <ng-container matColumnDef="total">
+        <mat-header-cell *matHeaderCellDef> Total </mat-header-cell>
+        <mat-cell *matCellDef="let element" class="weight--bold"> {{element.total}} </mat-cell>
+      </ng-container>
 
     <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
 
