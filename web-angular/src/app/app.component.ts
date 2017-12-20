@@ -8,10 +8,7 @@ import { Router } from '@angular/router';
 })
 export class AppComponent {
 
-  constructor( private router: Router ) {
-    // Bind the this ref to this cmpt
-    // this.handleRouteChanged.bind(this);
-  }
+  constructor( private router: Router ) {}
 
   private handleRouteChanged = ({ detail: { value: route_array } }) => {
     // Convert [ 'dash', 'sub' ] => '/dash/sub'
