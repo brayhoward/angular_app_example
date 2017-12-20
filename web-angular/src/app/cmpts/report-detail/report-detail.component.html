@@ -1,6 +1,12 @@
+<style>
+  /* section.tab-container {
+    width: 90%;
+  } */
+</style>
+
 <div class="ReportDetail">
   <!-- REPORT HEADER -->
-  <div class="report-header flex flex--row flex--justify flex--middle u-p++">
+  <div class="report-header flex flex--row flex--justify flex--middle u-p++ border">
     <!-- TODO: Create service and mock out all this data when the shape of the data is known -->
     <div class="heading--page">Name of the Report
       <br/>
@@ -11,9 +17,9 @@
     </div>
   </div>
 
-  <div class="layout">
+  <div class="layout page-height">
     <!-- INPUTS -->
-    <div class="report-inputs layout__item u-1/6-desk">
+    <div class="report-inputs tall layout__item u-1/6-desk border">
       <accordion-with-toggle
         icons='{"more":"px-utl:add","less":"px-utl:remove"}'
         headerValue="Engine"
@@ -65,6 +71,12 @@
     </div>
 
     <!-- MAIN CONTENT TABS -->
-    <report-detail-tabs></report-detail-tabs>
+    <div class="layout__item pd-0">
+      <div class="layout-full spine tall">
+        <section class="tab-container wide tall bg-light border u-p">
+          <report-detail-tabs></report-detail-tabs>
+        </section>
+      </div>
+    </div>
   </div>
 </div>

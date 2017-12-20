@@ -49,6 +49,7 @@ $inuit-enable-box--large : true;
 $inuit-enable-box--huge : true;
 @import "px-box-design/_objects.box.scss";
 
+// Color varsiables. Share between sass and css
 @import "global-styles/variables-mixins.scss";
 // assign all vars at root level so they work with postcss-cssnext -> https://github.com/MoOx/postcss-cssnext/issues/186
 :root {
@@ -57,8 +58,9 @@ $inuit-enable-box--huge : true;
     --px-vis-series-color-1: $green5;
     --px-vis-series-color-2: $purple5;
     --px-vis-series-color-3: $orange5;
-    --px-card-background-color: white;
-    --touch-o-gray: #ebeff2;
+    --px-card-background-color: $light;
+    --touch-o-gray: $touch-o-grey;
+    --gray: $gray;
     --royal-blue: $royal-blue;
     --gray1: $gray1;
     --select-light: $select-light;
