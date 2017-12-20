@@ -1,14 +1,14 @@
 @import './variables-mixins';
 
 .bg-gray {
-  background-color: $touch-o-grey;
+  background-color: $touch-o-gray;
 }
 
 .bg-light {
   background-color: $light;
 }
 .spine {
-  @extend .bg-gray;
+  background-color: $touch-o-gray !important;
   padding: 2em;
 }
 
