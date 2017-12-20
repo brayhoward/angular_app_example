@@ -7,6 +7,13 @@
   mat-cell.mat-column-service {
     flex: 0 0 13em;
   }
+  .mat-header-row {
+    min-height: inherit;
+    padding: 5px 24px;
+  }
+ .mat-row {
+    min-height: 58px;
+  }
 </style>
 
 <div class="ServiceIntervals">
@@ -45,7 +52,8 @@
       <!-- Interval Column -->
       <ng-container matColumnDef="interval">
         <mat-header-cell *matHeaderCellDef> Interval </mat-header-cell>
-        <mat-cell *matCellDef="let element"> {{element.interval}} Hours</mat-cell>
+        <mat-cell *matCellDef="let element"> <px-dropdown id="" button-style="bare" items='["0 Hours","4000 Hours","5000 Hours","6000 Hours","7000 Hours"]' selected="1"></px-dropdown></mat-cell>
+        <!-- <mat-cell *matCellDef="let element"> ${{element.parts}} </mat-cell> -->
       </ng-container>
 
       <!-- Parts Column -->

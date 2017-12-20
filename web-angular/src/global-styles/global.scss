@@ -12,6 +12,12 @@ app-header-layout[fullbleed] {
 .mat-tab-body-wrapper {
   padding: 13px 25px;
 }
+.mat-tab-label[aria-selected="true"] {
+  // font-weight: bold;
+  // color: $base-txt;
+}
+//make sure the app header is on top
+.px-app-header {z-index: 5 !important;}
 
 // The main content views of the px-lcc-app
 .Dashboard, .Reports, .ReportDetail, .Settings {
@@ -37,9 +43,12 @@ app-header-layout[fullbleed] {
   padding: 20px 7px;
   border-bottom: 1px solid #979797;
 }
-
-// Material Angular tabs active
-.mat-tab-label[aria-selected="true"] {
-  font-weight: bold;
-  color: $base-txt;
+.Parts {
+  .px-data-table-cell {
+    font-size: 13px;
+    padding: 0px;
+  }
+  .table.aha-table {
+    padding: 5px;
+  }
 }
