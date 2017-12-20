@@ -4,6 +4,14 @@
 app-header-layout[fullbleed] {
   position: inherit !important;
 }
+//Hack font fix for material tab component
+.mat-tab-group,
+.mat-tab-label, 
+.mat-tab-link {font-family: inherit;}
+//Add padding around tabbed content
+.mat-tab-body-wrapper {
+  padding: 13px 25px;
+}
 
 // The main content views of the px-lcc-app
 .Dashboard, .Reports, .ReportDetail, .Settings {

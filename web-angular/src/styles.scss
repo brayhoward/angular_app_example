@@ -68,6 +68,7 @@ $inuit-enable-box--huge : true;
     --gray1: $gray1;
     --select-light: $select-light;
     --base-txt: $base-txt;
+    --primary-light: $primary-light;
 }
 .report-header {
     border-bottom: 1px solid $gray1;
@@ -112,7 +113,12 @@ $inuit-enable-box--huge : true;
 }
 // The overview area at the top of a dashboard containing kpis or key-value-pairs and other visualizations
 .spine {
-  background-color: var(--px-card-background-color);
+    background-color: var(--px-card-background-color);
+    padding: 2em;
+}
+.report-header {
+    background-color: $white;
+    padding: 2em;
 }
 
 // A footer for the demo
