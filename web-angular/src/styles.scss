@@ -133,5 +133,8 @@ $inuit-enable-paddings--large : true;
 @import "px-spacing-design/_trumps.spacing.scss";
 @import "px-widths-responsive-design/_trumps.widths-responsive.scss";
 
+// Angualar material theme. needed for tabs
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+
 // Import local project styles
 @import "global-styles/global.scss";

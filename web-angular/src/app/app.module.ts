@@ -1,7 +1,10 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
+// Needed form material tabs ////////////////////////////////////////////////
 import { MatTabsModule } from '@angular/material/tabs';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+/////////////////////////////////////////////////////////////////////////////
 
 // Routes
 import { AppRoutingModule } from './app-routing.module';
@@ -40,11 +43,10 @@ import { ReportDetailTabsComponent } from './cmpts/report-detail-tabs/report-det
     ReportDetailTabsComponent
   ],
   imports: [
+    CommonModule,
     BrowserModule,
+    BrowserAnimationsModule,
     AppRoutingModule,
-    CommonModule
-  ],
-  exports: [
     MatTabsModule
   ],
   providers: [],
