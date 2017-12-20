@@ -27,6 +27,7 @@ import { InputsLaborComponent } from './cmpts/inputs-labor/inputs-labor.componen
 import { ReportDetailTabsComponent } from './cmpts/report-detail-tabs/report-detail-tabs.component';
 import { ServiceIntervalsComponent } from './cmpts/service-intervals/service-intervals.component';
 import { PartsComponent } from './cmpts/parts/parts.component';
+import { LifecycleTableComponent } from './cmpts/lifecycle-table/lifecycle-table.component';
 
 @NgModule({
   declarations: [
@@ -46,6 +47,7 @@ import { PartsComponent } from './cmpts/parts/parts.component';
     ReportDetailTabsComponent,
     ServiceIntervalsComponent,
     PartsComponent,
+    LifecycleTableComponent,
   ],
   imports: [
     CommonModule,

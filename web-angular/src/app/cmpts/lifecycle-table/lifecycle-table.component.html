@@ -1,0 +1,52 @@
+<section class="LifecycleTable example-container mat-elevation-z8">
+  <mat-table #table [dataSource]="dataSource">
+
+    <!-- Checkbox Column -->
+    <ng-container matColumnDef="select">
+      <mat-header-cell *matHeaderCellDef>
+        <p>Hours</p>
+      </mat-header-cell>
+      <mat-cell *matCellDef="let row">
+        <px-icon
+          [icon]="selection.isSelected(row) ? 'px-utl:remove' : 'px-utl:add'"
+          (click)="selection.toggle(row)"
+        >
+        </px-icon>
+
+        <h1 class="wide" *ngIf="selection.isSelected(row)"> Opened!! </h1>
+      </mat-cell>
+    </ng-container>
+
+    <!-- Position Column -->
+    <ng-container matColumnDef="position" class="bg-gray">
+      <mat-header-cell *matHeaderCellDef class="data-header-key"> <span class="swatch swatch-labor"></span> Labor </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.position}} </mat-cell>
+    </ng-container>
+
+    <!-- Name Column -->
+    <ng-container matColumnDef="name">
+      <mat-header-cell *matHeaderCellDef> Name </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.name}} </mat-cell>
+    </ng-container>
+
+    <!-- Weight Column -->
+    <ng-container matColumnDef="weight">
+      <mat-header-cell *matHeaderCellDef> Weight </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.weight}} </mat-cell>
+    </ng-container>
+
+    <!-- Symbol Column -->
+    <ng-container matColumnDef="symbol">
+      <mat-header-cell *matHeaderCellDef> Symbol </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.symbol}} </mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+
+    <!-- TABLE ROWS -->
+    <mat-row
+      *matRowDef="let row; columns: displayedColumns;"
+    >
+    </mat-row>
+  </mat-table>
+</section>
