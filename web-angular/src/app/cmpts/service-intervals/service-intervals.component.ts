@@ -34,11 +34,11 @@ export interface Element {
   service: string;
   interval: number;
   parts: number;
-  labor: string;
+  labor: number;
   price:number;
 }
 
-const ELEMENT_DATA: Element[] = [
+const ELEMENT_DATA: Array<Element> = [
   {service: 'Commissioning Parts', interval: 0, parts: 1521, labor: 0, price: 1521},
   {service: 'Emergency Spare Parts', interval: 0, parts: 21758, labor: 0, price: 21758},
   {service: 'Lube Oil Change', interval: 6000, parts: 581, labor: 200, price: 1031},

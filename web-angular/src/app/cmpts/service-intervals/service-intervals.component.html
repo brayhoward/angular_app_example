@@ -1,8 +1,13 @@
 <style>
-
+  mat-cell.include {
+    flex: 0 0 7em;
+  }
+  mat-cell.mat-column-service {
+    flex: 0 0 13em;
+  }
 </style>
 
-<div class="ServiceIntervals">  
+<div class="ServiceIntervals">
   <div class="chart-controls flex flex--row flex--right flex--middle u-p--">
     <label class="label--inline" for="">Currency</label>
     <px-dropdown class="u-mh" items='["USD","Other","Other"]' selected="0"></px-dropdown>
@@ -19,12 +24,12 @@
         <mat-header-cell *matHeaderCellDef>
           Include
         </mat-header-cell>
-        <mat-cell *matCellDef="let row">
-          <px-toggle 
+        <mat-cell class="include" *matCellDef="let row">
+          <px-toggle
             size="small"
-            (click)="$event.stopPropagation()"
-            (change)="$event ? selection.toggle(row) : null"
-            [checked]="selection.isSelected(row)">
+            (click)="selection.toggle(row)"
+            [checked]="selection.isSelected(row)"
+          >
           </px-toggle>
         </mat-cell>
       </ng-container>
@@ -60,8 +65,7 @@
         </ng-container>
 
       <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-      <mat-row *matRowDef="let row; columns: displayedColumns;"
-              (click)="selection.toggle(row)">
+      <mat-row *matRowDef="let row; columns: displayedColumns;">
       </mat-row>
     </mat-table>
   </section>
