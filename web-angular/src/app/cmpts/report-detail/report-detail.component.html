@@ -1,15 +1,13 @@
 <style>
-  /* section.tab-container {
-    width: 90%;
-  } */
+  
 </style>
 
 <div class="ReportDetail">
   <!-- REPORT HEADER -->
-  <div class="report-header flex flex--row flex--justify flex--middle u-p++ border">
+  <div class="report-header flex flex--row flex--justify flex--middle u-p++">
     <!-- TODO: Create service and mock out all this data when the shape of the data is known -->
-    <div class="heading--page">Name of the Report
-      <br/>
+    <div>
+      <span class="heading--page">Name of the Report</span><br/>
       <span class="epsilon">Prepared for James Ellis, ACME Corporation</span>
     </div>
     <div class="u-p">Share
@@ -19,7 +17,7 @@
 
   <div class="layout page-height">
     <!-- INPUTS -->
-    <div class="report-inputs tall layout__item u-1/6-desk border">
+    <div class="report-inputs layout__item u-1/6-desk">
       <accordion-with-toggle
         icons='{"more":"px-utl:add","less":"px-utl:remove"}'
         headerValue="Engine"
@@ -72,8 +70,8 @@
 
     <!-- MAIN CONTENT TABS -->
     <div class="layout__item pd-0">
-      <div class="layout-full spine tall">
-        <section class="tab-container wide tall bg-light border u-p bx-shadow">
+      <div class="layout-full u-p bg-gray">
+        <section class="tab-container wide bg-light border bx-shadow">
           <report-detail-tabs></report-detail-tabs>
         </section>
       </div>

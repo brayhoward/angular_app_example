@@ -1,6 +1,19 @@
+<style>
+  .chart-controls {
+    font-size: 12px;
+    border-top: 1px solid var(--gray1);
+  }
+  .data-row {
+    border-bottom: 1px solid var(--gray);
+  }
+  .key-vals .total {
+    text-align: right;
+  }
+</style>
+
 <div class="EngineLifecyle flex flex--col">
   <!-- TODO: Mock this data from a service -->
-  <div class="key-vals layout layout-full">
+  <div class="key-vals flex flex--row flex--justify flex--middle">
     <div class="u-p">
       <px-key-value-pair
           key="Total Parts"
@@ -37,7 +50,7 @@
       </px-key-value-pair>
     </div>
 
-    <div class="u-p">
+    <div class="u-p total">
       <px-key-value-pair
           key="Total LifeCycle Cost (52000 Hours)"
           value="12345"
@@ -58,8 +71,8 @@
     <px-dropdown class="u-mh" items='["Hours","Years"]' selected="0"></px-dropdown>
   </div>
 
-  <div class="box box--large tall wide bg-gray">
-    CHART GOES HERE
+  <div class="box box--large wide">
+    <img src="../../../assets/img/chart-fpo.png">
   </div>
 
   <div class="data-header-key flex flex--row flex--justify flex--middle u-p--">
@@ -71,7 +84,7 @@
     <div>Total</div>
   </div>
 
-  <div class="data-row flex flex--row flex--justify flex--middle epsilon">
+  <div class="data-row flex flex--row flex--justify flex--middle u-pv epsilon">
     <div><a class="actionable actionable"><px-icon icon="px-utl:add"></px-icon>Year 1</a></div>
     <div>$5,710</div>
     <div>$1,500</div>
@@ -80,7 +93,7 @@
     <div>$129,250</div>
   </div>
 
-  <div class="data-row flex flex--row flex--justify flex--middle epsilon">
+  <div class="data-row flex flex--row flex--justify flex--middle u-pv epsilon">
     <div><a class="actionable actionable"><px-icon icon="px-utl:add"></px-icon>Year 2</a></div>
     <div>$1,710</div>
     <div>$500</div>
@@ -89,7 +102,7 @@
     <div>$12,250</div>
   </div>
 
-  <div class="data-row flex flex--row flex--justify flex--middle epsilon">
+  <div class="data-row flex flex--row flex--justify flex--middle u-pv epsilon">
     <div><a class="actionable actionable"><px-icon icon="px-utl:add"></px-icon>Year 3</a></div>
     <div>$5,710</div>
     <div>$1,500</div>
