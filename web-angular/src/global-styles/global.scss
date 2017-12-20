@@ -27,6 +27,12 @@ app-header-layout[fullbleed] {
   }
 }
 
+// Material Angular tabs active
+.mat-tab-label[aria-selected="true"] {
+  font-weight: bold;
+  color: $base-txt;
+}
+
 // Helper classes
 .bg-gray {
   background-color: $touch-o-grey;
