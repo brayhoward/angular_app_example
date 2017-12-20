@@ -68,7 +68,10 @@ $inuit-enable-box--huge : true;
     --gray1: $gray1;
     --select-light: $select-light;
     --base-txt: $base-txt;
+    --primary-default: $primary-default;
     --primary-light: $primary-light;
+    --gray1: $gray1;
+    --status-blue1: $status-blue1;
 }
 .report-header {
     border-bottom: 1px solid $gray1;
@@ -86,18 +89,49 @@ $inuit-enable-box--huge : true;
 .data-header-key {
     background-color: $gray1;
     font-size: 12px;
-    .swatch {
-        display: inline-block;
-        margin-right: 5px;
-        width: 10px;
-        height: 7px;
-        border: 1px solid $gray5;
-        background-color: black;
-        &.swatch-parts {background-color: $blue5;}
-        &.swatch-labor {background-color: $orange5;}
-        &.swatch-fuel {background-color: $green5;}
-        &.swatch-lube {background-color: $pink5;}
-    }
+}
+.swatch {
+    display: inline-block;
+    margin-right: 5px;
+    width: 10px;
+    height: 7px;
+    border: 1px solid $gray5;
+    background-color: black;
+    &.swatch-parts {background-color: $blue5;}
+    &.swatch-labor {background-color: $orange5;}
+    &.swatch-fuel {background-color: $green5;}
+    &.swatch-lube {background-color: $pink5;}
+}
+//Material Angular TTab Styles
+.mat-tab-group.mat-primary .mat-tab-label:focus {
+    background-color: var(--primary-light);
+}
+.mat-tab-group.mat-primary .mat-ink-bar, 
+.mat-tab-nav-bar.mat-primary .mat-ink-bar {
+    background-color: var(--primary-default);
+}
+//Material Angular Table Styles
+.mat-table {
+    font-family: inherit;
+}
+.mat-cell {
+    font-size: 18px;
+}
+.mat-cell a{
+    text-decoration: none;
+}
+.mat-cell.cdk-column-select {
+/*width: 100px;*/
+}
+.mat-header-row {
+    min-height: inherit;
+    padding-top: 3px;
+    padding-bottom: 3px;
+    background-color: var(--gray1); 
+    border-bottom-color: transparent;
+}
+.mat-column-price {
+    text-align: right;
 }
 //Get numbers to align
 .data-header-key,
@@ -113,7 +147,7 @@ $inuit-enable-box--huge : true;
 }
 // The overview area at the top of a dashboard containing kpis or key-value-pairs and other visualizations
 .spine {
-    background-color: var(--px-card-background-color);
+    background-color: var(--gray1);
     padding: 2em;
 }
 .report-header {

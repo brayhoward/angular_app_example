@@ -1,49 +1,68 @@
-<section class="ServiceIntervals example-container mat-elevation-z8">
-  <mat-table #table [dataSource]="dataSource">
+<style>
 
-    <!-- Checkbox Column -->
-    <ng-container matColumnDef="select">
-      <mat-header-cell *matHeaderCellDef>
-        <px-toggle (change)="$event ? masterToggle() : null"
-                      [checked]="selection.hasValue() && isAllSelected()"
-                      [indeterminate]="selection.hasValue() && !isAllSelected()">
-        </px-toggle>
-      </mat-header-cell>
-      <mat-cell *matCellDef="let row">
-        <px-toggle (click)="$event.stopPropagation()"
-                      (change)="$event ? selection.toggle(row) : null"
-                      [checked]="selection.isSelected(row)">
-        </px-toggle>
-      </mat-cell>
-    </ng-container>
+</style>
 
-    <!-- Position Column -->
-    <ng-container matColumnDef="position" class="bg-gray">
-      <mat-header-cell *matHeaderCellDef class="data-header-key"> <span class="swatch swatch-labor"></span> Labor </mat-header-cell>
-      <mat-cell *matCellDef="let element"> {{element.position}} </mat-cell>
-    </ng-container>
+<div class="ServiceIntervals">  
+  <div class="chart-controls flex flex--row flex--right flex--middle u-p--">
+    <label class="label--inline" for="">Currency</label>
+    <px-dropdown class="u-mh" items='["USD","Other","Other"]' selected="0"></px-dropdown>
+  </div>
 
-    <!-- Name Column -->
-    <ng-container matColumnDef="name">
-      <mat-header-cell *matHeaderCellDef> Name </mat-header-cell>
-      <mat-cell *matCellDef="let element"> {{element.name}} </mat-cell>
-    </ng-container>
+  <div class="box box--large wide">
+    <img src="../../../assets/img/chart-intervals-fpo.png">
+  </div>
+  <section class="">
+    <mat-table #table [dataSource]="dataSource">
 
-    <!-- Weight Column -->
-    <ng-container matColumnDef="weight">
-      <mat-header-cell *matHeaderCellDef> Weight </mat-header-cell>
-      <mat-cell *matCellDef="let element"> {{element.weight}} </mat-cell>
-    </ng-container>
+      <!-- Include (Toggle) Column -->
+      <ng-container matColumnDef="select">
+        <mat-header-cell *matHeaderCellDef>
+          Include
+        </mat-header-cell>
+        <mat-cell *matCellDef="let row">
+          <px-toggle 
+            size="small"
+            (click)="$event.stopPropagation()"
+            (change)="$event ? selection.toggle(row) : null"
+            [checked]="selection.isSelected(row)">
+          </px-toggle>
+        </mat-cell>
+      </ng-container>
 
-    <!-- Symbol Column -->
-    <ng-container matColumnDef="symbol">
-      <mat-header-cell *matHeaderCellDef> Symbol </mat-header-cell>
-      <mat-cell *matCellDef="let element"> {{element.symbol}} </mat-cell>
-    </ng-container>
+      <!-- Service Column -->
+      <ng-container matColumnDef="service">
+        <mat-header-cell *matHeaderCellDef> Service </mat-header-cell>
+        <mat-cell *matCellDef="let element"> <a href="#">{{element.service}}</a> </mat-cell>
+      </ng-container>
 
-    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-    <mat-row *matRowDef="let row; columns: displayedColumns;"
-             (click)="selection.toggle(row)">
-    </mat-row>
-  </mat-table>
-</section>
+      <!-- Interval Column -->
+      <ng-container matColumnDef="interval">
+        <mat-header-cell *matHeaderCellDef> Interval </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.interval}} Hours</mat-cell>
+      </ng-container>
+
+      <!-- Parts Column -->
+      <ng-container matColumnDef="parts">
+        <mat-header-cell *matHeaderCellDef> <span class="swatch swatch-parts"></span> Parts (List Price) </mat-header-cell>
+        <mat-cell *matCellDef="let element"> ${{element.parts}} </mat-cell>
+      </ng-container>
+
+      <!-- Labor Column -->
+      <ng-container matColumnDef="labor">
+        <mat-header-cell *matHeaderCellDef> <span class="swatch swatch-labor"></span> Labor </mat-header-cell>
+        <mat-cell *matCellDef="let element"> ${{element.labor}} </mat-cell>
+      </ng-container>
+
+      <!-- Price Column -->
+      <ng-container matColumnDef="price">
+          <mat-header-cell *matHeaderCellDef> Price Per Interval </mat-header-cell>
+          <mat-cell *matCellDef="let element" class="weight--bold"> ${{element.price}} </mat-cell>
+        </ng-container>
+
+      <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+      <mat-row *matRowDef="let row; columns: displayedColumns;"
+              (click)="selection.toggle(row)">
+      </mat-row>
+    </mat-table>
+  </section>
+</div>
