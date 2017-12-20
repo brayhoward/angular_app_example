@@ -24,6 +24,8 @@ import { InputsFuelComponent } from './cmpts/inputs-fuel/inputs-fuel.component';
 import { InputsLubricationComponent } from './cmpts/inputs-lubrication/inputs-lubrication.component';
 import { InputsLaborComponent } from './cmpts/inputs-labor/inputs-labor.component';
 import { ReportDetailTabsComponent } from './cmpts/report-detail-tabs/report-detail-tabs.component';
+import { ServiceIntervalsComponent } from './cmpts/service-intervals/service-intervals.component';
+import { PartsComponent } from './cmpts/parts/parts.component';
 
 @NgModule({
   declarations: [
@@ -40,7 +42,9 @@ import { ReportDetailTabsComponent } from './cmpts/report-detail-tabs/report-det
     InputsFuelComponent,
     InputsLubricationComponent,
     InputsLaborComponent,
-    ReportDetailTabsComponent
+    ReportDetailTabsComponent,
+    ServiceIntervalsComponent,
+    PartsComponent,
   ],
   imports: [
     CommonModule,
