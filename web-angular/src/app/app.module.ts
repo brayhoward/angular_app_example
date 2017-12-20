@@ -1,9 +1,10 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
-// Needed form material tabs ////////////////////////////////////////////////
+// Needed for Material Angular ////////////////////////////////////////////////
 import { MatTabsModule } from '@angular/material/tabs';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatTableModule } from '@angular/material/table';
 /////////////////////////////////////////////////////////////////////////////
 
 // Routes
@@ -51,7 +52,8 @@ import { PartsComponent } from './cmpts/parts/parts.component';
     BrowserModule,
     BrowserAnimationsModule,
     AppRoutingModule,
-    MatTabsModule
+    MatTabsModule,
+    MatTableModule
   ],
   providers: [],
   bootstrap: [AppComponent],
