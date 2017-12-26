@@ -1,8 +1,10 @@
-import {Component} from '@angular/core';
-import {MatTableDataSource} from '@angular/material';
+import {Component, Inject} from '@angular/core';
+import { MatTableDataSource } from '@angular/material';
+import { MatDialog } from '@angular/material/dialog';
 import { SelectionModel } from '@angular/cdk/collections';
 import { animate, state, style, transition, trigger } from '@angular/animations';
 import { flatten } from 'lodash';
+import { EngineLifecycleDetailBreakdownComponent } from '../engine-lifecycle-detail-breakdown/engine-lifecycle-detail-breakdown.component';
 
 /**
  * @title Table with selection
@@ -31,11 +33,23 @@ export class LifecycleTableComponent {
   dataSource: any;
   expandedElement: any;
 
-  constructor() {
+  constructor(public dialog: MatDialog) {
     const formatedData = formatData(ELEMENT_DATA);
 
     this.dataSource = new MatTableDataSource<Element>(formatedData)
   }
+
+  openDetailsDialog(meta): void {
+    let dialogRef = this.dialog.open(EngineLifecycleDetailBreakdownComponent, {
+      width: '90%',
+      data: { ...meta }
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+    });
+  }
+
 
   isExpansionDetailRow = (i, row) => row.hasOwnProperty('detailRow');
 
@@ -66,46 +80,125 @@ export class LifecycleTableComponent {
 const ELEMENT_DATA = [
   {
     id: 0, hours: 0, parts: 62686, labor: 0, fuel: 56880, lubrication: 4140, total: 1521, details: [
-      { service: 'Planned Service A', parts: 635, labor: 600, fuel: null, lubrication: null, total: 1255 },
-      { service: 'Lube oil change', parts: null, labor: 450, fuel: null, lubrication: 581, total: 4100 },
-      { service: 'Planned Servie B', parts: 1756, labor: 1155, fuel: null, lubrication: null, total: 2911},
-      { service: 'Fuel Cost (8,000-12,000 Hours)', parts: null, labor: null, fuel: 56880, lubrication: null, total: 56880}
+      { service: 'Planned Service A', parts: 635, labor: 600, fuel: null, lubrication: null, total: 1255 ,
+        meta: {
+          foo: 'bar'
+        }
+      },
+      { service: 'Lube oil change', parts: null, labor: 450, fuel: null, lubrication: 581, total: 4100 ,
+        meta: {
+          foo: 'bar'
+        }
+      },
+      { service: 'Planned Service B', parts: 1756, labor: 1155, fuel: null, lubrication: null, total: 2911,
+        meta: {
+          foo: 'bar'
+        }
+      },
+      { service: 'Fuel Cost (8,000-12,000 Hours)', parts: null, labor: null, fuel: 56880, lubrication: null, total: 56880,
+        meta: {
+          foo: 'bar'
+        }
+      }
     ]
   },
   {
     id: 2, hours: 4000, parts: 1216, labor: 450, fuel: 56880, lubrication: 4140, total: 62686, details: [
-      { service: 'Planned Service A', parts: 635, labor: 600, fuel: null, lubrication: null, total: 1255 },
-      { service: 'Lube oil change', parts: null, labor: 450, fuel: null, lubrication: 581, total: 4100 },
-      { service: 'Planned Servie B', parts: 1756, labor: 1155, fuel: null, lubrication: null, total: 2911},
-      { service: 'Fuel Cost (8,000-12,000 Hours)', parts: null, labor: null, fuel: 56880, lubrication: null, total: 56880}
+      { service: 'Planned Service A', parts: 635, labor: 600, fuel: null, lubrication: null, total: 1255 ,
+        meta: {
+          foo: 'bar'
+        }
+      },
+      { service: 'Lube oil change', parts: null, labor: 450, fuel: null, lubrication: 581, total: 4100 ,
+        meta: {
+          foo: 'bar'
+        }
+      },
+      { service: 'Planned Service B', parts: 1756, labor: 1155, fuel: null, lubrication: null, total: 2911,
+        meta: {
+          foo: 'bar'
+        }
+      },
+      { service: 'Fuel Cost (8,000-12,000 Hours)', parts: null, labor: null, fuel: 56880, lubrication: null, total: 56880,
+        meta: {
+          foo: 'bar'
+        }
+      }
     ]
   },
   {
     id: 3, hours: 8000, parts: 2973, labor: 1050, fuel: 56880, lubrication: 4140, total: 65043, details: [
-      { service: 'Planned Service A', parts: 635, labor: 600, fuel: null, lubrication: null, total: 1255 },
-      { service: 'Lube oil change', parts: null, labor: 450, fuel: null, lubrication: 581, total: 4100 },
-      { service: 'Planned Servie B', parts: 1756, labor: 1155, fuel: null, lubrication: null, total: 2911},
-      { service: 'Fuel Cost (8,000-12,000 Hours)', parts: null, labor: null, fuel: 56880, lubrication: null, total: 56880}
+      { service: 'Planned Service A', parts: 635, labor: 600, fuel: null, lubrication: null, total: 1255 ,
+        meta: {
+          foo: 'bar'
+        }
+      },
+      { service: 'Lube oil change', parts: null, labor: 450, fuel: null, lubrication: 581, total: 4100 ,
+        meta: {
+          foo: 'bar'
+        }
+      },
+      { service: 'Planned Service B', parts: 1756, labor: 1155, fuel: null, lubrication: null, total: 2911,
+        meta: {
+          foo: 'bar'
+        }
+      },
+      { service: 'Fuel Cost (8,000-12,000 Hours)', parts: null, labor: null, fuel: 56880, lubrication: null, total: 56880,
+        meta: {
+          foo: 'bar'
+        }
+      }
     ]
   },
   {
     id: 4, hours: 12000, parts: 1226, labor: 450, fuel: 56880, lubrication: 4140, total: 62686, details: [
-      { service: 'Planned Service A', parts: 635, labor: 600, fuel: null, lubrication: null, total: 1255 },
-      { service: 'Lube oil change', parts: null, labor: 450, fuel: null, lubrication: 581, total: 4100 },
-      { service: 'Planned Servie B', parts: 1756, labor: 1155, fuel: null, lubrication: null, total: 2911},
-      { service: 'Fuel Cost (8,000-12,000 Hours)', parts: null, labor: null, fuel: 56880, lubrication: null, total: 56880}
+      { service: 'Planned Service A', parts: 635, labor: 600, fuel: null, lubrication: null, total: 1255 ,
+        meta: {
+          foo: 'bar'
+        }
+      },
+      { service: 'Lube oil change', parts: null, labor: 450, fuel: null, lubrication: 581, total: 4100 ,
+        meta: {
+          foo: 'bar'
+        }
+      },
+      { service: 'Planned Service B', parts: 1756, labor: 1155, fuel: null, lubrication: null, total: 2911,
+        meta: {
+          foo: 'bar'
+        }
+      },
+      { service: 'Fuel Cost (8,000-12,000 Hours)', parts: null, labor: null, fuel: 56880, lubrication: null, total: 56880,
+        meta: {
+          foo: 'bar'
+        }
+      }
     ]
   },
   {
     id: 5, hours: 16000, parts: 6800, labor: 1800, fuel: 56880, lubrication: 4140, total: 69620, details: [
-      { service: 'Planned Service A', parts: 635, labor: 600, fuel: null, lubrication: null, total: 1255 },
-      { service: 'Lube oil change', parts: null, labor: 450, fuel: null, lubrication: 581, total: 4100 },
-      { service: 'Planned Servie B', parts: 1756, labor: 1155, fuel: null, lubrication: null, total: 2911},
-      { service: 'Fuel Cost (8,000-12,000 Hours)', parts: null, labor: null, fuel: 56880, lubrication: null, total: 56880}
+      { service: 'Planned Service A', parts: 635, labor: 600, fuel: null, lubrication: null, total: 1255 ,
+        meta: {
+          foo: 'bar'
+        }
+      },
+      { service: 'Lube oil change', parts: null, labor: 450, fuel: null, lubrication: 581, total: 4100 ,
+        meta: {
+          foo: 'bar'
+        }
+      },
+      { service: 'Planned Service B', parts: 1756, labor: 1155, fuel: null, lubrication: null, total: 2911,
+        meta: {
+          foo: 'bar'
+        }
+      },
+      { service: 'Fuel Cost (8,000-12,000 Hours)', parts: null, labor: null, fuel: 56880, lubrication: null, total: 56880,
+        meta: {
+          foo: 'bar'
+        }
+      }
     ]
   }
 ];
-
 
 // move details to it own item in the array with the same id directly after its parent array item
 // example:

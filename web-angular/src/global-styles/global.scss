@@ -57,3 +57,8 @@ app-header-layout[fullbleed] {
 .highlight {
   background-color: var(--table-row-highlight);
 }
+
+a {
+  color: var(--actionable);
+  cursor: pointer;
+}

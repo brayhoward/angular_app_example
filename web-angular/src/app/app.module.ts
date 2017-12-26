@@ -5,6 +5,7 @@ import { CommonModule } from '@angular/common';
 import { MatTabsModule } from '@angular/material/tabs';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatTableModule } from '@angular/material/table';
+import { MatDialogModule } from '@angular/material/dialog';
 /////////////////////////////////////////////////////////////////////////////
 
 // Routes
@@ -29,6 +30,7 @@ import { ServiceIntervalsComponent } from './cmpts/service-intervals/service-int
 import { PartsComponent } from './cmpts/parts/parts.component';
 import { LifecycleTableComponent } from './cmpts/lifecycle-table/lifecycle-table.component';
 import { FormatCashComponent } from './cmpts/format-cash/format-cash.component';
+import { EngineLifecycleDetailBreakdownComponent } from './cmpts/engine-lifecycle-detail-breakdown/engine-lifecycle-detail-breakdown.component'
 
 @NgModule({
   declarations: [
@@ -48,8 +50,12 @@ import { FormatCashComponent } from './cmpts/format-cash/format-cash.component';
     ReportDetailTabsComponent,
     ServiceIntervalsComponent,
     PartsComponent,
-    LifecycleTableComponent,
     FormatCashComponent,
+    LifecycleTableComponent,
+    EngineLifecycleDetailBreakdownComponent
+  ],
+  entryComponents: [
+    EngineLifecycleDetailBreakdownComponent
   ],
   imports: [
     CommonModule,
@@ -57,7 +63,8 @@ import { FormatCashComponent } from './cmpts/format-cash/format-cash.component';
     BrowserAnimationsModule,
     AppRoutingModule,
     MatTabsModule,
-    MatTableModule
+    MatTableModule,
+    MatDialogModule
   ],
   providers: [],
   bootstrap: [AppComponent],
