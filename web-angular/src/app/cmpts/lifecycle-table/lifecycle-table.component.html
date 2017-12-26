@@ -79,37 +79,19 @@
             </td>
 
             <td>
-              <!-- If block -->
-              <div *ngIf="detail.parts; let parts; else partsNull">
-                {{ parts | currency}}
-              </div>
-
-              <!-- Else block -->
-              <ng-template #partsNull>{{ noCost() }}</ng-template>
+              <format-cash [money]="detail.parts"></format-cash>
             </td>
 
             <td>
-              <div *ngIf="detail.labor; let labor; else laborNull">
-                {{ labor | currency }}
-              </div>
-
-              <ng-template #laborNull>{{ noCost() }}</ng-template>
+              <format-cash [money]="detail.labor"></format-cash>
             </td>
 
             <td>
-              <div *ngIf="detail.fuel; let fuel; else fuelNull">
-                {{ detail.fuel | currency }}
-              </div>
-
-              <ng-template #fuelNull>{{ noCost() }}</ng-template>
+              <format-cash [money]="detail.fuel"></format-cash>
             </td>
 
             <td>
-              <div *ngIf="detail.lubercation; let lube; else lubeNull">
-                {{ lube | currency }}
-              </div>
-
-              <ng-template #lubeNull>{{ noCost() }}</ng-template>
+              <format-cash [money]="detail.lubercation"></format-cash>
             </td>
 
             <td>

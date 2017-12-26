@@ -1,4 +1,3 @@
-import { Element } from './../../../../.history/src/app/cmpts/lifecycle-table/lifecycle-table.component_20171221114813';
 import {Component} from '@angular/core';
 import {MatTableDataSource} from '@angular/material';
 import { SelectionModel } from '@angular/cdk/collections';
