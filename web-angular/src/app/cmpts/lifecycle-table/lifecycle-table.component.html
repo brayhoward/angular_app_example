@@ -10,95 +10,106 @@
   min-height: inherit;
   padding: 5px 24px;
 }
+.detail-row mat-cell{
+  font-size: .9em;
+}
 </style>
 
 <section class="LifecycleTable">
   <mat-table #table [dataSource]="dataSource">
 
-    <!-- toggle Column -->
-    <ng-container matColumnDef="expand">
-      <mat-header-cell *matHeaderCellDef></mat-header-cell>
+    <!-- Hours Column -->
+    <ng-container matColumnDef="hours">
+      <mat-header-cell *matHeaderCellDef> Hours </mat-header-cell>
       <mat-cell *matCellDef="let row">
-        <px-icon
+         <px-icon
           [icon]="isExpanded(row) ? 'px-utl:remove' : 'px-utl:add'"
           (click)="toggleRow(row)"
         >
         </px-icon>
-      </mat-cell>
-    </ng-container>
 
-    <!-- Hours Column -->
-    <ng-container matColumnDef="hours">
-      <mat-header-cell *matHeaderCellDef> Hours </mat-header-cell>
-      <mat-cell *matCellDef="let element"> <a href="#">{{element.hours}}</a> </mat-cell>
+        <a href="#" class="u-ml">{{row.hours}}</a>
+      </mat-cell>
     </ng-container>
 
     <!-- Parts Column -->
     <ng-container matColumnDef="parts">
       <mat-header-cell *matHeaderCellDef> <span class="swatch swatch-parts"></span> Parts (List Price) </mat-header-cell>
-      <mat-cell *matCellDef="let element"> {{element.parts}} </mat-cell>
+      <mat-cell *matCellDef="let row">
+        <format-cash [money]="row.parts"></format-cash>
+      </mat-cell>
     </ng-container>
 
     <!-- Labor Column -->
     <ng-container matColumnDef="labor">
       <mat-header-cell *matHeaderCellDef> <span class="swatch swatch-labor"></span> Labor </mat-header-cell>
-      <mat-cell *matCellDef="let element"> {{element.labor}} </mat-cell>
+      <mat-cell *matCellDef="let row">
+        <format-cash [money]="row.labor"></format-cash>
+      </mat-cell>
     </ng-container>
 
     <!-- Fuel Column -->
     <ng-container matColumnDef="fuel">
       <mat-header-cell *matHeaderCellDef> <span class="swatch swatch-fuel"></span> Fuel </mat-header-cell>
-      <mat-cell *matCellDef="let element"> {{element.fuel}} </mat-cell>
+      <mat-cell *matCellDef="let row">
+        <format-cash [money]="row.fuel"></format-cash>
+      </mat-cell>
     </ng-container>
 
     <!-- Lubrication Column -->
     <ng-container matColumnDef="lubrication">
       <mat-header-cell *matHeaderCellDef> <span class="swatch swatch-lubrication"></span> Lubrication </mat-header-cell>
-      <mat-cell *matCellDef="let element"> {{element.lubrication}} </mat-cell>
+      <mat-cell *matCellDef="let row">
+        <format-cash [money]="row.lubrication"></format-cash>
+      </mat-cell>
     </ng-container>
 
     <!-- Total Column -->
     <ng-container matColumnDef="total">
       <mat-header-cell *matHeaderCellDef> Total </mat-header-cell>
-      <mat-cell *matCellDef="let row" class="weight--bold"> {{row.total}} </mat-cell>
+      <mat-cell *matCellDef="let row" class="weight--bold">
+        <format-cash [money]="row.total"></format-cash>
+      </mat-cell>
     </ng-container>
 
-    <mat-header-row
-      *matHeaderRowDef="displayedColumns"
-    >
-    </mat-header-row>
 
-
+    <!-- DETAIL ROW TEMPLATES -->
+    <!-- Service Column -->
     <ng-container matColumnDef="service">
       <mat-cell *matCellDef="let detailRow">
         <a href="#">{{detailRow.service}}</a>
       </mat-cell>
     </ng-container>
 
+    <!-- Service Parts -->
     <ng-container matColumnDef="serviceParts">
       <mat-cell *matCellDef="let detailRow">
         <format-cash [money]="detailRow.parts"></format-cash>
       </mat-cell>
     </ng-container>
 
+    <!-- Servie Labor -->
     <ng-container matColumnDef="serviceLabor">
       <mat-cell *matCellDef="let detailRow">
         <format-cash [money]="detailRow.labor"></format-cash>
       </mat-cell>
     </ng-container>
 
+    <!-- Service Fuel -->
     <ng-container matColumnDef="serviceFuel">
       <mat-cell *matCellDef="let detailRow">
         <format-cash [money]="detailRow.fuel"></format-cash>
       </mat-cell>
     </ng-container>
 
+    <!-- Service Lube -->
     <ng-container matColumnDef="serviceLube">
       <mat-cell *matCellDef="let detailRow">
-        <format-cash [money]="detailRow.lubercation"></format-cash>
+        <format-cash [money]="detailRow.lubrication"></format-cash>
       </mat-cell>
     </ng-container>
 
+    <!-- Service Total -->
     <ng-container matColumnDef="serviceTotal">
       <mat-cell *matCellDef="let detailRow">
         <format-cash [money]="detailRow.total"></format-cash>
@@ -106,7 +117,8 @@
     </ng-container>
 
 
-
+    <!-- TABLE HEADERS -->
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
 
 
 
@@ -117,9 +129,11 @@
     >
     </mat-row>
 
+    <!-- DETAIL ROWS -->
     <mat-row
       *matRowDef="let row; columns: displayedDetailColumns; when: isExpansionDetailRow"
       [@detailExpand]="isExpanded(row) ? 'expanded' : 'collapsed'"
+      class="detail-row"
       style="overflow: hidden"
     >
     </mat-row>
