@@ -75,6 +75,11 @@ const ELEMENT_DATA = [
   }
 ];
 
+
+// move details to it own item in the array with the same id directly after its parent array item
+// example:
+// [{ id: 1, hours: 1000, parts: null, details: [...] }] ->
+// [{ id: 1, hours: 1000, parts: null, details: [...] }, { id: 1, details: [...] }]
 function formatData(data) {
   return flatten (
     data.map(row => [row, { detailRow: true, id: row.id, details: row.details }])
