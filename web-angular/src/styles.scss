@@ -72,6 +72,8 @@ $inuit-enable-box--huge : true;
     --primary-light: $primary-light;
     --gray1: $gray1;
     --status-blue1: $status-blue1;
+    --light-blue: #E5F5F9;
+    --table-row-highlight: var(--light-blue);
 }
 .report-header {
     border-bottom: 1px solid $gray1;

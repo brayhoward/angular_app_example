@@ -59,9 +59,9 @@
 
     <!-- Total Column -->
     <ng-container matColumnDef="total">
-        <mat-header-cell *matHeaderCellDef> Total </mat-header-cell>
-        <mat-cell *matCellDef="let row" class="weight--bold"> {{row.total}} </mat-cell>
-      </ng-container>
+      <mat-header-cell *matHeaderCellDef> Total </mat-header-cell>
+      <mat-cell *matCellDef="let row" class="weight--bold"> {{row.total}} </mat-cell>
+    </ng-container>
 
     <mat-header-row
       *matHeaderRowDef="displayedColumns"
@@ -71,12 +71,63 @@
 
     <ng-container matColumnDef="expandedDetail">
       <mat-cell *matCellDef="let row">
-        details row expanded {{row.details}}
+         <table class="table">
+          <tr *ngFor="let detail of row.details">
+            <!-- {{jsonify(detail)}} -->
+            <td>
+              <a href="#">{{detail.service}}</a>
+            </td>
+
+            <td>
+              <!-- If block -->
+              <div *ngIf="detail.parts; let parts; else partsNull">
+                {{ parts | currency}}
+              </div>
+
+              <!-- Else block -->
+              <ng-template #partsNull>{{ noCost() }}</ng-template>
+            </td>
+
+            <td>
+              <div *ngIf="detail.labor; let labor; else laborNull">
+                {{ labor | currency }}
+              </div>
+
+              <ng-template #laborNull>{{ noCost() }}</ng-template>
+            </td>
+
+            <td>
+              <div *ngIf="detail.fuel; let fuel; else fuelNull">
+                {{ detail.fuel | currency }}
+              </div>
+
+              <ng-template #fuelNull>{{ noCost() }}</ng-template>
+            </td>
+
+            <td>
+              <div *ngIf="detail.lubercation; let lube; else lubeNull">
+                {{ lube | currency }}
+              </div>
+
+              <ng-template #lubeNull>{{ noCost() }}</ng-template>
+            </td>
+
+            <td>
+              <div *ngIf="detail.total; let total">
+                {{ total | currency }}
+              </div>
+            </td>
+          </tr>
+        </table>
       </mat-cell>
     </ng-container>
 
     <!-- TABLE ROWS -->
-    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+    <mat-row
+      *matRowDef="let row; columns: displayedColumns;"
+      [class.highlight]="isExpanded(row)"
+    >
+    </mat-row>
 
     <mat-row
       *matRowDef="let row; columns: ['expandedDetail']; when: isExpansionDetailRow"

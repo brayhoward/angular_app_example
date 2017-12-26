@@ -45,38 +45,38 @@ export class LifecycleTableComponent {
   isExpanded({ id }) {
     return this.selectedRows.includes(id)
   }
+
+  jsonify = node => JSON.stringify(node);
+
+  getDetailValues = row => Object.keys(row).map(key => row[key]);
+
+  // TODO: move this to a component for reuse elsewhere
+  noCost = () => "$-"
 }
 
-interface Element {
-  id: number
-  hours: number;
-  parts: number;
-  labor: number;
-  fuel: number;
-  lubrication: number;
-  total: number,
-  detailRow?: boolean
-}
-
-const ELEMENT_DATA: Element[] = [
-  {id: 0, hours: 0, parts: 62686, labor: 0, fuel: 56880, lubrication: 4140, total: 1521},
-  {id: 2, hours: 4000, parts: 1216, labor: 450, fuel: 56880, lubrication: 4140, total: 62686},
-  {id: 3, hours: 8000, parts: 2973, labor: 1050, fuel: 56880, lubrication: 4140, total: 65043}//,
-  // {hours: 12000, parts: 1216, labor: 450, fuel: 56880, lubrication: 4140, total: 62686, details: 'detail datas'},
-  // {hours: 16000, parts: 6800, labor: 1800, fuel: 56880, lubrication: 4140, total: 69620, details: 'detail datas'},
-  // {hours: 20000, parts: 1216, labor: 450, fuel: 56880, lubrication: 4140, total: 62686, details: 'detail datas'},
-  // {hours: 24000, parts: 23440, labor: 17310, fuel: 56880, lubrication: 4140, total: 10177, details: 'detail datas'0},
-  // {hours: 28000, parts: 1216, labor: 450, fuel: 56880, lubrication: 4140, total: 62686, details: 'detail datas'},
-  // {hours: 32000, parts: 6800, labor: 1800, fuel: 56880, lubrication: 4140, total: 62686, details: 'detail datas'},
-  // {hours: 36000, parts: 1216, labor: 450, fuel: 56880, lubrication: 4140, total: 62686, details: 'detail datas'},
-  // {hours: 40000, parts: 2973, labor: 1050, fuel: 56880, lubrication: 4140, total: 62686, details: 'detail datas'},
-  // {hours: 44000, parts: 1216, labor: 450, fuel: 56880, lubrication: 4140, total: 62686, details: 'detail datas'},
-  // {hours: 48000, parts: 83976, labor: 44895, fuel: 56880, lubrication: 4140, total: 18989, details: 'detail datas'1},
-  // {hours: 52000, parts: 1216, labor: 450, fuel: 56880, lubrication: 4140, total: 62686, details: 'detail datas'}
-]
+const ELEMENT_DATA = [
+  {
+    id: 0, hours: 0, parts: 62686, labor: 0, fuel: 56880, lubrication: 4140, total: 1521, details: [
+      { service: 'Planned Service A', parts: 635, labor: 600, fuel: null, lubrication: null, total: 1255 },
+      { service: 'Lube oil change', parts: null, labor: 450, fuel: null, lubrication: 581, total: 4100 }
+    ]
+  },
+  {
+    id: 2, hours: 4000, parts: 1216, labor: 450, fuel: 56880, lubrication: 4140, total: 62686, details: [
+      { service: 'Planned Service A', parts: 635, labor: 600, fuel: null, lubrication: null, total: 1255 },
+      { service: 'Lube oil change', parts: null, labor: 450, fuel: null, lubrication: 581, total: 4100 }
+    ]
+  },
+  {
+    id: 3, hours: 8000, parts: 2973, labor: 1050, fuel: 56880, lubrication: 4140, total: 65043, details: [
+      { service: 'Planned Service A', parts: 635, labor: 600, fuel: null, lubrication: null, total: 1255 },
+      { service: 'Lube oil change', parts: null, labor: 450, fuel: null, lubrication: 581, total: 4100 }
+    ]
+  }
+];
 
 function formatData(data) {
   return flatten (
-    data.map(row => [row, { detailRow: true, ...row }])
+    data.map(row => [row, { detailRow: true, id: row.id, details: row.details }])
   )
 }

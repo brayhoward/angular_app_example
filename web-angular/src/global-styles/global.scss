@@ -52,3 +52,8 @@ app-header-layout[fullbleed] {
     padding: 5px;
   }
 }
+
+// Table styles
+.highlight {
+  background-color: var(--table-row-highlight);
+}
