@@ -714,11 +714,8 @@ a {
   padding: 0.33333rem !important;
 }
 
-// Added styels
-@import "../../global-styles/variables-mixins.scss";
-
 #header-value {
-  color: $royal-blue;
+  color: var(--royal-blue);
   font-weight: bold;
   margin-left: .5em;
 }

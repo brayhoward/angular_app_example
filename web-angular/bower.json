@@ -28,7 +28,8 @@
     "px-meta-lists-design": "https://github.com/PredixDev/px-meta-lists-design.git#^1.0.1",
     "px-meta-buttons-design": "^1.0.3",
     "px-app-helpers": "^2.0.2",
-    "px-icon-set": "^2.1.2"
+    "px-icon-set": "^2.1.2",
+    "px-modal": "https://github.com/PredixDev/px-modal.git#^3.0.1"
   },
   "devDependencies": {
     "web-component-tester": "^5.0.0",

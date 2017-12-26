@@ -1,12 +1,12 @@
-@import './variables-mixins';
-
 // Hack fix for app-header-layout used by px-app-header in our HeaderNav cmpt
 app-header-layout[fullbleed] {
   position: inherit !important;
 }
+
+//Material Angular TTab Styles
 //Hack font fix for material tab component
 .mat-tab-group,
-.mat-tab-label, 
+.mat-tab-label,
 .mat-tab-link {font-family: inherit;}
 //Add padding around tabbed content
 .mat-tab-body-wrapper {
@@ -16,8 +16,76 @@ app-header-layout[fullbleed] {
   // font-weight: bold;
   // color: $base-txt;
 }
+.mat-tab-group.mat-primary .mat-tab-label:focus {
+    background-color: var(--primary-light);
+}
+.mat-tab-group.mat-primary .mat-ink-bar,
+.mat-tab-nav-bar.mat-primary .mat-ink-bar {
+    background-color: var(--primary-default);
+}
+
+// Material Angular Table overides
+.mat-table {
+    font-family: inherit;
+}
+.mat-cell {
+    font-size: 18px;
+}
+.mat-cell a{
+    text-decoration: none;
+}
+
+.mat-header-row {
+    min-height: inherit;
+    padding-top: 3px;
+    padding-bottom: 3px;
+    background-color: var(--gray1);
+    border-bottom-color: transparent;
+}
+
+.mat-header-row, .mat-row {
+  padding-left: 0;
+}
+
+// Material Anglular Checkbox Overrides
+.mat-checkbox-checked.mat-accent {
+  .mat-checkbox-background {
+    background-color: var(--dark)
+  }
+}
+
 //make sure the app header is on top
 .px-app-header {z-index: 5 !important;}
+
+//Get numbers to align
+.data-header-key,
+.data-row {
+    div{
+        text-align: left;
+        min-width: 90px;
+    }
+    div:last-child{
+        text-align: right;
+        min-width: 90px;
+    }
+}
+// The overview area at the top of a dashboard containing kpis or key-value-pairs and other visualizations
+.spine {
+    background-color: var(--gray1);
+    padding: 2em;
+}
+.report-header {
+    background-color: $white;
+    padding: 2em;
+}
+
+// A footer for the demo
+.footer {
+  bottom: 0;
+  width: 100%;
+  height: 3rem;
+  background: $gray16;
+}
 
 // The main content views of the px-lcc-app
 .Dashboard, .Reports, .ReportDetail, .Settings {
@@ -34,9 +102,6 @@ app-header-layout[fullbleed] {
   label {
     font-size: 12px !important;
     width: 50%;
-  }
-  input {
-    // max-width: 6em;
   }
 }
 .Reports aha-table .tr.rows {

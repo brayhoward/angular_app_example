@@ -6,6 +6,7 @@ import { MatTabsModule } from '@angular/material/tabs';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatTableModule } from '@angular/material/table';
 import { MatDialogModule } from '@angular/material/dialog';
+import { MatCheckboxModule } from '@angular/material/checkbox';
 /////////////////////////////////////////////////////////////////////////////
 
 // Routes
@@ -64,7 +65,8 @@ import { EngineLifecycleDetailBreakdownComponent } from './cmpts/engine-lifecycl
     AppRoutingModule,
     MatTabsModule,
     MatTableModule,
-    MatDialogModule
+    MatDialogModule,
+    MatCheckboxModule
   ],
   providers: [],
   bootstrap: [AppComponent],

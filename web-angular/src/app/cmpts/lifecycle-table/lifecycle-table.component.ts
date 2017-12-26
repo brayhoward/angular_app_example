@@ -54,10 +54,9 @@ export class LifecycleTableComponent {
   isExpansionDetailRow = (i, row) => row.hasOwnProperty('detailRow');
 
   toggleRow(row) {
-    this.selectedRows = this.isExpanded(row) ?
-      this.selectedRows.filter(id => id !== row.id)
-      :
-      [...this.selectedRows, row.id]
+    const { isExpanded, selectedRows, } = this;
+
+    this.selectedRows = isExpanded(row) ? selectedRows.filter(id => id !== row.id) : [...this.selectedRows, row.id]
   }
 
   isExpanded({ id }) {

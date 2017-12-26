@@ -1,9 +1,36 @@
-.Reports {
-  .tr {
-    background-color: white;
-  }
 
-  px-data-table-cell {
-    background-color: white;
+.tr {
+  background-color: white;
+}
+
+px-data-table-cell {
+  background-color: white;
+}
+
+img {
+  max-width: 2.9em;
+}
+mat-header-cell {
+  text-transform: uppercase;
+}
+
+.mat-cell {
+  &.mat-column-engine {
+    margin-right: 2em;
+  }
+  &.mat-column-reportName {
+    margin-left: 3em;
+  }
+  &.mat-column-contact {
+    margin-left: 5em;
+  }
+  &.mat-column-company {
+    margin-left: 5em;
+  }
+  &.mat-column-date {
+    text-align: right;
+  }
+  &.mat-column-edit {
+    text-align: center;
   }
 }

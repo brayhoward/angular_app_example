@@ -49,32 +49,35 @@ $inuit-enable-box--large : true;
 $inuit-enable-box--huge : true;
 @import "px-box-design/_objects.box.scss";
 
-
+// Local appliaction specific scss file imports
 @import "global-styles/helpers.scss";
+@import "global-styles/mixins.scss";
 
-// Color varsiables. Share between sass and css
-@import "global-styles/variables-mixins.scss";
-// assign all vars at root level so they work with postcss-cssnext -> https://github.com/MoOx/postcss-cssnext/issues/186
 :root {
-    --px-data-table-cell-background-color--selected: $select-light;
-    --px-vis-series-color-0: $blue5;
-    --px-vis-series-color-1: $green5;
-    --px-vis-series-color-2: $purple5;
-    --px-vis-series-color-3: $orange5;
-    --px-card-background-color: $light;
-    --touch-o-gray: $touch-o-gray;
-    --gray: $gray;
-    --royal-blue: $royal-blue;
-    --gray1: $gray1;
-    --select-light: $select-light;
-    --base-txt: $base-txt;
-    --primary-default: $primary-default;
-    --primary-light: $primary-light;
-    --gray1: $gray1;
-    --status-blue1: $status-blue1;
-    --light-blue: #E5F5F9;
-    --table-row-highlight: var(--light-blue);
-    --actionable: #005c99;
+  // variable declorations
+  --light: #fff;
+  --touch-o-gray: #ebeff2;
+  --gray: #c6c6c6;
+  --royal-blue:  #007acc;
+  --gray1: $gray1;
+  --select-light: $select-light;
+  --base-txt: #2c404c;
+  --dark: #2F3133;
+  --primary-default: $primary-default;
+  --primary-light: $primary-light;
+  --gray1: $gray1;
+  --status-blue1: $status-blue1;
+  --light-blue: #E5F5F9;
+  --table-row-highlight: var(--light-blue);
+  --actionable: #005c99;
+
+  // Predix overrides
+  --px-data-table-cell-background-color--selected: $select-light;
+  --px-vis-series-color-0: $blue5;
+  --px-vis-series-color-1: $green5;
+  --px-vis-series-color-2: $purple5;
+  --px-vis-series-color-3: $orange5;
+  --px-card-background-color: var(--light);
 }
 .report-header {
     border-bottom: 1px solid $gray1;
@@ -104,64 +107,6 @@ $inuit-enable-box--huge : true;
     &.swatch-labor {background-color: $orange5;}
     &.swatch-fuel {background-color: $green5;}
     &.swatch-lube {background-color: $pink5;}
-}
-//Material Angular TTab Styles
-.mat-tab-group.mat-primary .mat-tab-label:focus {
-    background-color: var(--primary-light);
-}
-.mat-tab-group.mat-primary .mat-ink-bar, 
-.mat-tab-nav-bar.mat-primary .mat-ink-bar {
-    background-color: var(--primary-default);
-}
-//Material Angular Table Styles
-.mat-table {
-    font-family: inherit;
-}
-.mat-cell {
-    font-size: 18px;
-}
-.mat-cell a{
-    text-decoration: none;
-}
-.mat-cell.cdk-column-select {
-/*width: 100px;*/
-}
-.mat-header-row {
-    min-height: inherit;
-    padding-top: 3px;
-    padding-bottom: 3px;
-    background-color: var(--gray1); 
-    border-bottom-color: transparent;
-}
-
-//Get numbers to align
-.data-header-key,
-.data-row {
-    div{
-        text-align: left;
-        min-width: 90px;
-    }
-    div:last-child{
-        text-align: right;
-        min-width: 90px;
-    }
-}
-// The overview area at the top of a dashboard containing kpis or key-value-pairs and other visualizations
-.spine {
-    background-color: var(--gray1);
-    padding: 2em;
-}
-.report-header {
-    background-color: $white;
-    padding: 2em;
-}
-
-// A footer for the demo
-.footer {
-  bottom: 0;
-  width: 100%;
-  height: 3rem;
-  background: $gray16;
 }
 
 // Trumps

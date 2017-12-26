@@ -1,15 +1,13 @@
-@import './variables-mixins';
-
 .bg-gray {
-  background-color: $touch-o-gray;
+  background-color: var(--touch-o-gray);
 }
 
 .bg-light {
-  background-color: $light;
+  background-color: var(--light);
 }
 
 .border {
-  border: 1px solid $gray;
+  border: 1px solid var(--gray);
 }
 
 .tall {
