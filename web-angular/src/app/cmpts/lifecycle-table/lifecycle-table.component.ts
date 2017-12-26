@@ -20,11 +20,12 @@ import { flatten } from 'lodash';
   ]
 })
 export class LifecycleTableComponent {
-  private displayedColumns: Array<String> = ['expand', 'hours', 'parts', 'labor', 'fuel', 'lubrication', 'total'];
-  private selectedRows: Array<number> = [];
-  private formatedData: Element;
-  private dataSource: any;
-  private expandedElement: any;
+  displayedColumns: Array<String> = ['expand', 'hours', 'parts', 'labor', 'fuel', 'lubrication', 'total'];
+  displayedDetailColumns: Array<String> = ['service', 'serviceParts', 'serviceLabor', 'serviceFuel', 'serviceLube', 'serviceTotal'];
+  selectedRows: Array<number> = [];
+  formatedData: Element;
+  dataSource: any;
+  expandedElement: any;
 
   constructor() {
     const formatedData = formatData(ELEMENT_DATA);
@@ -46,6 +47,11 @@ export class LifecycleTableComponent {
   }
 
   jsonify = node => JSON.stringify(node);
+
+  log = (node, name = 'node') => {
+    console.log(name, 'LOGGED BELLOW');
+    console.log(node);
+  }
 
   getDetailValues = row => Object.keys(row).map(key => row[key]);
 
@@ -81,6 +87,6 @@ const ELEMENT_DATA = [
 // [{ id: 1, hours: 1000, parts: null, details: [...] }, { id: 1, details: [...] }]
 function formatData(data) {
   return flatten (
-    data.map(row => [row, { detailRow: true, id: row.id, details: row.details }])
+    data.map(row => [row, ...row.details.map( detailRow => ({ detailRow: true, id: row.id, ...detailRow }) )])
   )
 }

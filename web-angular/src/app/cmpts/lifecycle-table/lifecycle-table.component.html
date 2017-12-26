@@ -69,40 +69,46 @@
     </mat-header-row>
 
 
-    <ng-container matColumnDef="expandedDetail">
-      <mat-cell *matCellDef="let row">
-         <table class="table">
-          <tr *ngFor="let detail of row.details">
-            <!-- {{jsonify(detail)}} -->
-            <td>
-              <a href="#">{{detail.service}}</a>
-            </td>
-
-            <td>
-              <format-cash [money]="detail.parts"></format-cash>
-            </td>
-
-            <td>
-              <format-cash [money]="detail.labor"></format-cash>
-            </td>
-
-            <td>
-              <format-cash [money]="detail.fuel"></format-cash>
-            </td>
-
-            <td>
-              <format-cash [money]="detail.lubercation"></format-cash>
-            </td>
-
-            <td>
-              <div *ngIf="detail.total; let total">
-                {{ total | currency }}
-              </div>
-            </td>
-          </tr>
-        </table>
+    <ng-container matColumnDef="service">
+      <mat-cell *matCellDef="let detailRow">
+        <a href="#">{{detailRow.service}}</a>
       </mat-cell>
     </ng-container>
+
+    <ng-container matColumnDef="serviceParts">
+      <mat-cell *matCellDef="let detailRow">
+        <format-cash [money]="detailRow.parts"></format-cash>
+      </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="serviceLabor">
+      <mat-cell *matCellDef="let detailRow">
+        <format-cash [money]="detailRow.labor"></format-cash>
+      </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="serviceFuel">
+      <mat-cell *matCellDef="let detailRow">
+        <format-cash [money]="detailRow.fuel"></format-cash>
+      </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="serviceLube">
+      <mat-cell *matCellDef="let detailRow">
+        <format-cash [money]="detailRow.lubercation"></format-cash>
+      </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="serviceTotal">
+      <mat-cell *matCellDef="let detailRow">
+        <format-cash [money]="detailRow.total"></format-cash>
+      </mat-cell>
+    </ng-container>
+
+
+
+
+
 
     <!-- TABLE ROWS -->
     <mat-row
@@ -112,7 +118,7 @@
     </mat-row>
 
     <mat-row
-      *matRowDef="let row; columns: ['expandedDetail']; when: isExpansionDetailRow"
+      *matRowDef="let row; columns: displayedDetailColumns; when: isExpansionDetailRow"
       [@detailExpand]="isExpanded(row) ? 'expanded' : 'collapsed'"
       style="overflow: hidden"
     >
