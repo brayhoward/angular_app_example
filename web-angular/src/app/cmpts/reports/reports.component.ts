@@ -13,6 +13,12 @@ export class ReportsComponent implements OnInit {
   availableRows: Array<number> = [];
   displayedColumns: Array<String> = ['engine', 'reportName', 'contact', 'company', 'date', 'edit'];
   masterSelected: boolean = false;
+  readonly menuItems: any[] = [
+    { "key": "1", "val": "Edit" },
+    { "key": "2", "val": "Duplicate" },
+    { "key": "3", "val": "Delete" },
+    { "key": "4", "val": "Share" }
+  ];
 
   constructor(private router: Router) {
     this.dataSource = new MatTableDataSource(ELEMENT_DATA);
@@ -39,6 +45,44 @@ export class ReportsComponent implements OnInit {
 
     this.masterSelected = allSelected;
     this.selectedRows = allSelected ? this.availableRows : []
+  }
+
+  menuItemSelected({ detail: { value } }, { id }) {
+    switch (value) {
+      case "Edit":
+        return this.editReportDialog(id);
+
+      case "Delete":
+        return this.deleteReport(id);
+
+      case "Share":
+        return this.shareReport(id);
+
+      case "Duplicate":
+        return this.duplicateReport(id);
+
+      default:
+        throw `
+        The menu item selected failed to find a action match Check ReportComponent.menuItems
+        and make sure there's a matching case for each one in ReportComponent.menuItemSelected() switch statement
+      `;
+    }
+  }
+
+  editReportDialog(id) {
+    console.log('editReport', id);
+  }
+
+  deleteReport(id) {
+    console.log('deleteReport', id);
+  }
+
+  shareReport(id) {
+    console.log('shareReport', id);
+  }
+
+  duplicateReport(id) {
+    console.log('duplicateReport', id);
   }
 
   newReportDialog() {

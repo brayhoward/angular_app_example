@@ -39,7 +39,7 @@
               >
               </mat-checkbox>
 
-              <img src="../../../../../assets/img/ge-engine.png" class="u-ml"/>
+              <img src="assets/img/ge-engine.png" class="u-ml"/>
             </div>
           </mat-cell>
         </ng-container>
@@ -77,8 +77,15 @@
         </ng-container>
 
         <ng-container matColumnDef="edit">
-          <mat-cell *matCellDef="let row">
-            <px-icon icon="px-nav:more"></px-icon>
+          <mat-cell *matCellDef="let row" class="flex flex--row flex--center flex--middle">
+             <px-dropdown
+              icon="px-nav:more"
+              [items]="menuItems"
+              select-by="val"
+              button-style="icon"
+              (selected-changed)="menuItemSelected($event, row)"
+            >
+            </px-dropdown>
           </mat-cell>
         </ng-container>
 
@@ -92,7 +99,7 @@
           *matRowDef="let row; columns: displayedColumns;"
           [class.highlight]="isSelected(row)"
         >
-    </mat-row>
+        </mat-row>
       </mat-table>
     </div>
   </div>
