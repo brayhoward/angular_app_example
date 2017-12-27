@@ -10,8 +10,6 @@ import { MatTableModule } from '@angular/material/table';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 
-import { Ng2SearchPipeModule } from 'ng2-search-filter';
-
 
 // Routes
 import { AppRoutingModule } from './app-routing.module';
@@ -73,7 +71,6 @@ import { FuzzySearchComponent } from './cmpts/fuzzy-search/fuzzy-search.componen
     MatTableModule,
     MatDialogModule,
     MatCheckboxModule,
-    Ng2SearchPipeModule,
     FormsModule,
     ReactiveFormsModule
   ],

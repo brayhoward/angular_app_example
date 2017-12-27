@@ -1,3 +1,33 @@
+<style>
+  .tr {
+    background-color: white;
+  }
+
+  px-data-table-cell {
+    background-color: white;
+  }
+
+  img {
+    max-width: 3.9em;
+  }
+  mat-header-cell {
+    text-transform: uppercase;
+  }
+
+  .mat-column-contact {
+    margin-left: 5%;
+  }
+  .mat-column-company {
+    margin-left: 5%;
+  }
+  .mat-column-date {
+    margin-left: 5%;
+  }
+  .mat-cell {
+    font-size: .9em;
+  }
+</style>
+
 <div class="Reports">
   <div class="spine flex flex--row flex--justify u-p++">
     <div>
@@ -6,7 +36,7 @@
     </div>
 
     <div>
-        <input id="input1" placeholder="Search Reports..." class="text-input input--regular" type="search">
+      <fuzzy-search></fuzzy-search>
     </div>
   </div>
   <div class="layout u-p">
@@ -77,6 +107,8 @@
         </ng-container>
 
         <ng-container matColumnDef="edit">
+          <mat-header-cell *matHeaderCellDef></mat-header-cell>
+
           <mat-cell *matCellDef="let row" class="flex flex--row flex--center flex--middle">
              <px-dropdown
               icon="px-nav:more"
