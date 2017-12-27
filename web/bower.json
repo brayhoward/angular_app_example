@@ -22,11 +22,17 @@
     "px-vis-radar": "^3.1.1",
     "px-vis-polar": "^3.1.1",
     "px-datetime-picker": "^1.0.4",
-    "px-accordion": "^1.1.0"
+    "px-accordion": "^1.1.0",
+    "px-spinner": "^2.2.0",
+    "px-viewport-design": "^1.0.2",
+    "px-meta-lists-design": "https://github.com/PredixDev/px-meta-lists-design.git#^1.0.1",
+    "px-meta-buttons-design": "^1.0.3",
+    "px-app-helpers": "^2.0.2",
+    "px-icon-set": "^2.1.2",
+    "px-modal": "https://github.com/PredixDev/px-modal.git#^3.0.1"
   },
   "devDependencies": {
     "web-component-tester": "^5.0.0",
-    "webcomponentsjs": "^0.7.0",
     "px-demo": "^2.0.0",
     "px-headings-design": "^1.0.3",
     "px-forms-design": "^2.0.6",
@@ -42,8 +48,5 @@
     "px-layout-design": "^1.0.1",
     "px-tables-design": "^2.0.1",
     "px-box-design": "^1.0.2"
-  },
-  "resolutions": {
-    "webcomponentsjs": "^0.7.0"
   }
 }

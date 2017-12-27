@@ -1,0 +1,352 @@
+<link rel="import" href="css/px-datetime-picker-styles.html"/>
+<link rel="import" href="../px-datetime-field/px-datetime-field.html"/>
+<link rel="import" href="../px-calendar-picker/px-calendar-picker.html"/>
+<link rel="import" href="../px-datetime-common/px-datetime-behavior.html"/>
+<link rel="import" href="../px-datetime-common/px-datetime-buttons.html"/>
+<link rel="import" href="../px-datetime-common/px-datetime-button-behavior.html"/>
+<link rel="import" href="../iron-dropdown/iron-dropdown.html">
+
+<!--
+The datetime components rely on <a href="https://momentjs.com/" target="_blank">Moment.js</a> and <a href="https://momentjs.com/timezone/" target="_blank">Moment Timezone</a>.
+
+#### Usage
+
+    <px-datetime-picker></px-datetime-picker>
+
+
+#### Styling
+The following custom properties are available for styling. Please also refer to px-forms-design and px-buttons-design for additional style variables used by this component.
+
+Custom property | Description
+:----------------|:-------------
+`--px-datetime-picker-background-color` | Background color for the panel
+`--px-datetime-picker-border-color` | Border color for the panel
+`--px-datetime-picker-z-index` | The z-index of the container
+
+@element px-datetime-picker
+@blurb Element allowing to pick a date using a calendar or by typing it
+@homepage index.html
+@demo index.html
+-->
+<dom-module id="px-datetime-picker">
+  <template>
+    <style include="px-datetime-picker-styles"></style>
+
+    <px-datetime-field
+      id="field"
+      slot="dropdown-trigger"
+      time-zone="{{timeZone}}"
+      moment-obj="{{momentObj}}"
+      hide-time={{hideTime}}
+      show-time-zone="{{showTimeZone}}"
+      date-format="{{dateFormat}}"
+      time-format="{{timeFormat}}"
+      is-selected=[[opened]]
+      prevent-notification-on-change
+      block-future-dates="{{blockFutureDates}}"
+      block-past-dates="{{blockPastDates}}"
+      resources="[[resources]]"
+      language="[[language]]"
+      formats="[[formats]]"
+      min="[[min]]"
+      max="[[max]]">
+    </px-datetime-field>
+    <iron-dropdown
+      id="dropdown"
+      class="dt-iron-dropdown"
+      opened="{{opened}}"
+      vertical-align="top"
+      horizontal-align="left"
+      no-overlap="[[!fillContainer]]"
+      dynamic-align="[[!fillContainer]]"
+      vertical-offset="[[_getVerticalOffset(fillContainer)]]"
+      position-target="[[_getPositionTarget(fillContainer, fitIntoElement)]]"
+      fit-into="[[fitIntoElement]]">
+      <div slot="dropdown-content" class="dt-container__box shadow-temporary">
+        <div class="dt-p-calendar">
+          <px-calendar-picker
+            id="calendar"
+            block-future-dates="{{blockFutureDates}}"
+            block-past-dates="{{blockPastDates}}"
+            prevent-range-selection
+            from-moment="{{momentObj}}"
+            base-date="[[momentObj]]"
+            time-zone="[[timeZone]]"
+            day-week-start-index="[[dayWeekStartIndex]]"
+            resources="[[resources]]"
+            language="[[language]]"
+            formats="[[formats]]"
+            min="[[min]]"
+            max="[[max]]">
+          </px-calendar-picker>
+          <button class="actionable caps dt-p-today" on-tap="_todayClicked">[[localize('Today')]]</button>
+        </div>
+        <div class="dt-p-time-buttons--wrapper">
+          <template is="dom-if" if="{{_handleField(hideTime, fillContainer)}}">
+            <div>
+              <px-datetime-field
+                id="time"
+                class="dt-p-time"
+                moment-obj="{{momentObj}}"
+                hide-icon
+                hide-date
+                is-valid="{{_toTimeIsValid}}"
+                time-format="{{timeFormat}}"
+                time-zone="[[timeZone]]"
+                resources="[[resources]]"
+                language="[[language]]"
+                formats="[[formats]]"
+                min="[[min]]"
+                max="[[max]]">
+              </px-datetime-field>
+            </div>
+          </template>
+          <template is="dom-if" if="{{showButtons}}">
+            <px-datetime-buttons
+              class="dt-p-buttons"
+              is-submit-button-valid
+              resources="[[resources]]"
+              language="[[language]]"
+              formats="[[formats]]">
+            </px-datetime-buttons>
+          </template>
+        </div>
+      </div>
+    </iron-dropdown>
+  </template>
+</dom-module>
+
+<script>
+  Polymer({
+
+    is: 'px-datetime-picker',
+    behaviors:[
+      pxDatetimeBehavior,
+      pxDatetimeButtonBehavior
+    ],
+
+    /**
+     * Properties block, expose attribute values to the DOM via 'notify'
+     *
+     * @property properties
+     * @type Object
+     */
+    properties: {
+      /**
+       *
+       * Can be set to show the timezone in the field. Can have 2 values:
+       *  'dropdown': shows the time zone as a dropdown which the user can use to
+       * select a different time zone. Only contains a subset of all timezones
+       *  'extendedDropdown': shows the time zone as a dropdown which the user can use to
+       * select a different time zone. Contains all existing timezones (588)
+       *  'text': shows the time zone as text, non editable
+       *  'abbreviatedText': shows the time zone as an abbreviated text, non editable (such as PST, EST...)
+       */
+      showTimeZone: {
+        type: String,
+        value: ''
+      },
+      /**
+       * Whether this date picker should allow to pick time as well.
+       *
+       */
+      hideTime: {
+        type: Boolean,
+        value: false
+      },
+      /**
+       * Moment format used for the date
+       *
+       */
+      dateFormat: {
+        type: String,
+        value: 'MM/DD/YYYY'
+      },
+      /**
+       * Moment format used for the time
+       *
+       */
+       timeFormat: {
+        type: String,
+        value: 'HH:mm A'
+      },
+      /**
+       * Reflects if datetime-picker container is open/visible.
+       */
+       opened: {
+        type: Boolean,
+        value: false,
+        reflectToAttribute: true
+      },
+      /**
+       * false : the dt-picker contents will open in a panel.
+       * true : the dt-picker contents will fill the window
+       * or an element defined by the `fitIntoElement`.
+       */
+       fillContainer: {
+        type: Boolean,
+        value: false,
+        reflectToAttribute: true
+      },
+      /**
+       * The element that the dt-picker contents will fully exand into
+       * when the dt-picker is open.
+       * `fillContainer` must be true inorder for this property to work
+       */
+      fitIntoElement: {
+        type: Object,
+        value: window
+      },
+      /**
+       * List of key/values to be included for translating this component
+       */
+      resources: {
+        type: Object,
+        value: function() {
+          return {
+            'en': {
+              'Today': 'Today'
+            }
+          };
+        }
+      }
+    },
+    listeners: {
+      'px-datetime-entry-icon-clicked':'_iconClicked',
+      'px-datetime-button-clicked': '_buttonClicked',
+      'tap' : '_handleTap'
+    },
+    observers: [
+      '_momentChanged(momentObj)'
+    ],
+    /**
+     * Key bindings for iron-a11y-keys-behavior
+     */
+    keyBindings: {
+      'esc' : '_onEsc',
+      'enter': '_onEnter'
+    },
+    attached: function() {
+      this._isAttached = true;
+    },
+    /*
+     * 'Today' button/text has been clicked
+     */
+    _todayClicked: function(evt) {
+      this.set('momentObj', this._preserveTime(this.momentObj, Px.moment.tz(Px.moment(), this.timeZone)));
+      if(!this.showButtons) {
+        this._close();
+      }
+    },
+    /**
+     */
+    _onEsc: function(evt) {
+      this._applyCurrentValues(false);
+      this._close();
+    },
+    /**
+     */
+    _onEnter: function(evt) {
+      this._applyCurrentValues(this.$.field.isValid);
+      this._close();
+    },
+    /**
+     * Opens the calendar
+     */
+    _open: function() {
+      this.$.dropdown.open();
+    },
+    /**
+     * Closes the calendar
+     */
+    _close: function() {
+      this.$.dropdown.close();
+    },
+    /**
+     * If the calendar is open and the dropdown is selected, close the calendar
+     */
+    _handleTap: function(evt) {
+      if(this.opened === true){
+
+        var path = Polymer.dom(evt).path;
+
+        for (var i=0; i<path.length; i++) {
+          if (path[i].nodeName === 'PX-DROPDOWN') {
+            this._close();
+            return;
+          }
+        }
+
+      }
+    },
+    /**
+     */
+    _processClose: function() {
+      //If we show buttons don't validate
+      this._applyCurrentValues(!this.showButtons);
+      this._close();
+    },
+    /**
+     */
+    _momentChanged: function(momentObj) {
+      if(this._isAttached) {
+
+        if(this.opened) {
+          if(this.$.calendar.fromMoment.toISOString() === this.momentObj.toISOString()) {
+            //changes comes from calendar (not from field). If it comes from field
+            //do nothing as we're open (the calendar moment will be updated through binding)
+            //if we don't show buttons close on selection
+            if(!this.showButtons) {
+              this._applyCurrentValues(this.$.field.isValid);
+              this._close();
+            }
+          }
+        }
+        //we're closed, moment has changed by user changing the input fields.
+        else {
+          if(this.$.field.isValid) {
+            this._applyCurrentValues(true);
+          }
+        }
+
+      }
+    },
+    /**
+     */
+    _buttonClicked: function(evt) {
+      var canApplyValue = evt.detail.action && this.$.field.isValid;
+      this._applyCurrentValues(canApplyValue);
+      this._close();
+    },
+    /**
+     */
+    _iconClicked: function(evt) {
+      if(evt.detail.dateOrTime === "Date") {
+        this.$.dropdown.toggle();
+      }
+    },
+    /**
+     * Determine if should field be displayed in container
+     * The dt-field will only appear in the container if fillContainer is true
+     */
+    _handleField: function(hideTime, fillContainer){
+      return (!hideTime && fillContainer);
+    },
+
+    // ********************************************************************** //
+    // Calculate iron-dropdown properties
+    // ********************************************************************** //
+
+    _getVerticalOffset: function(fillContainer) {
+      return !fillContainer ? 20 : 0;
+    },
+    _getPositionTarget: function(fillContainer, fitIntoElement) {
+      return fillContainer ? fitIntoElement : this.$.field;
+    },
+    getElement: function(elStr) {
+      return this.shadowRoot.querySelector(elStr)
+    }
+
+
+  });
+</script>
