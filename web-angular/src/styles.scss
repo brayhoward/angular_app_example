@@ -48,6 +48,7 @@ $inuit-enable-btn--icon : true;
 $inuit-enable-box--large : true;
 $inuit-enable-box--huge : true;
 @import "px-box-design/_objects.box.scss";
+@import 'px-list-ui-design/_objects.list-ui.scss';
 
 // Local appliaction specific scss file imports
 @import "global-styles/helpers.scss";
