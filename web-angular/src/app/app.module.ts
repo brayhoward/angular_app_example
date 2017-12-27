@@ -34,7 +34,7 @@ import { PartsComponent } from './cmpts/parts/parts.component';
 import { LifecycleTableComponent } from './cmpts/lifecycle-table/lifecycle-table.component';
 import { FormatCashComponent } from './cmpts/format-cash/format-cash.component';
 import { EngineLifecycleDetailBreakdownComponent } from './cmpts/engine-lifecycle-detail-breakdown/engine-lifecycle-detail-breakdown.component';
-import { FuzzySearchComponent } from './cmpts/fuzzy-search/fuzzy-search.component'
+import { FilteringSearchInputComponent } from './cmpts/filtering-search-input/filtering-search-input.component';
 
 @NgModule({
   declarations: [
@@ -57,7 +57,7 @@ import { FuzzySearchComponent } from './cmpts/fuzzy-search/fuzzy-search.componen
     FormatCashComponent,
     LifecycleTableComponent,
     EngineLifecycleDetailBreakdownComponent,
-    FuzzySearchComponent
+    FilteringSearchInputComponent
   ],
   entryComponents: [
     EngineLifecycleDetailBreakdownComponent

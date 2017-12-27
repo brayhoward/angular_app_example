@@ -3,19 +3,18 @@ import { animate, state, style, transition, trigger } from '@angular/animations'
 import { uniqBy } from 'lodash';
 
 @Component({
-  selector: 'fuzzy-search',
-  templateUrl: './fuzzy-search.component.html',
-  styleUrls: ['./fuzzy-search.component.scss'],
+  selector: 'filtering-search-input',
+  templateUrl: './filtering-search-input.component.html',
   animations: [
     trigger('searchExpand', [
       state('collapsed', style({ height: '0px', minHeight: '0', visibility: 'hidden' })),
       state('expanded', style({ maxHeight: '20em', visibility: 'visible'})),
-      transition('expanded <=> collapsed', animate('225ms cubic-bezier(0.4, 0.0, 0.2, 1)')),
+      transition('expanded <=> collapsed', animate('325ms cubic-bezier(0.4, 0.0, 0.2, 1)')),
     ]),
   ]
 })
 
-export class FuzzySearchComponent {
+export class FilteringSearchInputComponent {
   items: any[] = [
     { id: 1, name: "jay williams", company: 'ACME Corporation' },
     { id: 2, name: "tim williams", company: 'Cinco' },
