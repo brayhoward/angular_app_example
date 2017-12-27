@@ -1,4 +1,4 @@
-import { Component, Input, SimpleChanges } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { animate, state, style, transition, trigger } from '@angular/animations';
 import { uniqBy } from 'lodash';
 
@@ -13,25 +13,19 @@ import { uniqBy } from 'lodash';
     ]),
   ]
 })
-
 export class FilteringSearchInputComponent {
-  items: any[] = [
-    { id: 1, name: "jay williams", company: 'ACME Corporation' },
-    { id: 2, name: "tim williams", company: 'Cinco' },
-    { id: 3, name: "james williams", company: 'Globo Chem' },
-    { id: 4, name: "cindy williams", company: 'ACME Corporation' },
-    { id: 5, name: "sam williams", company: 'Cinco' },
-    { id: 6, name: "Brandy williams", company: 'Cinco' },
-    { id: 7, name: "Sandy williams", company: 'Cinco' }
-  ];
   results: any[] = [];
   suggestions: Suggestion[] = [];
   searchTerm: String = '';
-  constructor() {
-    this.filterAndUpdate.bind(this);
-  }
 
-  onChange({ target: { value = ''} }) {
+  @Input()
+  searchPool: any[] = [];
+
+  @Input()
+  searchResultsCallback: (arg) => void;
+
+
+  onChange({ target: { value = '' } }) {
     this.filterAndUpdate(value);
   }
 
@@ -40,18 +34,16 @@ export class FilteringSearchInputComponent {
   }
 
   filterAndUpdate = (searchTerm) => {
-    const { matchedItems, suggestions } = filter(this.items, searchTerm);
+    const { matchedItems, suggestions } = filter(this.searchPool, searchTerm);
 
     this.suggestions = suggestions;
     this.results = matchedItems;
     this.searchTerm = searchTerm;
+
+    this.searchResultsCallback(this.results);
   }
 
-  hasResults = () => {
-    // this.log(this.results, 'results');
-
-    return this.suggestions.length > 0
-  };
+  hasResults = () => this.suggestions.length > 0;
 
   onSelectSuggestion({ id }) {
     console.log('suggestion id selected', 'LOGGED BELLOW');
@@ -96,7 +88,7 @@ function filter(items: any[], searchTerm): Results {
           { id, value: item[key] }
         ))
         .filter(item => (
-          // Filter out id's
+          // Filter out id's and/or any value thats not a string
           (typeof item.value === 'string') && matches(item.value, searchTerm)
         ));
 

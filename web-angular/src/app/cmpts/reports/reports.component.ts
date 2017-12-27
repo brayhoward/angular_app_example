@@ -9,10 +9,11 @@ import { MatTableDataSource } from '@angular/material';
 })
 export class ReportsComponent implements OnInit {
   dataSource: any;
-  selectedRows: Array<number> = [];
-  availableRows: Array<number> = [];
-  displayedColumns: Array<String> = ['engine', 'reportName', 'contact', 'company', 'date', 'edit'];
+  selectedRows: number[] = [];
+  availableRows: number[] = [];
+  displayedColumns: String[] = ['engine', 'reportName', 'contact', 'company', 'date', 'edit'];
   masterSelected: boolean = false;
+  dataPool: any[]
   readonly menuItems: any[] = [
     { "key": "1", "val": "Edit" },
     { "key": "2", "val": "Duplicate" },
@@ -21,6 +22,7 @@ export class ReportsComponent implements OnInit {
   ];
 
   constructor(private router: Router) {
+    this.dataPool = ELEMENT_DATA;
     this.dataSource = new MatTableDataSource(ELEMENT_DATA);
     this.availableRows = ELEMENT_DATA.map(row => ( row.id ));
   }
@@ -69,6 +71,13 @@ export class ReportsComponent implements OnInit {
     }
   }
 
+  onSearchResultsCallback = (searchResults) => {
+    console.log('searchResults', 'LOGGED BELLOW');
+    console.log(searchResults);
+
+    this.dataSource = new MatTableDataSource(searchResults);
+  }
+
   editReportDialog(id) {
     console.log('editReport', id);
   }
@@ -105,8 +114,7 @@ const ELEMENT_DATA = [
     reportName:"L7044GSI Report Forecast #1",
     contact:"Jay Williams",
     company:"ACME Corporation",
-    date:"08-18-2018",
-    edit:"overflow menu"
+    date:"08-18-2018"
   },
   {
     id: 2,
@@ -114,8 +122,7 @@ const ELEMENT_DATA = [
     reportName:"L7044GSI Report Forecast #1",
     contact:"Tim Williams",
     company:"Cinco",
-    date:"08-18-2018",
-    edit:"overflow menu"
+    date:"08-18-2018"
   },
   {
     id: 3,
@@ -123,8 +130,7 @@ const ELEMENT_DATA = [
     reportName:"L7044GSI Report Forecast #1",
     contact:"James Williams",
     company:"Globo Chem",
-    date:"08-12-2018",
-    edit:"overflow menu"
+    date:"08-12-2018"
   },
   {
     id: 4,
@@ -132,8 +138,7 @@ const ELEMENT_DATA = [
     reportName:"L7044GSI Report Forecast #1",
     contact:"Cindy Williams",
     company:"ACME Corporation",
-    date:"08-18-2018",
-    edit:"overflow menu"
+    date:"08-18-2018"
   },
   {
     id: 5,
@@ -141,8 +146,7 @@ const ELEMENT_DATA = [
     reportName:"L7044GSI Report Forecast #1",
     contact:"Jay Williams",
     company:"ACME Corporation",
-    date:"08-12-2018",
-    edit:"overflow menu"
+    date:"08-12-2018"
   },
   {
     id: 6,
@@ -150,7 +154,6 @@ const ELEMENT_DATA = [
     reportName:"L7044GSI Report Forecast #1",
     contact:"Sam Williams",
     company:"Cinco",
-    date:"08-19-2018",
-    edit:"overflow menu"
+    date:"08-19-2018"
   }
 ]

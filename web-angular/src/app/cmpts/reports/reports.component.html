@@ -36,13 +36,16 @@
     </div>
 
     <div>
-      <filtering-search-input></filtering-search-input>
+      <filtering-search-input
+        [searchPool]="dataPool"
+        [searchResultsCallback]="onSearchResultsCallback"
+      >
+      </filtering-search-input>
     </div>
   </div>
   <div class="layout u-p">
     <div class="layout__item">
       <mat-table [dataSource]="dataSource">
-
         <ng-container matColumnDef="engine">
           <mat-header-cell *matHeaderCellDef>
             <div class="flex flex--row flex--left flex--middle">
