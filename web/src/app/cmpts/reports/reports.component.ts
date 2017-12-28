@@ -1,13 +1,15 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { MatTableDataSource } from '@angular/material';
+import { MatDialog } from '@angular/material/dialog';
+import { ReportFormComponent } from '../../cmpts/report-form/report-form.component';
 
 @Component({
   selector: 'app-reports',
   templateUrl: './reports.component.html',
   styleUrls: ['./reports.component.scss']
 })
-export class ReportsComponent implements OnInit {
+export class ReportsComponent {
   dataSource: any;
   selectedRows: number[] = [];
   availableRows: number[] = [];
@@ -21,13 +23,10 @@ export class ReportsComponent implements OnInit {
     { "key": "4", "val": "Share" }
   ];
 
-  constructor(private router: Router) {
+  constructor(private router: Router, private dialog: MatDialog) {
     this.dataPool = ELEMENT_DATA;
     this.dataSource = new MatTableDataSource(ELEMENT_DATA);
     this.availableRows = ELEMENT_DATA.map(row => ( row.id ));
-  }
-
-  ngOnInit() {
   }
 
   toggleRow(row) {
@@ -91,8 +90,17 @@ export class ReportsComponent implements OnInit {
     console.log('duplicateReport', id);
   }
 
-  newReportDialog() {
-    return true;
+  onNewReport = (report = {}) => {
+    let dialogRef = this.dialog.open(
+      ReportFormComponent,
+      {
+        data: { report }
+      }
+    );
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+    });
   }
 
   jsonify = node => JSON.stringify(node);

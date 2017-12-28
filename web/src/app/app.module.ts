@@ -36,6 +36,7 @@ import { FormatCashComponent } from './cmpts/format-cash/format-cash.component';
 import { EngineLifecycleDetailBreakdownComponent } from './cmpts/engine-lifecycle-detail-breakdown/engine-lifecycle-detail-breakdown.component';
 import { FilteringSearchInputComponent } from './cmpts/filtering-search-input/filtering-search-input.component';
 import { ReportsRootComponent } from './cmpts/reports-root/reports-root.component';
+import { ReportFormComponent } from './cmpts/report-form/report-form.component';
 
 @NgModule({
   declarations: [
@@ -59,10 +60,14 @@ import { ReportsRootComponent } from './cmpts/reports-root/reports-root.componen
     LifecycleTableComponent,
     EngineLifecycleDetailBreakdownComponent,
     FilteringSearchInputComponent,
-    ReportsRootComponent
+    ReportsRootComponent,
+    ReportFormComponent
   ],
+  // Register any components that need to be opened
+  // within a Material Angular Dialog HERE in entryComponents
   entryComponents: [
-    EngineLifecycleDetailBreakdownComponent
+    EngineLifecycleDetailBreakdownComponent,
+    ReportFormComponent
   ],
   imports: [
     CommonModule,

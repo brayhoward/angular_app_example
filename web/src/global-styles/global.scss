@@ -127,3 +127,8 @@ a {
   color: var(--actionable);
   cursor: pointer;
 }
+
+// Predix button overrides
+.btn--call-to-action {
+  text-transform: uppercase;
+}

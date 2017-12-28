@@ -28,6 +28,7 @@
 $inuit-enable-input--tiny    : true;
 $inuit-enable-input--small    : true;
 @import "px-forms-design/_base.forms.scss";
+$inuit-enable-validation-states : true;
 @import "px-viewport-design/_base.viewport.scss";
 @import "px-typography-design/_base.typography.scss";
 @import "px-tables-design/_base.tables.scss";

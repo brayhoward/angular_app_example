@@ -1,0 +1,64 @@
+
+<span class="heading--page">{{heading}}</span>
+
+<form (ngSubmit)="onSubmit()" #reportForm="ngForm">
+  <div class="u-m">
+    <label for="engine-models" class="label">Engine Model</label>
+    <select id="engine-models" name="engines">
+      <option>L7044GSI</option>
+      <option>L8044GSI</option>
+      <option>L9044GSI</option>
+    </select>
+  </div>
+
+  <label class="u-m">
+    <span class="label">Report Name</span>
+    <input
+      type="text"
+      class="text-input"
+      name="name"
+      required
+
+      [(ngModel)]="report.name"
+      #name="ngModel"
+      [ngClass]="{
+        'validation-error': name.dirty && name.invalid,
+        'validation-success': name.dirty && name.valid
+      }"
+    >
+  </label>
+
+  <label class="u-m">
+    <span class="label">Contact Name</span>
+    <input
+      type="text"
+      class="text-input"
+      name="contactName"
+      required
+
+      [(ngModel)]="report.contactName"
+      required
+    >
+  </label>
+
+  <label class="u-m">
+    <span class="label">Company</span>
+    <input
+      type="text"
+      class="text-input"
+      name="company"
+      required
+
+      [(ngModel)]="report.company"
+      required
+    >
+  </label>
+
+  <button
+    type="submit"
+    class="btn btn--call-to-action u-m"
+    [disabled]="!reportForm.form.valid"
+  >
+    Continue
+  </button>
+</form>
