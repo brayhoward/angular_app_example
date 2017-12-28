@@ -59,21 +59,9 @@ export class LifecycleTableComponent {
     this.selectedRows = isExpanded(row) ? selectedRows.filter(id => id !== row.id) : [...this.selectedRows, row.id]
   }
 
-  isExpanded({ id }) {
-    return this.selectedRows.includes(id)
-  }
-
-  jsonify = node => JSON.stringify(node);
-
-  log = (node, name = 'node') => {
-    console.log(name, 'LOGGED BELLOW');
-    console.log(node);
-  }
+  isExpanded = ({ id }) => this.selectedRows.includes(id);
 
   getDetailValues = row => Object.keys(row).map(key => row[key]);
-
-  // TODO: move this to a component for reuse elsewhere
-  noCost = () => "$-"
 }
 
 const ELEMENT_DATA = [
