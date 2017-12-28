@@ -37,6 +37,7 @@ import { EngineLifecycleDetailBreakdownComponent } from './cmpts/engine-lifecycl
 import { FilteringSearchInputComponent } from './cmpts/filtering-search-input/filtering-search-input.component';
 import { ReportsRootComponent } from './cmpts/reports-root/reports-root.component';
 import { ReportFormComponent } from './cmpts/report-form/report-form.component';
+import { ReportFormTwoComponent } from './cmpts/report-form-two/report-form-two.component';
 
 @NgModule({
   declarations: [
@@ -61,7 +62,8 @@ import { ReportFormComponent } from './cmpts/report-form/report-form.component';
     EngineLifecycleDetailBreakdownComponent,
     FilteringSearchInputComponent,
     ReportsRootComponent,
-    ReportFormComponent
+    ReportFormComponent,
+    ReportFormTwoComponent
   ],
   // Register any components that need to be opened
   // within a Material Angular Dialog HERE in entryComponents

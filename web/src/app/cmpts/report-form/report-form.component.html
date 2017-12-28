@@ -1,10 +1,10 @@
 
-<span class="heading--page">{{heading}}</span>
+<span class="heading--page">{{report.heading}}</span>
 
 <form (ngSubmit)="onSubmit()" #reportForm="ngForm">
   <div class="u-m">
     <label for="engine-models" class="label">Engine Model</label>
-    <select id="engine-models" name="engines">
+    <select id="engine-models" name="engines" [(ngModel)]="report.heading">
       <option>L7044GSI</option>
       <option>L8044GSI</option>
       <option>L9044GSI</option>
@@ -18,13 +18,9 @@
       class="text-input"
       name="name"
       required
+      minlength="4"
 
       [(ngModel)]="report.name"
-      #name="ngModel"
-      [ngClass]="{
-        'validation-error': name.dirty && name.invalid,
-        'validation-success': name.dirty && name.valid
-      }"
     >
   </label>
 
@@ -35,9 +31,9 @@
       class="text-input"
       name="contactName"
       required
+      minlength="4"
 
       [(ngModel)]="report.contactName"
-      required
     >
   </label>
 
@@ -48,9 +44,9 @@
       class="text-input"
       name="company"
       required
+      minlength="4"
 
       [(ngModel)]="report.company"
-      required
     >
   </label>
 

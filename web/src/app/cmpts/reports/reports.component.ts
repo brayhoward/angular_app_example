@@ -90,7 +90,7 @@ export class ReportsComponent {
     console.log('duplicateReport', id);
   }
 
-  onNewReport = (report = {}) => {
+  onNewReport(report = {}) {
     let dialogRef = this.dialog.open(
       ReportFormComponent,
       {

@@ -28,7 +28,6 @@
 $inuit-enable-input--tiny    : true;
 $inuit-enable-input--small    : true;
 @import "px-forms-design/_base.forms.scss";
-$inuit-enable-validation-states : true;
 @import "px-viewport-design/_base.viewport.scss";
 @import "px-typography-design/_base.typography.scss";
 @import "px-tables-design/_base.tables.scss";
@@ -80,6 +79,11 @@ $inuit-enable-box--huge : true;
   --px-vis-series-color-2: $purple5;
   --px-vis-series-color-3: $orange5;
   --px-card-background-color: var(--light);
+  --px-validation-success-text-color: #7fae1b;
+  --px-validation-success-background-color: #ecffee;
+  --px-validation-error-text-color: #f34336;
+  --px-validation-error-background-color: #ffecec;
+
 }
 .report-header {
     border-bottom: 1px solid $gray1;
@@ -122,6 +126,41 @@ $inuit-enable-paddings--tiny : true;
 $inuit-enable-paddings--small : true;
 $inuit-enable-paddings--huge : true;
 $inuit-enable-paddings--large : true;
+
+// TODO: figure out why validation-states aren't working
+// from @import "px-forms-design/_base.forms.scss"
+// read more here https://www.predix-ui.com/#/css/visual/px-forms-design
+$inuit-enable-validation-states : true;
+
+// Hardcode input classes from px-forms-design
+.mad-input {
+  border-color: var(--px-validation-error-text-color);
+  background-color: var(--px-validation-error-background-color);
+}
+.happy-input {
+  border-color: var(--px-validation-success-text-color);
+  background-color: var(--px-validation-success-background-color);
+}
+
+.text-input {
+  &.validation-success {
+    @extend .mad-input;
+  }
+  &.validation-error {
+    @extend .happy-input;
+  }
+}
+
+// Use predix styles for the auto generated angular form classes to cut down on template logic.
+.text-input {
+  &.ng-touched.ng-invalid {
+    @extend .mad-input;
+  }
+  &.ng-dirty.ng-valid {
+    @extend .happy-input;
+  }
+}
+
 
 // Import predix styles
 @import "px-spacing-design/_trumps.spacing.scss";

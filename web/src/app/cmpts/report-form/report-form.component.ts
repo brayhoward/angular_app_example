@@ -1,5 +1,7 @@
 import { Component, OnInit, Inject } from '@angular/core';
-import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { ReportFormTwoComponent } from '../report-form-two/report-form-two.component';
+import { Report } from '../../shared-interfaces/report';
 
 @Component({
   selector: 'app-report-form',
@@ -11,6 +13,7 @@ export class ReportFormComponent implements OnInit {
 
   constructor(
     public dialogRef: MatDialogRef<ReportFormComponent>,
+    private dialog: MatDialog,
     @Inject(MAT_DIALOG_DATA) public data: any
   ) {}
 
@@ -20,6 +23,19 @@ export class ReportFormComponent implements OnInit {
     this.report = { ...defaults, ...this.data.report };
   }
 
+  onContinue(report = {}) {
+    let dialogRef = this.dialog.open(
+      ReportFormTwoComponent,
+      {
+        data: { ...this.report }
+      }
+    );
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+    });
+  }
+
   // TODO: Remove after done developing
   jsonify = node => JSON.stringify(node);
 
@@ -27,14 +43,4 @@ export class ReportFormComponent implements OnInit {
     console.log(name, 'LOGGED BELLOW');
     console.log(node);
   }
-
-}
-
-
-interface Report {
-  heading?: String;
-  engineModel?: String;
-  name?: String;
-  contactName?: String;
-  company?: String;
 }
