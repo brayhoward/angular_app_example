@@ -72,9 +72,6 @@ export class ReportsComponent implements OnInit {
   }
 
   onSearchResultsCallback = (searchResults) => {
-    console.log('searchResults', 'LOGGED BELLOW');
-    console.log(searchResults);
-
     this.dataSource = new MatTableDataSource(searchResults);
   }
 

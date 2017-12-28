@@ -28,7 +28,7 @@
         [value]="searchTerm"
         (change)="onChange($event)"
         (keyup)="onChange($event)"
-        (blur)="onBlur()"
+        (focusout)="focusOutFunction($event)"
         class="text-input input--auto"
       >
     </div>
@@ -37,11 +37,15 @@
       class="list-ui border"
       [@searchExpand]="hasResults(results) ? 'expanded' : 'collapsed'"
     >
-      <li class="list-ui__item" *ngFor = "let suggestion of suggestions">
-        <a
-          (click)="onSelectSuggestion(suggestion)"
-          tabindex="0"
-        >
+      <li
+        class="list-ui__item"
+        *ngFor="let suggestion of suggestions"
+        (click)="onSelectSuggestion(suggestion)"
+        (focusout)="focusOutFunction($event)"
+      >
+        <!-- Let it be known that the suggestion class bellow is being targeted by some Javascript in this cmpts ts file.
+        you can safely add other classes but do NOT remove the suggestion class -->
+        <a tabindex="0" class="suggestion">
           {{suggestion.value}}
         </a>
       </li>

@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, ElementRef, HostListener } from '@angular/core';
 import { animate, state, style, transition, trigger } from '@angular/animations';
 import { uniqBy } from 'lodash';
 
@@ -10,26 +10,46 @@ import { uniqBy } from 'lodash';
       state('collapsed', style({ height: '0px', minHeight: '0', visibility: 'hidden' })),
       state('expanded', style({ maxHeight: '20em', visibility: 'visible'})),
       transition('expanded <=> collapsed', animate('325ms cubic-bezier(0.4, 0.0, 0.2, 1)')),
-    ]),
+    ])
   ]
 })
 export class FilteringSearchInputComponent {
   results: any[] = [];
   suggestions: Suggestion[] = [];
   searchTerm: String = '';
-
   @Input()
   searchPool: any[] = [];
-
   @Input()
   searchResultsCallback: (arg) => void;
 
+
+  constructor(private _elementRef: ElementRef) { }
+
+  // Clear suggestions when clicking outside of self
+  @HostListener('document:click', ['$event.target'])
+  onDocClick(target) {
+
+    const clickOriginatedOutsideOfSelf = !this._elementRef.nativeElement.contains(target);
+
+    if (clickOriginatedOutsideOfSelf)
+      this.clearSuggestions();
+  }
+
+  // Clear suggestions when focusing outside of self
+  focusOutFunction(event) {
+    const { relatedTarget } = event;
+    if (!relatedTarget) return;
+    const relatedTargetIsNotASuggestion = relatedTarget.className.indexOf('suggestion') === -1
+
+    if (relatedTargetIsNotASuggestion)
+      this.clearSuggestions();
+  }
 
   onChange({ target: { value = '' } }) {
     this.filterAndUpdate(value);
   }
 
-  onBlur() {
+  clearSuggestions() {
     this.suggestions = [];
   }
 
@@ -46,8 +66,11 @@ export class FilteringSearchInputComponent {
   hasResults = () => this.suggestions.length > 0;
 
   onSelectSuggestion({ id }) {
-    console.log('suggestion id selected', 'LOGGED BELLOW');
-    console.log(id);
+    this.searchResultsCallback(
+      filterById(this.searchPool, id)
+    );
+
+    this.clearSuggestions();
   }
 
   dirty = () => !!this.searchTerm
@@ -60,6 +83,8 @@ export class FilteringSearchInputComponent {
   }
 }
 
+
+// Search Functions And Helpers Bellow
 interface Suggestion {
   id: number | String,
   value: String
@@ -68,6 +93,10 @@ interface Results {
   // table rows
   matchedItems: any[],
   suggestions: Suggestion[]
+}
+
+function filterById(items: any[], id: number) {
+  return items.filter(item => item.id === id);
 }
 
 function filter(items: any[], searchTerm): Results {
@@ -99,8 +128,6 @@ function filter(items: any[], searchTerm): Results {
     })
   );
 
-  // console.log('suggestions', 'LOGGED BELLOW');
-  // console.log(JSON.stringify(preCleanedSuggestions));
   const suggestions = uniqBy(preCleanedSuggestions, 'value');
 
   return { matchedItems, suggestions };
