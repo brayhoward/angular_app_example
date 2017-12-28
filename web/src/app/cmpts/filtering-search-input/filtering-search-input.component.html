@@ -28,6 +28,7 @@
         [value]="searchTerm"
         (change)="onChange($event)"
         (keyup)="onChange($event)"
+        (keyup.enter)="onKeyUpEnter()"
         (focusout)="focusOutFunction($event)"
         class="text-input input--auto"
       >

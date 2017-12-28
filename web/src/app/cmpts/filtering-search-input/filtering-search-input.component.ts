@@ -73,8 +73,13 @@ export class FilteringSearchInputComponent {
     this.clearSuggestions();
   }
 
+  onKeyUpEnter(searchTerm) {
+    this.clearSuggestions();
+  }
+
   dirty = () => !!this.searchTerm
 
+  // TODO: Remove after done developing
   jsonify = node => JSON.stringify(node);
 
   log = (node, name = 'node') => {
