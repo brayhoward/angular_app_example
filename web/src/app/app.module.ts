@@ -35,6 +35,7 @@ import { LifecycleTableComponent } from './cmpts/lifecycle-table/lifecycle-table
 import { FormatCashComponent } from './cmpts/format-cash/format-cash.component';
 import { EngineLifecycleDetailBreakdownComponent } from './cmpts/engine-lifecycle-detail-breakdown/engine-lifecycle-detail-breakdown.component';
 import { FilteringSearchInputComponent } from './cmpts/filtering-search-input/filtering-search-input.component';
+import { ReportsRootComponent } from './cmpts/reports-root/reports-root.component';
 
 @NgModule({
   declarations: [
@@ -57,7 +58,8 @@ import { FilteringSearchInputComponent } from './cmpts/filtering-search-input/fi
     FormatCashComponent,
     LifecycleTableComponent,
     EngineLifecycleDetailBreakdownComponent,
-    FilteringSearchInputComponent
+    FilteringSearchInputComponent,
+    ReportsRootComponent
   ],
   entryComponents: [
     EngineLifecycleDetailBreakdownComponent

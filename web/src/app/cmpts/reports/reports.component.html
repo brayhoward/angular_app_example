@@ -81,7 +81,7 @@
           <mat-header-cell *matHeaderCellDef>Report Name</mat-header-cell>
 
           <mat-cell *matCellDef="let row">
-            <a>{{row.reportName}}</a>
+            <a [routerLink]="[row.id]">{{row.reportName}}</a>
           </mat-cell>
         </ng-container>
 
