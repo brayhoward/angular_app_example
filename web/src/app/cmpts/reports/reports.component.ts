@@ -16,7 +16,7 @@ export class ReportsComponent {
   availableRows: number[] = [];
   displayedColumns: String[] = ['engineModel', 'name', 'contactName', 'company', 'date', 'edit'];
   masterSelected: boolean = false;
-  dataPool: any[]
+  dataPool: Report[]
   readonly menuItems: any[] = [
     { "key": "1", "val": "Edit" },
     { "key": "2", "val": "Duplicate" },
@@ -126,7 +126,7 @@ const ELEMENT_DATA = [
     name:"L7044GSI Report Forecast #1",
     contactName:"Jay Williams",
     company:"ACME Corporation",
-    includedFuel: false,
+    includeFuel: false,
     commissioningParts: false,
     spareParts: true,
     tools: false,
@@ -144,7 +144,7 @@ const ELEMENT_DATA = [
     name:"L7044GSI Report Forecast #1",
     contactName:"Tim Williams",
     company:"Cinco",
-    includedFuel: false,
+    includeFuel: false,
     commissioningParts: false,
     spareParts: true,
     tools: false,
@@ -162,7 +162,7 @@ const ELEMENT_DATA = [
     name:"L7044GSI Report Forecast #1",
     contactName:"James Williams",
     company:"Globo Chem",
-    includedFuel: false,
+    includeFuel: false,
     commissioningParts: false,
     spareParts: true,
     tools: false,
@@ -180,7 +180,7 @@ const ELEMENT_DATA = [
     name:"L7044GSI Report Forecast #1",
     contactName:"Cindy Williams",
     company:"ACME Corporation",
-    includedFuel: false,
+    includeFuel: false,
     commissioningParts: false,
     spareParts: true,
     tools: false,
@@ -198,7 +198,7 @@ const ELEMENT_DATA = [
     name:"L7044GSI Report Forecast #1",
     contactName:"Jay Williams",
     company:"ACME Corporation",
-    includedFuel: false,
+    includeFuel: false,
     commissioningParts: false,
     spareParts: true,
     tools: false,
@@ -216,7 +216,7 @@ const ELEMENT_DATA = [
     name:"L7044GSI Report Forecast #1",
     contactName:"Sam Williams",
     company:"Cinco",
-    includedFuel: false,
+    includeFuel: false,
     commissioningParts: false,
     spareParts: true,
     tools: false,

@@ -5,6 +5,9 @@
 .share a {
   text-decoration: none;
 }
+a.edit {
+  text-decoration: underline;
+}
 </style>
 
 <div class="ReportDetail">
@@ -14,6 +17,13 @@
     <div>
       <span class="heading--page">L7044GSI Report Forecast #1</span><br/>
       <span class="epsilon">Prepared for James Ellis, ACME Corporation</span>
+
+      <a
+        (click)="onEdit(report)"
+        class="u-ml edit"
+      >
+        Edit
+      </a>
     </div>
     <div class="u-p share">
       <a href="#">Share <px-icon icon='px-utl:share' class="u-ml--"></px-icon></a>

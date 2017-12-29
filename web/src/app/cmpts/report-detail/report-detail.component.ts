@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
+
+import { Report, ReportTemplate } from '../../shared-interfaces/report';
+import { ReportFormComponent } from '../report-form/report-form.component';
 
 @Component({
   selector: 'report-detail',
@@ -6,30 +10,66 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./report-detail.component.scss']
 })
 export class ReportDetailComponent implements OnInit {
-  private showLubrication: boolean = true;
-  private showFuel: boolean = true;
-  private showLabor: boolean = true;
-  private selected: String = '';
+  showLubrication: boolean = true;
+  showFuel: boolean = true;
+  showLabor: boolean = true;
+  selected: String = '';
+
+  constructor(
+    private dialog: MatDialog
+  ) { }
 
   ngOnInit() {
   }
 
-  private toggleLubrication = (event) => {
+  onEdit(report: Report = reportMock) {
+    // Open modal with Report Form
+    let dialogRef = this.dialog.open(
+      ReportFormComponent,
+      { data: { edit: true, report } }
+    );
+
+    dialogRef.afterClosed().subscribe(result => {
+      // console.log('The dialog was closed');
+    });
+  }
+
+  toggleLubrication = (event) => {
     // this.showLubrication = event.detail.value;
     this.toggleProperty('showLubrication')(event)
   }
 
-  private toggleFuel = (event) => {
+  toggleFuel = (event) => {
     this.toggleProperty('showFuel')(event)
   }
 
-  private toggleLabor = (event) => {
+  toggleLabor = (event) => {
     this.toggleProperty('showLabor')(event)
   }
 
-  private toggleProperty = (prop) => (event) => {
+  toggleProperty = (prop) => (event) => {
     this[prop] = event.detail.value;
     //TODO: remove console.log
     console.log(prop + ':', this[prop])
   }
 }
+
+
+const reportMock = {
+  id: 6,
+  engineModel: "L7044GSI",
+  name: "L7044GSI Report Forecast #1",
+  contactName: "Sam Williams",
+  company: "Cinco",
+  includeFuel: false,
+  commissioningParts: false,
+  spareParts: true,
+  tools: false,
+  lubeOilChange: true,
+  plannedServiceA: true,
+  plannedServiceB: true,
+  plannedServiceC: true,
+  topEndOverhaul: true,
+  bottomEndOverhaul: true,
+  date: "08-19-2018"
+};
