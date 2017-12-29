@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { MatTableDataSource } from '@angular/material';
 import { MatDialog } from '@angular/material/dialog';
 import { ReportFormComponent } from '../../cmpts/report-form/report-form.component';
+import { Report } from '../../shared-interfaces/report';
 
 @Component({
   selector: 'app-reports',
@@ -13,7 +14,7 @@ export class ReportsComponent {
   dataSource: any;
   selectedRows: number[] = [];
   availableRows: number[] = [];
-  displayedColumns: String[] = ['engine', 'reportName', 'contact', 'company', 'date', 'edit'];
+  displayedColumns: String[] = ['engineModel', 'name', 'contactName', 'company', 'date', 'edit'];
   masterSelected: boolean = false;
   dataPool: any[]
   readonly menuItems: any[] = [
@@ -48,19 +49,24 @@ export class ReportsComponent {
     this.selectedRows = allSelected ? this.availableRows : []
   }
 
-  menuItemSelected({ detail: { value } }, { id }) {
+  onSearchResultsCallback = (searchResults) => {
+    this.dataSource = new MatTableDataSource(searchResults);
+  }
+
+  // Report edit functions //
+  menuItemSelected({ detail: { value } }, row) {
     switch (value) {
       case "Edit":
-        return this.editReportDialog(id);
+        return this.editReport(row);
 
       case "Delete":
-        return this.deleteReport(id);
+        return this.deleteReport(row);
 
       case "Share":
-        return this.shareReport(id);
+        return this.shareReport(row);
 
       case "Duplicate":
-        return this.duplicateReport(id);
+        return this.duplicateReport(row);
 
       default:
         throw `
@@ -70,27 +76,33 @@ export class ReportsComponent {
     }
   }
 
-  onSearchResultsCallback = (searchResults) => {
-    this.dataSource = new MatTableDataSource(searchResults);
+  editReport(report: Report) {
+    // Open modal with Report Form
+    let dialogRef = this.dialog.open(
+      ReportFormComponent,
+      { data: { edit: true, report } }
+    );
+
+    dialogRef.afterClosed().subscribe(result => {
+      // console.log('The dialog was closed');
+    });
   }
 
-  editReportDialog(id) {
-    console.log('editReport', id);
-  }
-
-  deleteReport(id) {
+  deleteReport({ id }) {
     console.log('deleteReport', id);
   }
 
-  shareReport(id) {
+  shareReport({ id }) {
     console.log('shareReport', id);
   }
 
-  duplicateReport(id) {
+  duplicateReport({ id }) {
     console.log('duplicateReport', id);
   }
+  ////////////////////////
 
   onNewReport() {
+    // Open modal with Report Form
     let dialogRef = this.dialog.open(ReportFormComponent);
 
     dialogRef.afterClosed().subscribe(result => {
@@ -110,50 +122,110 @@ export class ReportsComponent {
 const ELEMENT_DATA = [
   {
     id: 1,
-    engine:"L7044GSI",
-    reportName:"L7044GSI Report Forecast #1",
-    contact:"Jay Williams",
+    engineModel:"L7044GSI",
+    name:"L7044GSI Report Forecast #1",
+    contactName:"Jay Williams",
     company:"ACME Corporation",
+    includedFuel: false,
+    commissioningParts: false,
+    spareParts: true,
+    tools: false,
+    lubeOilChange: true,
+    plannedServiceA: true,
+    plannedServiceB: true,
+    plannedServiceC: true,
+    topEndOverhaul: true,
+    bottomEndOverhaul: true,
     date:"08-18-2018"
   },
   {
     id: 2,
-    engine:"L7044GSI",
-    reportName:"L7044GSI Report Forecast #1",
-    contact:"Tim Williams",
+    engineModel:"L7044GSI",
+    name:"L7044GSI Report Forecast #1",
+    contactName:"Tim Williams",
     company:"Cinco",
+    includedFuel: false,
+    commissioningParts: false,
+    spareParts: true,
+    tools: false,
+    lubeOilChange: true,
+    plannedServiceA: true,
+    plannedServiceB: true,
+    plannedServiceC: true,
+    topEndOverhaul: true,
+    bottomEndOverhaul: true,
     date:"08-18-2018"
   },
   {
     id: 3,
-    engine:"L7044GSI",
-    reportName:"L7044GSI Report Forecast #1",
-    contact:"James Williams",
+    engineModel:"L7044GSI",
+    name:"L7044GSI Report Forecast #1",
+    contactName:"James Williams",
     company:"Globo Chem",
+    includedFuel: false,
+    commissioningParts: false,
+    spareParts: true,
+    tools: false,
+    lubeOilChange: true,
+    plannedServiceA: true,
+    plannedServiceB: true,
+    plannedServiceC: true,
+    topEndOverhaul: true,
+    bottomEndOverhaul: true,
     date:"08-12-2018"
   },
   {
     id: 4,
-    engine:"L7044GSI",
-    reportName:"L7044GSI Report Forecast #1",
-    contact:"Cindy Williams",
+    engineModel:"L7044GSI",
+    name:"L7044GSI Report Forecast #1",
+    contactName:"Cindy Williams",
     company:"ACME Corporation",
+    includedFuel: false,
+    commissioningParts: false,
+    spareParts: true,
+    tools: false,
+    lubeOilChange: true,
+    plannedServiceA: true,
+    plannedServiceB: true,
+    plannedServiceC: true,
+    topEndOverhaul: true,
+    bottomEndOverhaul: true,
     date:"08-18-2018"
   },
   {
     id: 5,
-    engine:"L7044GSI",
-    reportName:"L7044GSI Report Forecast #1",
-    contact:"Jay Williams",
+    engineModel:"L7044GSI",
+    name:"L7044GSI Report Forecast #1",
+    contactName:"Jay Williams",
     company:"ACME Corporation",
+    includedFuel: false,
+    commissioningParts: false,
+    spareParts: true,
+    tools: false,
+    lubeOilChange: true,
+    plannedServiceA: true,
+    plannedServiceB: true,
+    plannedServiceC: true,
+    topEndOverhaul: true,
+    bottomEndOverhaul: true,
     date:"08-12-2018"
   },
   {
     id: 6,
-    engine:"L7044GSI",
-    reportName:"L7044GSI Report Forecast #1",
-    contact:"Sam Williams",
+    engineModel:"L7044GSI",
+    name:"L7044GSI Report Forecast #1",
+    contactName:"Sam Williams",
     company:"Cinco",
+    includedFuel: false,
+    commissioningParts: false,
+    spareParts: true,
+    tools: false,
+    lubeOilChange: true,
+    plannedServiceA: true,
+    plannedServiceB: true,
+    plannedServiceC: true,
+    topEndOverhaul: true,
+    bottomEndOverhaul: true,
     date:"08-19-2018"
   }
 ]

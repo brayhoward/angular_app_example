@@ -10,6 +10,7 @@ import { Report } from '../../shared-interfaces/report';
 })
 export class ReportFormTwoComponent implements OnInit {
   report: Report;
+  edit: boolean;
 
   constructor(
     public dialogRef: MatDialogRef<ReportFormTwoComponent>,
@@ -19,7 +20,10 @@ export class ReportFormTwoComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.report = this.data.report;
+    const { report, edit } = this.data;
+
+    this.report = report;
+    this.edit = edit;
   }
 
   onSubmit(report) {

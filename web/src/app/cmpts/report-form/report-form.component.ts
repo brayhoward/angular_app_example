@@ -1,7 +1,7 @@
 import { Component, OnInit, Inject, Input } from '@angular/core';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { ReportFormTwoComponent } from '../report-form-two/report-form-two.component';
-import { Report } from '../../shared-interfaces/report';
+import { Report, ReportTemplate } from '../../shared-interfaces/report';
 
 @Component({
   selector: 'app-report-form',
@@ -13,7 +13,7 @@ export class ReportFormComponent implements OnInit {
   report?: Report;
 
   @Input()
-  heading?: String;
+  edit?: String;
 
   constructor(
     public dialogRef: MatDialogRef<ReportFormComponent>,
@@ -23,23 +23,29 @@ export class ReportFormComponent implements OnInit {
 
   ngOnInit() {
     // defaults
-    const { report = {}, heading = "New Report" } = this;
+    const {
+      report = new ReportTemplate(),
+      edit = false
+    } = this;
+
     const data = this.data || {};
 
-    // Pass a heading key value in the data obj
-    // or via heading property in the template to override default
-    this.heading = data.heading || heading;
+    // Pass a edit key value in the data obj
+    // or via edit property in the template to override default
+    this.edit = data.edit || edit;
 
     // Pass the report in the data obj
     // or via report property in the template.
     this.report = data.report || report;
   }
 
-  onSubmit(report: Report = {}) {
-    let dialogRef = this.dialog.open(
+  onSubmit(report: Report) {
+    const { dialog, edit } = this;
+
+    let dialogRef = dialog.open(
       ReportFormTwoComponent,
       {
-        data: { report }
+        data: { report, edit }
       }
     );
 

@@ -29,7 +29,7 @@
 </style>
 
 <div class="Reports">
-  <div class="spine flex flex--row flex--justify u-p++">
+  <div class="spine flex flex--report flex--justify u-p++">
     <div>
       <span class="heading--page">Reports</span>
       <button (click)="onNewReport()" class="btn btn--large btn--call-to-action u-ml">New Report</button>
@@ -46,9 +46,9 @@
   <div class="layout u-p">
     <div class="layout__item">
       <mat-table [dataSource]="dataSource">
-        <ng-container matColumnDef="engine">
+        <ng-container matColumnDef="engineModel">
           <mat-header-cell *matHeaderCellDef>
-            <div class="flex flex--row flex--left flex--middle">
+            <div class="flex flex--report flex--left flex--middle">
               <mat-checkbox
                 class="u-m"
                 (change)="$event ? toggleMaster() : null"
@@ -62,13 +62,13 @@
             </div>
           </mat-header-cell>
 
-          <mat-cell *matCellDef="let row">
-            <div class="flex flex--row flex--left flex--middle">
+          <mat-cell *matCellDef="let report">
+            <div class="flex flex--report flex--left flex--middle">
               <mat-checkbox
                 class="u-m"
                 (click)="$event.stopPropagation()"
-                (change)="$event ? toggleRow(row) : null"
-                [checked]="isSelected(row)"
+                (change)="$event ? toggleRow(report) : null"
+                [checked]="isSelected(report)"
               >
               </mat-checkbox>
 
@@ -77,48 +77,48 @@
           </mat-cell>
         </ng-container>
 
-        <ng-container matColumnDef="reportName">
+        <ng-container matColumnDef="name">
           <mat-header-cell *matHeaderCellDef>Report Name</mat-header-cell>
 
-          <mat-cell *matCellDef="let row">
-            <a [routerLink]="[row.id]">{{row.reportName}}</a>
+          <mat-cell *matCellDef="let report">
+            <a [routerLink]="[report.id]">{{report.name}}</a>
           </mat-cell>
         </ng-container>
 
-        <ng-container matColumnDef="contact">
+        <ng-container matColumnDef="contactName">
           <mat-header-cell *matHeaderCellDef>Contact</mat-header-cell>
 
-          <mat-cell *matCellDef="let row">
-            {{row.contact}}
+          <mat-cell *matCellDef="let report">
+            {{report.contactName}}
           </mat-cell>
         </ng-container>
 
         <ng-container matColumnDef="company">
           <mat-header-cell *matHeaderCellDef>Company</mat-header-cell>
 
-          <mat-cell *matCellDef="let row">
-            {{row.company}}
+          <mat-cell *matCellDef="let report">
+            {{report.company}}
           </mat-cell>
         </ng-container>
 
         <ng-container matColumnDef="date">
           <mat-header-cell *matHeaderCellDef>Date</mat-header-cell>
 
-          <mat-cell *matCellDef="let row">
-            {{row.date}}
+          <mat-cell *matCellDef="let report">
+            {{report.date}}
           </mat-cell>
         </ng-container>
 
         <ng-container matColumnDef="edit">
           <mat-header-cell *matHeaderCellDef></mat-header-cell>
 
-          <mat-cell *matCellDef="let row" class="flex flex--row flex--center flex--middle">
+          <mat-cell *matCellDef="let report" class="flex flex--report flex--center flex--middle">
              <px-dropdown
               icon="px-nav:more"
               [items]="menuItems"
               select-by="val"
               button-style="icon"
-              (selected-changed)="menuItemSelected($event, row)"
+              (selected-changed)="menuItemSelected($event, report)"
             >
             </px-dropdown>
           </mat-cell>
@@ -129,10 +129,10 @@
         <!-- TABLE HEADERS -->
         <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
 
-        <!-- TABLE ROWS -->
+        <!-- TABLE reportS -->
         <mat-row
-          *matRowDef="let row; columns: displayedColumns;"
-          [class.highlight]="isSelected(row)"
+          *matRowDef="let report; columns: displayedColumns;"
+          [class.highlight]="isSelected(report)"
         >
         </mat-row>
       </mat-table>
