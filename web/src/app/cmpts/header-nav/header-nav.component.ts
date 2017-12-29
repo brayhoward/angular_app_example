@@ -1,4 +1,4 @@
-import { Component, QueryList, Input} from '@angular/core';
+import { Component, Input} from '@angular/core';
 
 @Component({
   selector: 'header-nav',

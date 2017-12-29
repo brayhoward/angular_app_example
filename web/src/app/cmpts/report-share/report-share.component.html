@@ -1,3 +1,53 @@
-<p>
-  report-share works!
-</p>
+<style>
+  strong {
+    text-transform: uppercase;
+  }
+</style>
+
+<div class="heading--page text--center u-mb">SHARE</div>
+
+<mat-tab-group class="u-m">
+  <mat-tab>
+    <!-- TAB -->
+    <ng-template mat-tab-label>
+        <strong>Excel</strong>
+    </ng-template>
+
+    <!-- TAB CONTENT -->
+    <p class="u-m text--center">Download this report data in Microsoft Excel format.</p>
+
+    <div class="flex flex--row flex--center flex--bottom">
+      <call-to-action (click)="onDownloadExcel()" class="u-m">Dowload Excel</call-to-action>
+    </div>
+  </mat-tab>
+
+  <mat-tab>
+    <!-- TAB -->
+    <ng-template mat-tab-label>
+        <strong>PDF</strong>
+    </ng-template>
+
+    <!-- TAB CONTENT -->
+    <p class="u-m text--center">Download this data in Adobe PDF format.</p>
+
+    <div class="flex flex--row flex--center flex--bottom">
+      <call-to-action (click)="onDownloadPDF()" class="u-m">Dowload PDF</call-to-action>
+    </div>
+  </mat-tab>
+
+  <mat-tab>
+    <!-- TAB -->
+    <ng-template mat-tab-label>
+        <strong>Web</strong>
+    </ng-template>
+
+    <!-- TAB CONTENT -->
+    <p class="u-m text--center">Share this report with others via this URL <br> (Requires GE SSO)</p>
+
+    <input class="text-input input--regular u-l" type="text" readonly [value]="reportUrl">
+
+    <div class="flex flex--row flex--center flex--bottom">
+      <call-to-action (click)="onCopy()" class="u-m">Copy Link</call-to-action>
+    </div>
+  </mat-tab>
+</mat-tab-group>
