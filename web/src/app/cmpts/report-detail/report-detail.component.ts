@@ -3,6 +3,7 @@ import { MatDialog } from '@angular/material/dialog';
 
 import { Report, ReportTemplate } from '../../shared-interfaces/report';
 import { ReportFormComponent } from '../report-form/report-form.component';
+import { ReportShareComponent } from '../report-share/report-share.component';
 
 @Component({
   selector: 'report-detail',
@@ -32,6 +33,13 @@ export class ReportDetailComponent implements OnInit {
     dialogRef.afterClosed().subscribe(result => {
       // console.log('The dialog was closed');
     });
+  }
+
+  onShare(report: Report = reportMock) {
+    this.dialog.open(
+      ReportShareComponent,
+      { data: { report } }
+    );
   }
 
   toggleLubrication = (event) => {
