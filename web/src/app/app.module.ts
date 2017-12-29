@@ -69,7 +69,8 @@ import { ReportFormTwoComponent } from './cmpts/report-form-two/report-form-two.
   // within a Material Angular Dialog HERE in entryComponents
   entryComponents: [
     EngineLifecycleDetailBreakdownComponent,
-    ReportFormComponent
+    ReportFormComponent,
+    ReportFormTwoComponent
   ],
   imports: [
     CommonModule,

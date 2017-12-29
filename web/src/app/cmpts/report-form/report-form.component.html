@@ -1,7 +1,7 @@
 
 <span class="heading--page">{{report.heading}}</span>
 
-<form (ngSubmit)="onSubmit()" #reportForm="ngForm">
+<form #reportForm="ngForm" (ngSubmit)="onSubmit(report)">
   <div class="u-m">
     <label for="engine-models" class="label">Engine Model</label>
     <select id="engine-models" name="engines" [(ngModel)]="report.heading">

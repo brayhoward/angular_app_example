@@ -23,7 +23,7 @@ export class ReportFormComponent implements OnInit {
     this.report = { ...defaults, ...this.data.report };
   }
 
-  onContinue(report = {}) {
+  onSubmit(report = {}) {
     let dialogRef = this.dialog.open(
       ReportFormTwoComponent,
       {
