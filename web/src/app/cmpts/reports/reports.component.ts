@@ -90,16 +90,11 @@ export class ReportsComponent {
     console.log('duplicateReport', id);
   }
 
-  onNewReport(report = {}) {
-    let dialogRef = this.dialog.open(
-      ReportFormComponent,
-      {
-        data: { report }
-      }
-    );
+  onNewReport() {
+    let dialogRef = this.dialog.open(ReportFormComponent);
 
     dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed');
+      // console.log('The dialog was closed');
     });
   }
 

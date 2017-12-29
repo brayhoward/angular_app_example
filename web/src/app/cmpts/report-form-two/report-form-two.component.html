@@ -1,3 +1,68 @@
-<p>
-  report-form-two works!
-</p>
+<style>
+  form {
+    min-width: 16em;
+  }
+</style>
+
+<span class="heading--page">Include in Report</span>
+
+<form #reportForm="ngForm" (ngSubmit)="onSubmit(report)">
+
+  <div class="u-m">
+    <input id="fuel" type="checkbox" name="includeFuel" [(ngModel)]="report.includeFuel">
+    <label class="label--inline" for="fuel">Fuel</label>
+  </div>
+
+  <div class="u-m">
+    <input id="com-parts" type="checkbox" name="commissioningParts" [(ngModel)]="report.commissioningParts">
+    <label class="label--inline" for="com-parts">Commissioning Parts</label>
+  </div>
+
+  <div class="u-m">
+    <input id="spar-parts" type="checkbox" name="spareParts" [(ngModel)]="report.spareParts">
+    <label class="label--inline" for="spar-parts">Spare Parts</label>
+  </div>
+
+  <div class="u-m">
+    <input id="tools" type="checkbox" name="tools" [(ngModel)]="report.tools">
+    <label class="label--inline" for="tools">Tools</label>
+  </div>
+
+  <div class="u-m">
+    <input id="lube" type="checkbox" name="lubeOilChange" [(ngModel)]="report.lubeOilChange">
+    <label class="label--inline" for="lube">Lube Oil Change</label>
+  </div>
+
+  <div class="u-m">
+    <input id="service-a" type="checkbox" name="plannedServiceA" [(ngModel)]="report.plannedServiceA">
+    <label class="label--inline" for="service-a">Planned Service A</label>
+  </div>
+
+  <div class="u-m">
+    <input id="service-b" type="checkbox" name="plannedServiceB" [(ngModel)]="report.plannedServiceB">
+    <label class="label--inline" for="service-b">Planned Service B</label>
+  </div>
+
+  <div class="u-m">
+    <input id="service-c" type="checkbox" name="plannedServiceC" [(ngModel)]="report.plannedServiceC">
+    <label class="label--inline" for="service-c">Planned Serve C</label>
+  </div>
+
+  <div class="u-m">
+    <input id="top-end" type="checkbox" name="plannedServiceC" [(ngModel)]="report.topEndOverhaul">
+    <label class="label--inline" for="top-end">Top End Overhaul</label>
+  </div>
+
+  <div class="u-m">
+    <input id="bottom-end" type="checkbox" name="plannedServiceC" [(ngModel)]="report.bottomEndOverhaul">
+    <label class="label--inline" for="bottem-end">Bottom End Overhaul</label>
+  </div>
+
+  <button
+      type="submit"
+      class="btn btn--call-to-action u-m"
+      [disabled]="!reportForm.form.valid"
+    >
+      Generate Report
+    </button>
+</form>

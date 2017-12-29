@@ -1,13 +1,19 @@
 
-<span class="heading--page">{{report.heading}}</span>
+<span class="heading--page u-m">{{heading}}</span>
 
 <form #reportForm="ngForm" (ngSubmit)="onSubmit(report)">
   <div class="u-m">
     <label for="engine-models" class="label">Engine Model</label>
-    <select id="engine-models" name="engines" [(ngModel)]="report.heading">
-      <option>L7044GSI</option>
-      <option>L8044GSI</option>
-      <option>L9044GSI</option>
+    <select id="engine-models" name="engines" [(ngModel)]="report.engineModel">
+      <option value="L7044GSI" selected>
+        L7044GSI
+      </option>
+      <option value="L8044GSI">
+        L8044GSI
+      </option>
+      <option value="L9044GSI">
+        L9044GSI
+      </option>
     </select>
   </div>
 

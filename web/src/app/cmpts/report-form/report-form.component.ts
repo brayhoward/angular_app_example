@@ -1,4 +1,4 @@
-import { Component, OnInit, Inject } from '@angular/core';
+import { Component, OnInit, Inject, Input } from '@angular/core';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { ReportFormTwoComponent } from '../report-form-two/report-form-two.component';
 import { Report } from '../../shared-interfaces/report';
@@ -9,7 +9,11 @@ import { Report } from '../../shared-interfaces/report';
   styleUrls: ['./report-form.component.scss']
 })
 export class ReportFormComponent implements OnInit {
-  report?: Report = {};
+  @Input()
+  report?: Report;
+
+  @Input()
+  heading?: String;
 
   constructor(
     public dialogRef: MatDialogRef<ReportFormComponent>,
@@ -18,21 +22,29 @@ export class ReportFormComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    const defaults = { heading: 'New Report' };
+    // defaults
+    const { report = {}, heading = "New Report" } = this;
+    const data = this.data || {};
 
-    this.report = { ...defaults, ...this.data.report };
+    // Pass a heading key value in the data obj
+    // or via heading property in the template to override default
+    this.heading = data.heading || heading;
+
+    // Pass the report in the data obj
+    // or via report property in the template.
+    this.report = data.report || report;
   }
 
-  onSubmit(report = {}) {
+  onSubmit(report: Report = {}) {
     let dialogRef = this.dialog.open(
       ReportFormTwoComponent,
       {
-        data: { ...this.report }
+        data: { report }
       }
     );
 
     dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed');
+      // console.log('The dialog was closed');
     });
   }
 
