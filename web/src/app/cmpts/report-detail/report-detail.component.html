@@ -3,7 +3,10 @@
   text-transform: uppercase;
 }
 .share a {
-  text-decoration: none;
+  font-size: .9em;
+}
+px-icon[icon="px-utl:share"]{
+  padding-bottom: 5px;
 }
 a.edit {
   text-decoration: underline;
@@ -18,15 +21,15 @@ a.edit {
       <span class="heading--page">L7044GSI Report Forecast #1</span><br/>
       <span class="epsilon">Prepared for James Ellis, ACME Corporation</span>
 
-      <a
-        (click)="onEdit(report)"
-        class="u-ml edit"
-      >
+      <a (click)="onEdit(report)" class="u-ml edit">
         Edit
       </a>
     </div>
-    <div class="u-p share">
-      <a href="#">Share <px-icon icon='px-utl:share' class="u-ml--"></px-icon></a>
+
+    <div class="u-p share bold">
+      <a click="onShare(report)"  class="flex flex--row flex--left flex--bottom">
+        <span class="share">Share</span><px-icon icon="px-utl:share" class="u-ml--" size="36px"></px-icon>
+      </a>
     </div>
   </div>
 
