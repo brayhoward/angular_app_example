@@ -152,7 +152,7 @@ $inuit-enable-validation-states : true;
 }
 
 // Use predix styles for the auto generated angular form classes to cut down on template logic.
-.text-input {
+.text-input, select {
   &.ng-touched.ng-invalid {
     @extend .mad-input;
   }

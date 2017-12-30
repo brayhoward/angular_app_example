@@ -53,12 +53,4 @@ export class ReportFormComponent implements OnInit {
       // console.log('The dialog was closed');
     });
   }
-
-  // TODO: Remove after done developing
-  jsonify = node => JSON.stringify(node);
-
-  log = (node, name = 'node') => {
-    console.log(name, 'LOGGED BELLOW');
-    console.log(node);
-  }
 }

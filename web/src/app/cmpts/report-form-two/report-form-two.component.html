@@ -58,11 +58,11 @@
     <label class="label--inline" for="bottem-end">Bottom End Overhaul</label>
   </div>
 
-  <button
-      type="submit"
-      class="btn btn--call-to-action u-m"
-      [disabled]="!reportForm.form.valid"
-    >
-      {{edit ? 'Updatae' : 'Generate'}} Report
-    </button>
+  <call-to-action
+    type="submit"
+    class="u-m"
+    [disabled]="!reportForm.form.valid"
+  >
+    {{edit ? 'Updatae' : 'Generate'}} Report
+  </call-to-action>
 </form>

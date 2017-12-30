@@ -715,7 +715,7 @@ a {
 }
 
 #header-value {
-  color: var(--royal-blue);
+  color: var(--royal-blue, #007acc);
   font-weight: bold;
   margin-left: .5em;
 }
