@@ -38,7 +38,11 @@
   box-shadow: 0 3px 3px rgba(0,0,0,0.10), 0 3px 3px rgba(0,0,0,0.20);
 }
 .bottom-shadow {
-  box-shadow: 0 3px 3px rgba(0,0,0,0.10), 0 3px 3px rgba(0,0,0,0.20);
+  box-shadow: 0 3px -3px rgba(0,0,0,0.10), 0 3px -3px rgba(0,0,0,0.20);
+}
+
+.top-shadow {
+  box-shadow: 0 -6px 10px -3px rgba(0, 0, 0, 0.1), 0 -5px 10px -7px rgba(0, 0, 0, 0.2);
 }
 
 .txt-right { text-align: right; }

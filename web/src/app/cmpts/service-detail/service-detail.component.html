@@ -6,13 +6,15 @@
   .mat-column-description { flex-basis: 20%; }
   .mat-column-number { flex-basis: 20%; }
   .mat-column-more { flex-basis: 1%; }
-  .parts-total-container {
+
+  .mat-column-laborDescription { flex-basis: 69%; }
+  .total-container {
     padding: 0 13% 0 1.7em ;
-    height: 6em;
+    height: 5em;
   }
+  .top-shadow { margin-top: 3em; }
 </style>
 
-<!-- Parts Table -->
 <div class="heading--page u-m">{{service.name}}</div>
 
 <div class="u-ml u-mr u-mb total">
@@ -23,18 +25,18 @@
   </div>
 </div>
 
+<!-- PARTS TABLE -->
 <div class="heading--section u-m">Parts</div>
+
 <mat-table [dataSource]="partsDataSource">
   <!-- Hours Column -->
   <ng-container matColumnDef="description">
     <mat-header-cell *matHeaderCellDef>
-      <div class="description">
-        Description
-      </div>
+      Description
     </mat-header-cell>
 
     <mat-cell *matCellDef="let part">
-      <div class="description">{{part.description}}</div>
+      <div>{{part.description}}</div>
     </mat-cell>
   </ng-container>
 
@@ -80,7 +82,7 @@
           [items]="menuItems"
           select-by="val"
           button-style="icon"
-          (selected-changed)="menuItemSelected($event, part)"
+          (selected-changed)="partMenuItemSelected($event, part)"
         >
         </px-dropdown>
       </div>
@@ -89,20 +91,20 @@
 
   <!-- TABLE HEADERS -->
   <mat-header-row
-    *matHeaderRowDef="displayedColumns"
+    *matHeaderRowDef="displayedPartsColumns"
   >
   </mat-header-row>
 
   <!-- TABLE ROWS -->
   <mat-row
-    *matRowDef="let row; columns: displayedColumns;"
-    (click)="onClick(row)"
-    [class.highlight]="isSelected(row)"
+    *matRowDef="let row; columns: displayedPartsColumns;"
+    (click)="onPartClick(row)"
+    [class.highlight]="isPartSelected(row)"
   >
   </mat-row>
 </mat-table>
 
-<div class="parts-total-container flex flex--row flex--space-between flex--top">
+<div class="total-container flex flex--row flex--space-between flex--top">
   <div class="u-mt">
     <a (click)="onAddPart()">+ Add Part</a>
   </div>
@@ -110,4 +112,77 @@
   <div class="flex__item--bottom">
     Total Parts: <strong>{{service.totalParts | currency}}</strong>
   </div>
+</div>
+
+<!-- LABOR TABLE -->
+<div class="labor-table u-m">
+  <div class="heading--section u-m">Labor</div>
+
+  <mat-table [dataSource]="laborDataSource">
+    <ng-container matColumnDef="laborDescription">
+      <mat-header-cell *matHeaderCellDef>
+        Description
+      </mat-header-cell>
+
+      <mat-cell *matCellDef="let labor">
+        {{labor.description}}
+      </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="laborPrice">
+      <mat-header-cell *matHeaderCellDef>
+        <div class="txt-right">
+          Price
+        </div>
+      </mat-header-cell>
+
+      <mat-cell *matCellDef="let labor" class="txt-right">
+        {{labor.price}}
+      </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="more">
+      <mat-header-cell *matHeaderCellDef></mat-header-cell>
+      <mat-cell *matCellDef="let part">
+        <div class="flex flex--row flex--center flex--bottom">
+          <px-dropdown
+            icon="px-nav:more"
+            [items]="menuItems"
+            select-by="val"
+            button-style="icon"
+            (selected-changed)="laborMenuItemSelected($event, part)"
+          >
+          </px-dropdown>
+        </div>
+      </mat-cell>
+    </ng-container>
+
+      <!-- TABLE HEADERS -->
+    <mat-header-row *matHeaderRowDef="displayedLaborColumns"></mat-header-row>
+
+    <!-- TABLE ROWS -->
+    <mat-row
+      *matRowDef="let row; columns: displayedLaborColumns;"
+      (click)="onLaborClick(row)"
+      [class.highlight]="isLaborSelected(row)"
+    >
+    </mat-row>
+  </mat-table>
+
+  <div class="total-container flex flex--row flex--right flex--bottom u-mb">
+    <div>
+      Total Parts: <strong>{{service.totalParts | currency}}</strong>
+    </div>
+  </div>
+</div>
+
+<!-- ACTION BUTTONS -->
+<div class="flex flex--row flex--right flex--middle top-shadow">
+  <call-to-action [secondary]="true">
+    Cancel
+  </call-to-action>
+
+  <call-to-action>
+    Save
+  </call-to-action>
 </div>

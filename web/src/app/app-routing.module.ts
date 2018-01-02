@@ -10,9 +10,9 @@ import { ServiceDetailComponent } from './cmpts/service-detail/service-detail.co
 
 const routes: Routes = [
   // Default route
-  // { path: '', redirectTo: '/dashboard', pathMatch: 'full' },
+  { path: '', redirectTo: '/dashboard', pathMatch: 'full' },
   // TODO: Remove before production
-  { path: '', redirectTo: '/under-construction', pathMatch: 'full' },
+  // { path: '', redirectTo: '/under-construction', pathMatch: 'full' },
 
   // Main routes
   { path: 'dashboard', component: DashboardComponent },

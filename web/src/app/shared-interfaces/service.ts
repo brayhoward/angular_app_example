@@ -17,7 +17,8 @@ export interface Part {
 }
 export interface Labor {
   description: String,
-  price: number
+  price: number,
+  id: number | String
 }
 
 export default Service;

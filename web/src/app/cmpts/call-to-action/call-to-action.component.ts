@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { style } from '@angular/animations';
 
 @Component({
@@ -7,8 +7,9 @@ import { style } from '@angular/animations';
     <button
       [name]="name"
       [type]="type"
-      class="btn btn--call-to-action u-m flex flex--row flex--center flex--middle"
+      class="btn u-m flex flex--row flex--center flex--middle"
       [ngStyle]="{'font-size': (large ? '1.1em' : 'inherit')}"
+      [class.btn--call-to-action]="isPrimary"
 
       [disabled]="disabled"
       (click)="onClick($event)"
@@ -18,7 +19,12 @@ import { style } from '@angular/animations';
     </button>
     `
 })
-export class CallToActionComponent {
+export class CallToActionComponent implements OnInit {
+  isPrimary: boolean = true;
+
+  @Input()
+  secondary: boolean = false;
+
   @Input()
   name?: String = '';
 
@@ -33,4 +39,8 @@ export class CallToActionComponent {
 
   @Input('click')
   onClick?: ($event) => void | any = (e) => { console.log('Call to action Clicked!', e) };
+
+  ngOnInit() {
+    this.isPrimary = !(this.secondary);
+  }
 }
