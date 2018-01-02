@@ -1,3 +1,60 @@
-<p>
-  engine-lifecycle-detail-breakdown works!
-</p>
+<style>
+  mat-header-cell { text-transform: uppercase; }
+</style>
+
+ <!-- Parts Table -->
+ <span class="heading--section">Parts</span>
+ <mat-table [dataSource]="partsDataSource">
+    <!-- Hours Column -->
+    <ng-container matColumnDef="description">
+      <mat-header-cell *matHeaderCellDef> Description </mat-header-cell>
+      <mat-cell *matCellDef="let part">
+        {{part.description}}
+      </mat-cell>
+    </ng-container>
+
+    <!-- Part Number Column -->
+    <ng-container matColumnDef="number">
+      <mat-header-cell *matHeaderCellDef> Part # </mat-header-cell>
+      <mat-cell *matCellDef="let part">
+        {{part.number}}
+      </mat-cell>
+    </ng-container>
+
+    <!-- Price Column -->
+   <ng-container matColumnDef="price">
+      <mat-header-cell *matHeaderCellDef> Price </mat-header-cell>
+      <mat-cell *matCellDef="let part">
+        {{part.price}}
+      </mat-cell>
+    </ng-container>
+
+    <!-- Quantity Column -->
+    <ng-container matColumnDef="quantity">
+      <mat-header-cell *matHeaderCellDef> Quantity </mat-header-cell>
+      <mat-cell *matCellDef="let part">
+        {{part.quantity}}
+      </mat-cell>
+    </ng-container>
+
+    <!-- Extended Price Column -->
+    <ng-container matColumnDef="extendedPrice">
+      <mat-header-cell *matHeaderCellDef> Extended Price </mat-header-cell>
+      <mat-cell *matCellDef="let part">
+        {{part.extendedPrice}}
+      </mat-cell>
+    </ng-container>
+
+    <!-- TABLE HEADERS -->
+    <mat-header-row
+      *matHeaderRowDef="displayedColumns"
+    >
+    </mat-header-row>
+
+    <!-- TABLE ROWS -->
+    <mat-row
+      *matRowDef="let row; columns: displayedColumns;"
+      (click)="onClick(row)"
+    >
+    </mat-row>
+  </mat-table>

@@ -22,10 +22,10 @@ import { EngineLifecycleDetailBreakdownComponent } from '../engine-lifecycle-det
   ]
 })
 export class LifecycleTableComponent {
-  displayedColumns: Array<String> = [
+  displayedColumns = [
     'hours', 'parts', 'labor', 'fuel', 'lubrication', 'total'
   ];
-  displayedDetailColumns: Array<String> = [
+  displayedDetailColumns = [
     'service', 'serviceParts', 'serviceLabor', 'serviceFuel', 'serviceLube', 'serviceTotal'
   ];
   selectedRows: Array<number> = [];
@@ -41,7 +41,6 @@ export class LifecycleTableComponent {
 
   onViewServiceDetail(meta): void {
     let dialogRef = this.dialog.open(EngineLifecycleDetailBreakdownComponent, {
-      width: '90%',
       data: { ...meta }
     });
 
