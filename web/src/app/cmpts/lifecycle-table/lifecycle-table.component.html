@@ -22,10 +22,7 @@
     <ng-container matColumnDef="hours">
       <mat-header-cell *matHeaderCellDef> Hours </mat-header-cell>
       <mat-cell *matCellDef="let row">
-         <px-icon
-          [icon]="isExpanded(row) ? 'px-utl:remove' : 'px-utl:add'"
-          (click)="toggleRow(row)"
-        >
+         <px-icon [icon]="isExpanded(row) ? 'px-utl:remove' : 'px-utl:add'">
         </px-icon>
 
         <a class="u-ml">{{row.hours | number}}</a>
@@ -77,7 +74,7 @@
     <!-- Service Column -->
     <ng-container matColumnDef="service">
       <mat-cell *matCellDef="let detailRow">
-        <a (click)="openDetailsDialog(detailRow.meta)">{{detailRow.service}}</a>
+        <a (click)="onViewServiceDetail(detailRow.meta)">{{detailRow.service}}</a>
       </mat-cell>
     </ng-container>
 
@@ -125,6 +122,7 @@
     <!-- TABLE ROWS -->
     <mat-row
       *matRowDef="let row; columns: displayedColumns;"
+      (click)="toggleRow(row)"
       [class.highlight]="isExpanded(row)"
     >
     </mat-row>

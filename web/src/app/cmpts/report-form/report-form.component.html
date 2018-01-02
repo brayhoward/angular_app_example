@@ -4,7 +4,7 @@
 <form #reportForm="ngForm" (ngSubmit)="onSubmit(report)">
   <div class="u-m">
     <label for="engine-models" class="label">Engine Model</label>
-    <select id="engine-models" name="engines" [(ngModel)]="report.engineModel">
+    <select id="engine-models" name="engines" [(ngModel)]="report.engineModel" required>
       <option value="L7044GSI" selected>
         L7044GSI
       </option>

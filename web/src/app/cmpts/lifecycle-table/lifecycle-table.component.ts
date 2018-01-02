@@ -39,7 +39,7 @@ export class LifecycleTableComponent {
     this.dataSource = new MatTableDataSource<Element>(formatedData)
   }
 
-  openDetailsDialog(meta): void {
+  onViewServiceDetail(meta): void {
     let dialogRef = this.dialog.open(EngineLifecycleDetailBreakdownComponent, {
       width: '90%',
       data: { ...meta }
@@ -190,7 +190,7 @@ const ELEMENT_DATA = [
 // move details to it own item in the array with the same id directly after its parent array item
 // example:
 // [{ id: 1, hours: 1000, parts: null, details: [...] }] ->
-// [{ id: 1, hours: 1000, parts: null, details: [...] }, { id: 1, details: [...] }]
+// [{ id: 1, hours: 1000, parts: null, details: [...] }, { id: 1, detailRow: true, ... }]
 function formatData(data) {
   return flatten (
     data.map(row => [row, ...row.details.map( detailRow => ({ detailRow: true, id: row.id, ...detailRow }) )])
