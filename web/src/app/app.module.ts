@@ -77,7 +77,8 @@ import { PartFormComponent } from './cmpts/part-form/part-form.component';
     ServiceDetailComponent,
     ReportFormComponent,
     ReportFormTwoComponent,
-    ReportShareComponent
+    ReportShareComponent,
+    PartFormComponent
   ],
   imports: [
     CommonModule,

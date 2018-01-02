@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { Part } from '../../shared-interfaces/service';
 
 @Component({
   selector: 'part-form',
@@ -6,10 +8,17 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./part-form.component.scss']
 })
 export class PartFormComponent implements OnInit {
+  part: Part;
+  edit: boolean;
 
-  constructor() { }
+  constructor(
+    public dialogRef: MatDialogRef<PartFormComponent>,
+    @Inject(MAT_DIALOG_DATA) public data
+  ) { }
 
   ngOnInit() {
+    const { part = {}, edit = false } = this.data;
+    this.part = part;
+    this.edit = edit;
   }
-
 }
