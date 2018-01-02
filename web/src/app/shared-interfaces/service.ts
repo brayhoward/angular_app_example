@@ -2,6 +2,8 @@
 export interface Service {
   name: String,
   total: number,
+  totalParts: number,
+  totalLabor: number,
   parts: Part[],
   labor: Labor[]
 }

@@ -2,6 +2,7 @@ import { Component, Inject } from '@angular/core';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { MatTableDataSource } from '@angular/material';
 import { PartFormComponent } from '../part-form/part-form.component';
+import Service from '../../shared-interfaces/service';
 
 @Component({
   selector: 'service-detail',
@@ -73,29 +74,11 @@ export class ServiceDetailComponent {
   }
 }
 
-// Data models
-interface Service {
-  name: String,
-  total: number,
-  parts: Part[],
-  labor: Labor[]
-}
-interface Part {
-  description: String,
-  number: String,
-  id: number | String
-  price: number,
-  quantity: number,
-  extendedPrice: number
-}
-interface Labor {
-  description: String,
-  price: number
-}
-
 const SERVICE_DATA: Service = {
   name: 'Planned Service A',
   total: 1235.75,
+  totalParts: 635.25,
+  totalLabor: 600.60,
   parts: [
     {
       description: 'Kit, Admission Valve Repair',

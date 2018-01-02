@@ -43,3 +43,8 @@
 
 .txt-right { text-align: right; }
 .txt-center { text-align: center; }
+
+// Flex helpers to suppliment Predix helpers found here -> https://www.predix-ui.com/#/css/layout/px-flexbox-design
+.flex--space-between {
+  justify-content: space-between
+}
