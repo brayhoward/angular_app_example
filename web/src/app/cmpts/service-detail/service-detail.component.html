@@ -1,9 +1,22 @@
 <style>
   mat-header-cell { text-transform: uppercase; }
+  .heading--page { margin-bottom: .1em !important;}
+  .heading--page, strong { font-size: 1.5em; }
+  .total div:first-of-type { font-size: .8em; }
 </style>
 
  <!-- Parts Table -->
- <span class="heading--section">Parts</span>
+  <div class="heading--page u-m">{{service.name}}</div>
+
+  <div class="u-ml u-mr u-mb total">
+    <div>Total Service Interval Cost</div>
+
+    <div>
+      <strong>{{service.total | currency}}</strong>
+    </div>
+  </div>
+
+  <div class="heading--section u-m">Parts</div>
  <mat-table [dataSource]="partsDataSource">
     <!-- Hours Column -->
     <ng-container matColumnDef="description">
@@ -55,6 +68,7 @@
     <mat-row
       *matRowDef="let row; columns: displayedColumns;"
       (click)="onClick(row)"
+      [class.highlight]="isSelected(row)"
     >
     </mat-row>
   </mat-table>
