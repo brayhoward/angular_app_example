@@ -33,7 +33,7 @@ import { ServiceIntervalsComponent } from './cmpts/service-intervals/service-int
 import { PartsComponent } from './cmpts/parts/parts.component';
 import { LifecycleTableComponent } from './cmpts/lifecycle-table/lifecycle-table.component';
 import { FormatCashComponent } from './cmpts/format-cash/format-cash.component';
-import { EngineLifecycleDetailBreakdownComponent } from './cmpts/engine-lifecycle-detail-breakdown/engine-lifecycle-detail-breakdown.component';
+import { ServiceDetailComponent } from './cmpts/service-detail/service-detail.component';
 import { FilteringSearchInputComponent } from './cmpts/filtering-search-input/filtering-search-input.component';
 import { ReportsRootComponent } from './cmpts/reports-root/reports-root.component';
 import { ReportFormComponent } from './cmpts/report-form/report-form.component';
@@ -61,7 +61,7 @@ import { CallToActionComponent } from './cmpts/call-to-action/call-to-action.com
     PartsComponent,
     FormatCashComponent,
     LifecycleTableComponent,
-    EngineLifecycleDetailBreakdownComponent,
+    ServiceDetailComponent,
     FilteringSearchInputComponent,
     ReportsRootComponent,
     ReportFormComponent,
@@ -72,7 +72,7 @@ import { CallToActionComponent } from './cmpts/call-to-action/call-to-action.com
   // Register any components that need to be opened
   // within a Material Angular Dialog HERE in entryComponents
   entryComponents: [
-    EngineLifecycleDetailBreakdownComponent,
+    ServiceDetailComponent,
     ReportFormComponent,
     ReportFormTwoComponent,
     ReportShareComponent

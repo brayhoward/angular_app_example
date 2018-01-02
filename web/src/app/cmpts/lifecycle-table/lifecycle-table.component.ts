@@ -4,7 +4,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { SelectionModel } from '@angular/cdk/collections';
 import { animate, state, style, transition, trigger } from '@angular/animations';
 import { flatten } from 'lodash';
-import { EngineLifecycleDetailBreakdownComponent } from '../engine-lifecycle-detail-breakdown/engine-lifecycle-detail-breakdown.component';
+import { ServiceDetailComponent } from '../service-detail/service-detail.component';
 
 /**
  * @title Table with selection
@@ -40,7 +40,7 @@ export class LifecycleTableComponent {
   }
 
   onViewServiceDetail(meta): void {
-    let dialogRef = this.dialog.open(EngineLifecycleDetailBreakdownComponent, {
+    let dialogRef = this.dialog.open(ServiceDetailComponent, {
       data: { ...meta }
     });
 

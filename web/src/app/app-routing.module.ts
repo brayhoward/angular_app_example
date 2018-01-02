@@ -5,10 +5,14 @@ import { ReportsComponent } from './cmpts/reports/reports.component';
 import { ReportsRootComponent } from './cmpts/reports-root/reports-root.component';
 import { ReportDetailComponent } from './cmpts/report-detail/report-detail.component';
 import { SettingsComponent } from './cmpts/settings/settings.component';
+import { ServiceDetailComponent } from './cmpts/service-detail/service-detail.component';
+
 
 const routes: Routes = [
   // Default route
-  { path: '', redirectTo: '/dashboard', pathMatch: 'full' },
+  // { path: '', redirectTo: '/dashboard', pathMatch: 'full' },
+  // TODO: Remove before production
+  { path: '', redirectTo: '/under-construction', pathMatch: 'full' },
 
   // Main routes
   { path: 'dashboard', component: DashboardComponent },
@@ -21,6 +25,7 @@ const routes: Routes = [
     ]
   },
   { path: 'settings', component: SettingsComponent },
+  { path: 'under-construction', component: ServiceDetailComponent }
 
 ];
 

@@ -3,18 +3,18 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { MatTableDataSource } from '@angular/material';
 
 @Component({
-  selector: 'engine-lifecycle-detail-breakdown',
-  templateUrl: './engine-lifecycle-detail-breakdown.component.html'
+  selector: 'service-detail',
+  templateUrl: './service-detail.component.html'
 })
-export class EngineLifecycleDetailBreakdownComponent {
+export class ServiceDetailComponent {
   partsDataSource: any;
   laborDataSource: any;
   displayedColumns = ['description', 'number', 'price', 'quantity', 'extendedPrice'];
 
 
   constructor(
-    public dialogRef: MatDialogRef<EngineLifecycleDetailBreakdownComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: any
+    // public dialogRef: MatDialogRef<ServiceDetailComponent>,
+    // @Inject(MAT_DIALOG_DATA) public data: any
   ) {
     const { parts, labor } = SERVICE_DATA;
     this.partsDataSource = new MatTableDataSource(parts);
