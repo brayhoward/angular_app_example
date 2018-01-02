@@ -1,6 +1,7 @@
 import { Component, Inject } from '@angular/core';
-import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { MatTableDataSource } from '@angular/material';
+import { PartFormComponent } from '../part-form/part-form.component';
 
 @Component({
   selector: 'service-detail',
@@ -11,10 +12,15 @@ export class ServiceDetailComponent {
   partsDataSource: any;
   laborDataSource: any;
   selectedRowId: number | String;
-  displayedColumns = ['description', 'number', 'price', 'quantity', 'extendedPrice'];
+  displayedColumns = ['description', 'number', 'price', 'quantity', 'extendedPrice', 'more'];
+  menuItems = [
+    { "key": "1", "val": "Edit" },
+    { "key": "2", "val": "Delete" }
+  ];
 
 
   constructor(
+    private dialog: MatDialog
     // public dialogRef: MatDialogRef<ServiceDetailComponent>,
     // @Inject(MAT_DIALOG_DATA) public data: any
   ) {
@@ -29,6 +35,42 @@ export class ServiceDetailComponent {
   }
 
   isSelected = ({ id }) => this.selectedRowId === id;
+
+  // Report edit functions //
+  menuItemSelected({ detail: { value } }, part) {
+    switch (value) {
+      case "Edit":
+        this.editReport(part);
+        break;
+
+      case "Delete":
+        this.deleteReport(part);
+        break;
+
+      default:
+        throw `
+        The menu item selected failed to find a action match. Check ServiceDetailComponent.menuItems
+        and make sure there's a matching case for each one in ServiceDetailComponent.menuItemSelected() switch statement
+      `;
+    }
+  }
+
+
+  editReport(part) {
+    // Open modal with Report Form
+    let dialogRef = this.dialog.open(
+      PartFormComponent,
+      { data: { edit: true, part } }
+    );
+
+    dialogRef.afterClosed().subscribe(result => {
+      // console.log('The dialog was closed');
+    });
+  }
+
+  deleteReport({ id }) {
+    console.log('deleteReport', id);
+  }
 }
 
 // Data models

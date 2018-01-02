@@ -40,6 +40,7 @@ import { ReportFormComponent } from './cmpts/report-form/report-form.component';
 import { ReportFormTwoComponent } from './cmpts/report-form-two/report-form-two.component';
 import { ReportShareComponent } from './cmpts/report-share/report-share.component';
 import { CallToActionComponent } from './cmpts/call-to-action/call-to-action.component';
+import { PartFormComponent } from './cmpts/part-form/part-form.component';
 
 @NgModule({
   declarations: [
@@ -67,7 +68,8 @@ import { CallToActionComponent } from './cmpts/call-to-action/call-to-action.com
     ReportFormComponent,
     ReportFormTwoComponent,
     ReportShareComponent,
-    CallToActionComponent
+    CallToActionComponent,
+    PartFormComponent
   ],
   // Register any components that need to be opened
   // within a Material Angular Dialog HERE in entryComponents

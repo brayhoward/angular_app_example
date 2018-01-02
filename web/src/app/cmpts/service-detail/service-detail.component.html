@@ -3,6 +3,10 @@
   .heading--page { margin-bottom: .1em !important;}
   .heading--page, strong { font-size: 1.5em; }
   .total div:first-of-type { font-size: .8em; }
+  .mat-column-description { flex-basis: 20%; }
+  .mat-column-number { flex-basis: 20%; }
+  .mat-column-more { flex-basis: 1%; }
+  /* .mat-column-extendedPrice {} */
 </style>
 
  <!-- Parts Table -->
@@ -20,9 +24,14 @@
  <mat-table [dataSource]="partsDataSource">
     <!-- Hours Column -->
     <ng-container matColumnDef="description">
-      <mat-header-cell *matHeaderCellDef> Description </mat-header-cell>
+      <mat-header-cell *matHeaderCellDef>
+        <div class="description">
+          Description
+        </div>
+      </mat-header-cell>
+
       <mat-cell *matCellDef="let part">
-        {{part.description}}
+        <div class="description">{{part.description}}</div>
       </mat-cell>
     </ng-container>
 
@@ -52,9 +61,26 @@
 
     <!-- Extended Price Column -->
     <ng-container matColumnDef="extendedPrice">
-      <mat-header-cell *matHeaderCellDef> Extended Price </mat-header-cell>
-      <mat-cell *matCellDef="let part">
+      <mat-header-cell *matHeaderCellDef class="u-pr txt-right"> Extended Price </mat-header-cell>
+      <mat-cell *matCellDef="let part" class="u-pr txt-right">
         {{part.extendedPrice}}
+      </mat-cell>
+    </ng-container>
+
+       <!-- Extended Price Column -->
+    <ng-container matColumnDef="more">
+      <mat-header-cell *matHeaderCellDef></mat-header-cell>
+      <mat-cell *matCellDef="let part">
+        <div class="flex flex--row flex--center flex--bottom">
+          <px-dropdown
+            icon="px-nav:more"
+            [items]="menuItems"
+            select-by="val"
+            button-style="icon"
+            (selected-changed)="menuItemSelected($event, part)"
+          >
+          </px-dropdown>
+        </div>
       </mat-cell>
     </ng-container>
 
