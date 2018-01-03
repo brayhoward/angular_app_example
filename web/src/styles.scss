@@ -71,6 +71,11 @@ $inuit-enable-box--huge : true;
   --light-blue: #E5F5F9;
   --table-row-highlight: var(--light-blue);
   --actionable: #005c99;
+  --green: $green5;
+  --yellow: #F7E53B;
+  --orange: $orange6;
+  --cyan: $cyan1;
+  --violet: $violet7;
 
   // Predix overrides
   --px-data-table-cell-background-color--selected: $select-light;
@@ -84,35 +89,11 @@ $inuit-enable-box--huge : true;
   --px-validation-error-text-color: #f34336;
   --px-validation-error-background-color: #ffecec;
 
-}
-.report-header {
-    border-bottom: 1px solid $gray1;
-}
-.report-body {
-    background-color: $gray1;
-    .box {
-        background-color: white;
-    }
-}
-.lifecycle-summary {
-    border-bottom: 1px solid $gray1;
-}
-
-.data-header-key {
-    background-color: $gray1;
-    font-size: 12px;
-}
-.swatch {
-    display: inline-block;
-    margin-right: 5px;
-    width: 10px;
-    height: 7px;
-    border: 1px solid $gray5;
-    background-color: black;
-    &.swatch-parts {background-color: $blue5;}
-    &.swatch-labor {background-color: $orange5;}
-    &.swatch-fuel {background-color: $green5;}
-    &.swatch-lube {background-color: $pink5;}
+  // vis-chart overrides
+  --px-vis-series-color-0: var(--orange, orange);
+  --px-vis-series-color-1: var(--cyan, cyan);
+  --px-vis-series-color-3: var(--yellow, yellow);
+  --px-vis-series-color-4: var(--violet, violet);
 }
 
 // Trumps

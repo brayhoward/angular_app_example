@@ -72,7 +72,16 @@
   </div>
 
   <div class="box box--large wide">
-    <img src="../../../assets/img/chart-fpo.png">
+    <!-- px-simplr-area-chart https://www.predix-ui.com/#/elements/vis/px-simple-area-chart:property-seriesColorList -->
+    <px-simple-area-chart
+      width="500"
+      height="250"
+      x-axis-type="linear"
+      [chartData]="chartData"
+      [seriesConfig]="chartConfig"
+      [seriesColorList]="['var(--orange)', 'var(--cyan)', 'var(--yellow)', 'var(--violet)']"
+    >
+    </px-simple-area-chart>
   </div>
 
   <lifecycle-table></lifecycle-table>

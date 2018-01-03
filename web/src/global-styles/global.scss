@@ -132,3 +132,35 @@ a {
 .btn--call-to-action {
   text-transform: uppercase;
 }
+
+
+.report-header {
+    border-bottom: 1px solid $gray1;
+}
+.report-body {
+    background-color: $gray1;
+    .box {
+        background-color: white;
+    }
+}
+.lifecycle-summary {
+    border-bottom: 1px solid $gray1;
+}
+
+.data-header-key {
+    background-color: $gray1;
+    font-size: 12px;
+}
+.swatch {
+  display: inline-block;
+  margin-right: 5px;
+  width: 1.2em;
+  height: .7em;
+  border: 1px solid var(--dark);
+  background-color: black;
+
+  &.swatch-parts {background-color: var(--orange);}
+  &.swatch-labor {background-color: var(--cyan);}
+  &.swatch-fuel {background-color: var(--yellow);}
+  &.swatch-lubrication {background-color: var(--violet);}
+}
