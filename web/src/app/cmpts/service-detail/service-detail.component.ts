@@ -23,9 +23,9 @@ export class ServiceDetailComponent {
 
 
   constructor(
-    private dialog: MatDialog
-    // public dialogRef: MatDialogRef<ServiceDetailComponent>,
-    // @Inject(MAT_DIALOG_DATA) public data: any
+    private dialog: MatDialog,
+    public dialogRef: MatDialogRef<ServiceDetailComponent>,
+    @Inject(MAT_DIALOG_DATA) public data: any
   ) {
     const { parts, labor } = SERVICE_DATA;
     this.partsDataSource = new MatTableDataSource(parts);
@@ -79,6 +79,17 @@ export class ServiceDetailComponent {
     console.log('deleteReport', id);
   }
 
+  onAddPart() {
+    // Open modal with Report Form
+    this.dialog.open(
+      PartFormComponent,
+      { data: {} }
+    )
+    .afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+    });
+  };
+
   laborMenuItemSelected({ detail: { value } }, part) {
     switch (value) {
       case "Edit":
@@ -103,6 +114,13 @@ export class ServiceDetailComponent {
 
   deleteLabor({ id }) {
     console.log(id)
+  }
+
+  onSave() {
+    this.dialogRef.close();
+  }
+  onCancel() {
+    this.dialogRef.close();
   }
 }
 

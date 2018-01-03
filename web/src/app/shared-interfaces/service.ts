@@ -1,6 +1,7 @@
 // Data models
 export interface Service {
   name: String,
+  id?: number | String,
   total: number,
   totalParts: number,
   totalLabor: number,
@@ -10,7 +11,7 @@ export interface Service {
 export interface Part {
   description: String,
   number: String,
-  id: number | String
+  id?: number | String
   price: number,
   quantity: number,
   extendedPrice: number
@@ -18,7 +19,15 @@ export interface Part {
 export interface Labor {
   description: String,
   price: number,
-  id: number | String
+  id?: number | String
 }
+
+// export class PartTemplate implements Part {
+//   description = '';
+//   number = '';
+//   price: number;
+//   quantity: number;
+//   extendedPrice: number;
+// }
 
 export default Service;

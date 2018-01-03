@@ -25,7 +25,8 @@ const routes: Routes = [
     ]
   },
   { path: 'settings', component: SettingsComponent },
-  { path: 'under-construction', component: ServiceDetailComponent }
+  // Place whatever cmpt your working on here for easy access
+  // { path: 'under-construction', component: ServiceDetailComponent }
 
 ];
 

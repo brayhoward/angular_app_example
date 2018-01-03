@@ -1,4 +1,7 @@
 <style>
+  .container {
+    font-size: .7em !important;
+  }
   mat-header-cell { text-transform: uppercase; }
   .heading--page { margin-bottom: .1em !important;}
   .heading--page, strong { font-size: 1.5em; }
@@ -8,139 +11,78 @@
   .mat-column-more { flex-basis: 1%; }
 
   .mat-column-laborDescription { flex-basis: 69%; }
+  .mat-cell, .mat-header-cell { font-size: 1em; }
   .total-container {
     padding: 0 13% 0 1.7em ;
     height: 5em;
   }
-  .top-shadow { margin-top: 3em; }
+  .top-shadow {
+    margin-top: 3em;
+    padding-right: 1em;
+    width: 104.9%;
+    margin-left: -2.5%;
+  }
 </style>
 
-<div class="heading--page u-m">{{service.name}}</div>
+<div class="container">
+  <div class="heading--page u-m">{{service.name}}</div>
 
-<div class="u-ml u-mr u-mb total">
-  <div>Total Service Interval Cost</div>
+  <div class="u-ml u-mr u-mb total">
+    <div>Total Service Interval Cost</div>
 
-  <div>
-    <strong>{{service.total | currency}}</strong>
-  </div>
-</div>
-
-<!-- PARTS TABLE -->
-<div class="heading--section u-m">Parts</div>
-
-<mat-table [dataSource]="partsDataSource">
-  <!-- Hours Column -->
-  <ng-container matColumnDef="description">
-    <mat-header-cell *matHeaderCellDef>
-      Description
-    </mat-header-cell>
-
-    <mat-cell *matCellDef="let part">
-      <div>{{part.description}}</div>
-    </mat-cell>
-  </ng-container>
-
-  <!-- Part Number Column -->
-  <ng-container matColumnDef="number">
-    <mat-header-cell *matHeaderCellDef> Part # </mat-header-cell>
-    <mat-cell *matCellDef="let part">
-      {{part.number}}
-    </mat-cell>
-  </ng-container>
-
-  <!-- Price Column -->
-  <ng-container matColumnDef="price">
-    <mat-header-cell *matHeaderCellDef> Price </mat-header-cell>
-    <mat-cell *matCellDef="let part">
-      {{part.price}}
-    </mat-cell>
-  </ng-container>
-
-  <!-- Quantity Column -->
-  <ng-container matColumnDef="quantity">
-    <mat-header-cell *matHeaderCellDef> Quantity </mat-header-cell>
-    <mat-cell *matCellDef="let part">
-      {{part.quantity}}
-    </mat-cell>
-  </ng-container>
-
-  <!-- Extended Price Column -->
-  <ng-container matColumnDef="extendedPrice">
-    <mat-header-cell *matHeaderCellDef class="u-pr txt-right"> Extended Price </mat-header-cell>
-    <mat-cell *matCellDef="let part" class="u-pr txt-right">
-      {{part.extendedPrice}}
-    </mat-cell>
-  </ng-container>
-
-  <!-- Extended Price Column -->
-  <ng-container matColumnDef="more">
-    <mat-header-cell *matHeaderCellDef></mat-header-cell>
-    <mat-cell *matCellDef="let part">
-      <div class="flex flex--row flex--center flex--bottom">
-        <px-dropdown
-          icon="px-nav:more"
-          [items]="menuItems"
-          select-by="val"
-          button-style="icon"
-          (selected-changed)="partMenuItemSelected($event, part)"
-        >
-        </px-dropdown>
-      </div>
-    </mat-cell>
-  </ng-container>
-
-  <!-- TABLE HEADERS -->
-  <mat-header-row
-    *matHeaderRowDef="displayedPartsColumns"
-  >
-  </mat-header-row>
-
-  <!-- TABLE ROWS -->
-  <mat-row
-    *matRowDef="let row; columns: displayedPartsColumns;"
-    (click)="onPartClick(row)"
-    [class.highlight]="isPartSelected(row)"
-  >
-  </mat-row>
-</mat-table>
-
-<div class="total-container flex flex--row flex--space-between flex--top">
-  <div class="u-mt">
-    <a (click)="onAddPart()">+ Add Part</a>
+    <div>
+      <strong>{{service.total | currency}}</strong>
+    </div>
   </div>
 
-  <div class="flex__item--bottom">
-    Total Parts: <strong>{{service.totalParts | currency}}</strong>
-  </div>
-</div>
+  <!-- PARTS TABLE -->
+  <div class="heading--section u-m">Parts</div>
 
-<!-- LABOR TABLE -->
-<div class="labor-table u-m">
-  <div class="heading--section u-m">Labor</div>
-
-  <mat-table [dataSource]="laborDataSource">
-    <ng-container matColumnDef="laborDescription">
+  <mat-table [dataSource]="partsDataSource">
+    <!-- Hours Column -->
+    <ng-container matColumnDef="description">
       <mat-header-cell *matHeaderCellDef>
         Description
       </mat-header-cell>
 
-      <mat-cell *matCellDef="let labor">
-        {{labor.description}}
+      <mat-cell *matCellDef="let part">
+        <div>{{part.description}}</div>
       </mat-cell>
     </ng-container>
 
-    <ng-container matColumnDef="laborPrice">
-      <mat-header-cell *matHeaderCellDef>
-        <div class="txt-right">
-          Price
-        </div>
-      </mat-header-cell>
-
-      <mat-cell *matCellDef="let labor" class="txt-right">
-        {{labor.price}}
+    <!-- Part Number Column -->
+    <ng-container matColumnDef="number">
+      <mat-header-cell *matHeaderCellDef> Part # </mat-header-cell>
+      <mat-cell *matCellDef="let part">
+        {{part.number}}
       </mat-cell>
     </ng-container>
 
+    <!-- Price Column -->
+    <ng-container matColumnDef="price">
+      <mat-header-cell *matHeaderCellDef> Price </mat-header-cell>
+      <mat-cell *matCellDef="let part">
+        {{part.price}}
+      </mat-cell>
+    </ng-container>
+
+    <!-- Quantity Column -->
+    <ng-container matColumnDef="quantity">
+      <mat-header-cell *matHeaderCellDef> Quantity </mat-header-cell>
+      <mat-cell *matCellDef="let part">
+        {{part.quantity}}
+      </mat-cell>
+    </ng-container>
+
+    <!-- Extended Price Column -->
+    <ng-container matColumnDef="extendedPrice">
+      <mat-header-cell *matHeaderCellDef class="u-pr txt-right"> Extended Price </mat-header-cell>
+      <mat-cell *matCellDef="let part" class="u-pr txt-right">
+        {{part.extendedPrice}}
+      </mat-cell>
+    </ng-container>
+
+    <!-- Extended Price Column -->
     <ng-container matColumnDef="more">
       <mat-header-cell *matHeaderCellDef></mat-header-cell>
       <mat-cell *matCellDef="let part">
@@ -150,39 +92,111 @@
             [items]="menuItems"
             select-by="val"
             button-style="icon"
-            (selected-changed)="laborMenuItemSelected($event, part)"
+            (selected-changed)="partMenuItemSelected($event, part)"
           >
           </px-dropdown>
         </div>
       </mat-cell>
     </ng-container>
 
-      <!-- TABLE HEADERS -->
-    <mat-header-row *matHeaderRowDef="displayedLaborColumns"></mat-header-row>
+    <!-- TABLE HEADERS -->
+    <mat-header-row
+      *matHeaderRowDef="displayedPartsColumns"
+    >
+    </mat-header-row>
 
     <!-- TABLE ROWS -->
     <mat-row
-      *matRowDef="let row; columns: displayedLaborColumns;"
-      (click)="onLaborClick(row)"
-      [class.highlight]="isLaborSelected(row)"
+      *matRowDef="let row; columns: displayedPartsColumns;"
+      (click)="onPartClick(row)"
+      [class.highlight]="isPartSelected(row)"
     >
     </mat-row>
   </mat-table>
 
-  <div class="total-container flex flex--row flex--right flex--bottom u-mb">
-    <div>
+  <div class="total-container flex flex--row flex--space-between flex--top">
+    <div class="u-mt">
+      <a (click)="onAddPart()">+ Add Part</a>
+    </div>
+
+    <div class="flex__item--bottom">
       Total Parts: <strong>{{service.totalParts | currency}}</strong>
     </div>
   </div>
-</div>
 
-<!-- ACTION BUTTONS -->
-<div class="flex flex--row flex--right flex--middle top-shadow">
-  <call-to-action [secondary]="true">
-    Cancel
-  </call-to-action>
+  <!-- LABOR TABLE -->
+  <div class="labor-table u-mt">
+    <div class="heading--section u-m">Labor</div>
 
-  <call-to-action>
-    Save
-  </call-to-action>
+    <mat-table [dataSource]="laborDataSource">
+      <ng-container matColumnDef="laborDescription">
+        <mat-header-cell *matHeaderCellDef>
+          Description
+        </mat-header-cell>
+
+        <mat-cell *matCellDef="let labor">
+          {{labor.description}}
+        </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="laborPrice">
+        <mat-header-cell *matHeaderCellDef>
+          <div class="txt-right">
+            Price
+          </div>
+        </mat-header-cell>
+
+        <mat-cell *matCellDef="let labor" class="txt-right">
+          {{labor.price}}
+        </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="more">
+        <mat-header-cell *matHeaderCellDef></mat-header-cell>
+        <mat-cell *matCellDef="let part">
+          <div class="flex flex--row flex--center flex--bottom">
+            <px-dropdown
+              icon="px-nav:more"
+              [items]="menuItems"
+              select-by="val"
+              button-style="icon"
+              (selected-changed)="laborMenuItemSelected($event, part)"
+            >
+            </px-dropdown>
+          </div>
+        </mat-cell>
+      </ng-container>
+
+        <!-- TABLE HEADERS -->
+      <mat-header-row *matHeaderRowDef="displayedLaborColumns"></mat-header-row>
+
+      <!-- TABLE ROWS -->
+      <mat-row
+        *matRowDef="let row; columns: displayedLaborColumns;"
+        (click)="onLaborClick(row)"
+        [class.highlight]="isLaborSelected(row)"
+      >
+      </mat-row>
+    </mat-table>
+
+    <div class="total-container flex flex--row flex--right flex--bottom u-mb">
+      <div>
+        Total Parts: <strong>{{service.totalParts | currency}}</strong>
+      </div>
+    </div>
+  </div>
+
+  <!-- ACTION BUTTONS -->
+  <div class="flex flex--row flex--right flex--middle top-shadow">
+    <call-to-action
+      (click)="onCancel()"
+      [secondary]="true"
+    >
+      Cancel
+    </call-to-action>
+
+    <call-to-action (click)="onSave()">
+      Save
+    </call-to-action>
+  </div>
 </div>

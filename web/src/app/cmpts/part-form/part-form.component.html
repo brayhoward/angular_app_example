@@ -1,3 +1,62 @@
-<p>
-  part-form works!
-</p>
+<style>
+  .heading--page {
+    text-transform: uppercase;
+    font-size: 1em;
+  }
+</style>
+
+<div class="heading--page u-m text--center">
+  <span>
+    {{edit ? 'Edit' : 'Add'}} Part
+  </span>
+</div>
+
+<form #partForm="ngForm">
+  <label class="u-m">
+    <span class="label">Part Name</span>
+    <input
+      type="text"
+      class="text-input"
+      name="description"
+      required
+      minlength="4"
+
+      [(ngModel)]="part.description"
+    >
+  </label>
+
+  <label class="u-m">
+    <span class="label">Part Number</span>
+    <input
+      type="text"
+      class="text-input"
+      name="part-number"
+      required
+      minlength="4"
+
+      [(ngModel)]="part.number"
+    >
+  </label>
+
+  <label class="u-m">
+    <span class="label">List Price (USD)</span>
+    <input
+      type="number"
+      class="text-input"
+      name="price"
+      required
+      minlength="4"
+
+      [(ngModel)]="part.price"
+    >
+  </label>
+
+  <div class="flex flex--row flex--center flex--middle">
+    <call-to-action
+      (click)="onAdd()"
+      [disabled]="!partForm.form.valid"
+    >
+      Add Part
+    </call-to-action>
+  </div>
+</form>

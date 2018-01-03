@@ -41,7 +41,9 @@ export class LifecycleTableComponent {
 
   onViewServiceDetail(meta): void {
     let dialogRef = this.dialog.open(ServiceDetailComponent, {
-      data: { ...meta }
+      data: { ...meta },
+      width: '90%',
+      height: '75%',
     });
 
     dialogRef.afterClosed().subscribe(result => {

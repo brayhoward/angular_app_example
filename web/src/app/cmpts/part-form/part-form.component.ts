@@ -17,8 +17,12 @@ export class PartFormComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    const { part = {}, edit = false } = this.data;
+    const { part = <Part>{}, edit = false } = this.data;
     this.part = part;
     this.edit = edit;
+  }
+
+  onAdd() {
+    this.dialogRef.close();
   }
 }

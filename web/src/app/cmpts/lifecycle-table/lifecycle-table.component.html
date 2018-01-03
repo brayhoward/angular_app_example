@@ -74,7 +74,7 @@
     <!-- Service Column -->
     <ng-container matColumnDef="service">
       <mat-cell *matCellDef="let detailRow">
-        <a (click)="onViewServiceDetail(detailRow.meta)">{{detailRow.service}}</a>
+        <a>{{detailRow.service}}</a>
       </mat-cell>
     </ng-container>
 
@@ -129,8 +129,10 @@
 
     <!-- DETAIL ROWS -->
     <mat-row
-      *matRowDef="let row; columns: displayedDetailColumns; when: isExpansionDetailRow"
-      [@detailExpand]="isExpanded(row) ? 'expanded' : 'collapsed'"
+      *matRowDef="let detialRow; columns: displayedDetailColumns; when: isExpansionDetailRow"
+      [@detailExpand]="isExpanded(detialRow) ? 'expanded' : 'collapsed'"
+      (click)="onViewServiceDetail(detialRow.meta)"
+
       class="detail-row"
       style="overflow: hidden"
     >
