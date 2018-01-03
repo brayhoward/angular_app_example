@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 
-import { Report, ReportTemplate } from '../../shared-interfaces/report';
+import { Report} from '../../shared-interfaces/report';
 import { ReportFormComponent } from '../report-form/report-form.component';
 import { ReportShareComponent } from '../report-share/report-share.component';
 

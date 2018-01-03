@@ -1,7 +1,7 @@
 import { Component, OnInit, Inject, Input } from '@angular/core';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { ReportFormTwoComponent } from '../report-form-two/report-form-two.component';
-import { Report, ReportTemplate } from '../../shared-interfaces/report';
+import { Report } from '../../shared-interfaces/report';
 
 @Component({
   selector: 'app-report-form',
@@ -24,7 +24,7 @@ export class ReportFormComponent implements OnInit {
   ngOnInit() {
     // defaults
     const {
-      report = new ReportTemplate(),
+      report = <Report>{},
       edit = false
     } = this;
 
