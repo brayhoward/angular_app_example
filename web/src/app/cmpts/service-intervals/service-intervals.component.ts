@@ -1,6 +1,9 @@
-import {Component} from '@angular/core';
-import {MatTableDataSource} from '@angular/material';
-import {SelectionModel} from '@angular/cdk/collections';
+import { Component, AfterViewChecked } from '@angular/core';
+import { MatTableDataSource } from '@angular/material';
+import { SelectionModel } from '@angular/cdk/collections';
+
+// Make typescript stop complaining
+declare var Morris: any;
 
 /**
  * @title Table with selection
@@ -10,23 +13,35 @@ import {SelectionModel} from '@angular/cdk/collections';
   styleUrls: ['./service-intervals.component.scss'],
   templateUrl: './service-intervals.component.html',
 })
-export class ServiceIntervalsComponent {
+export class ServiceIntervalsComponent implements AfterViewChecked {
   displayedColumns = ['select', 'service', 'interval', 'parts', 'labor', 'price'];
   dataSource = new MatTableDataSource<Element>(ELEMENT_DATA);
   selection = new SelectionModel<Element>(true, []);
+  chartNotInitialized = true;
 
-  /** Whether the number of selected elements matches the total number of rows. */
-  isAllSelected() {
-    const numSelected = this.selection.selected.length;
-    const numRows = this.dataSource.data.length;
-    return numSelected === numRows;
+  ngAfterViewChecked() {
+    isElementRendered('intervals-chart') && this.chartNotInitialized && this.initChart();
   }
 
-  /** Selects all rows if they are not all selected; otherwise clear selection. */
-  masterToggle() {
-    this.isAllSelected() ?
-        this.selection.clear() :
-        this.dataSource.data.forEach(row => this.selection.select(row));
+  initChart() {
+    this.chartNotInitialized = false;
+
+    Morris.Bar({
+      element: 'intervals-chart',
+      data: [
+        { y: '2006', a: 100, b: 90 },
+        { y: '2007', a: 75,  b: 65 },
+        { y: '2008', a: 50,  b: 40 },
+        { y: '2009', a: 75,  b: 65 },
+        { y: '2010', a: 50,  b: 40 },
+        { y: '2011', a: 75,  b: 65 },
+        { y: '2012', a: 100, b: 90 }
+      ],
+      xkey: 'y',
+      ykeys: ['a', 'b'],
+      labels: ['Series A', 'Series B'],
+      stacked: true
+    });
   }
 }
 
@@ -48,3 +63,6 @@ const ELEMENT_DATA: Array<Element> = [
   {service: 'Top End Overhaul', interval: 24000, parts: 20468, labor: 16260, price: 36728},
   {service: 'Bottom End Overhaul', interval: 48000, parts: 56708, labor: 26835, price: 83543}
 ];
+
+// Hack because angular lifecycle methods are seriously lacking
+const isElementRendered = id => !!document.getElementById(id);
