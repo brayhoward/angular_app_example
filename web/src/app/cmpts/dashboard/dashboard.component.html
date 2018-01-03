@@ -36,8 +36,13 @@
             <a href="#">Read Frequently Asked Questions</a>
             <a href="#">Contact the Support Team</a>
 
-            <call-to-action class="u-mt" large="true">
-              <px-icon style="width:12px;margin-top:-5px;" icon="px-utl:add"></px-icon> <span>Create a New Report</span>
+            <call-to-action
+              class="u-mt"
+              large="true"
+              (click)=" onNewReport()"
+            >
+              <px-icon style="width: 12px; margin-top: -5px;" icon="px-utl:add"></px-icon>
+              <span>Create a New Report</span>
             </call-to-action>
           </div>
 
@@ -101,7 +106,9 @@
               </div>
             </div>
 
-            <call-to-action large class="u-mt">View All Reports</call-to-action>
+            <call-to-action class="u-mt" (click)="onViewReports()">
+              View All Reports
+            </call-to-action>
           </div>
         </div>
       </div>
