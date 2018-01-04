@@ -73,9 +73,10 @@ $inuit-enable-box--huge : true;
   --actionable: #005c99;
   --green: $green5;
   --yellow: #F7E53B;
-  --orange: $orange6;
-  --cyan: $cyan1;
-  --violet: $violet7;
+  --orange: #F3A536;
+  --blue: #BFEAFE;
+  --violet: #BB27DD;
+  --green2: #93EC94;
 
   // Predix overrides
   --px-data-table-cell-background-color--selected: $select-light;
@@ -88,10 +89,9 @@ $inuit-enable-box--huge : true;
   --px-validation-success-background-color: #ecffee;
   --px-validation-error-text-color: #f34336;
   --px-validation-error-background-color: #ffecec;
-
   // vis-chart overrides
   --px-vis-series-color-0: var(--orange, orange);
-  --px-vis-series-color-1: var(--cyan, cyan);
+  --px-vis-series-color-1: var(--cyan, #BFEAFE);
   --px-vis-series-color-3: var(--yellow, yellow);
   --px-vis-series-color-4: var(--violet, violet);
 }

@@ -1,6 +1,7 @@
 import { Component, OnInit, AfterViewChecked } from '@angular/core';
 import { DecimalPipe, CurrencyPipe } from '@angular/common';
 import { AfterContentChecked } from '@angular/core/src/metadata/lifecycle_hooks';
+import { yellow, orange, blue, violet, green } from '../../constants/graph-color-pallet';
 
 // Make typescript stop complaining
 declare var Morris: any;
@@ -33,13 +34,20 @@ export class EngineLifecycleComponent implements OnInit, AfterContentChecked {
     Morris.Area({
       element: graphTargetId,
       data: [
-        { hours: '0', fuel: null, lubrication: null, labor: null, parts: 1521 },
-        { hours: '4000', fuel: 56880,  lubrication: 4140, labor: 450, parts: 62686 },
-        { hours: '8000', fuel: 56880,  lubrication: 4140, labor: 1050, parts: 65043 },
-        { hours: '1200', fuel: 56880,  lubrication: 4140, labor: 450, parts: 62686 },
-        { hours: '1600', fuel: 56880,  lubrication: 4140, labor: 1800, parts: 69620 },
-        { hours: '2000', fuel: 56880,  lubrication: 4140, labor: 450, parts: 62686 },
-        { hours: '2400', fuel: 56880, lubrication: 4140, labor: 70000, parts: 101770 }
+        { hours: '0', fuel: 0, lubrication: 0, labor: 0, parts: 1521},
+        { hours: '4000', fuel: 56880, lubrication: 4140, labor: 450, parts: 1216 },
+        { hours: '8000', fuel: 56880, lubrication: 4140, labor: 1050, parts: 2973 },
+        { hours: '1200', fuel: 56880, lubrication: 4140, labor: 450, parts: 1216 },
+        { hours: '1600', fuel: 56880, lubrication: 4140, labor: 1800, parts: 6800 },
+        { hours: '2000', fuel: 56880, lubrication: 4140, labor: 450, parts: 1216 },
+        { hours: '2400', fuel: 56880, lubrication: 4140, labor: 70000, parts: 23440 },
+        { hours: '2800', fuel: 56880, lubrication: 4140, labor: 450, parts: 1216 },
+        { hours: '3200', fuel: 56880, lubrication: 4140, labor: 1800, parts: 6800 },
+        { hours: '3600', fuel: 56880, lubrication: 4140, labor: 450, parts: 1216 },
+        { hours: '40000', fuel: 56880, lubrication: 4140, labor: 1050, parts: 2973 },
+        { hours: '44000', fuel: 56880, lubrication: 4140, labor: 450, parts: 1216 },
+        { hours: '48000', fuel: 56880, lubrication: 4140, labor: 44895, parts: 83976 },
+        { hours: '52000', fuel: 56880, lubrication: 4140, labor: 450, parts: 1216 }
       ],
       xkey: 'hours',
       ykeys: ['fuel', 'lubrication', 'labor', 'parts'],
@@ -63,9 +71,6 @@ export class EngineLifecycleComponent implements OnInit, AfterContentChecked {
       hoverCallback: (_index, _options, _content, { hours, fuel, labor, lubrication, parts }) => (
         `
         <div style="color: black;">
-          <div style="text-align: center">
-            <strong>${this.numberFormatter.transform(~~hours)}hrs</strong>
-          </div>
           <div style="text-align: left">
             <div>
               <strong>parts: </strong>$${this.numberFormatter.transform(parts)}
@@ -79,6 +84,16 @@ export class EngineLifecycleComponent implements OnInit, AfterContentChecked {
             <div>
               <strong>fuel: </strong>$${this.numberFormatter.transform(fuel)}
             </div>
+
+            <hr>
+
+            <div>
+              <strong>total: $${this.numberFormatter.transform(
+                [fuel, labor, lubrication, parts].reduce((prev, curr) => prev + curr)
+              )}
+              </strong>
+            </div>
+            <br/>
           </div>
         </div>
         `
