@@ -1,23 +1,10 @@
-<style>
-
-</style>
-
 <div class="ReportDetailTabs">
   <mat-tab-group>
-    <mat-tab>
+    <!-- TODO: DO NOT COMMIT BEFORE CHANGING ORDER BACK!! -->
+     <mat-tab>
       <!-- TAB -->
       <ng-template mat-tab-label>
-          <px-icon icon="px-fea:orchestration" class="u-mr"></px-icon> ENGINE LIFECYCLE
-      </ng-template>
-
-      <!-- TAB CONTENT -->
-      <engine-lifecycle></engine-lifecycle>
-    </mat-tab>
-
-    <mat-tab>
-      <!-- TAB -->
-      <ng-template mat-tab-label>
-          <px-icon icon="px-fea:log" class="u-mr"></px-icon> SERVICE INTERVALS
+        <px-icon icon="px-fea:log" class="u-mr"></px-icon> SERVICE INTERVALS
       </ng-template>
 
       <!-- TAB CONTENT -->
@@ -27,7 +14,17 @@
     <mat-tab>
       <!-- TAB -->
       <ng-template mat-tab-label>
-          <px-icon icon="px-fea:asset" class="u-mr"></px-icon> PARTS
+        <px-icon icon="px-fea:orchestration" class="u-mr"></px-icon> ENGINE LIFECYCLE
+      </ng-template>
+
+      <!-- TAB CONTENT -->
+      <engine-lifecycle></engine-lifecycle>
+    </mat-tab>
+
+    <mat-tab>
+      <!-- TAB -->
+      <ng-template mat-tab-label>
+        <px-icon icon="px-fea:asset" class="u-mr"></px-icon> PARTS
       </ng-template>
 
       <!-- TAB CONTENT -->

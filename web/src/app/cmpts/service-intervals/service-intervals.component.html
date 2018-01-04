@@ -14,15 +14,18 @@
  .mat-row {
     min-height: 58px;
   }
+  #intervals-chart { width: 99%; height: 99%;}
 </style>
 
-<div class="ServiceIntervals">
+<div class="ServiceIntervals flex flex--col">
   <div class="chart-controls flex flex--row flex--right flex--middle u-p--">
     <label class="label--inline" for="">Currency</label>
     <px-dropdown class="u-mh" items='["USD","Other","Other"]' selected="0"></px-dropdown>
   </div>
 
-  <div class="box box--large wide">
+
+  <!-- Data Visualisation -->
+  <div class="u-m">
     <div id="intervals-chart"></div>
   </div>
 

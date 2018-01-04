@@ -1,4 +1,5 @@
 import { Component, AfterViewChecked } from '@angular/core';
+import { CurrencyPipe } from '@angular/common';
 import { MatTableDataSource } from '@angular/material';
 import { SelectionModel } from '@angular/cdk/collections';
 
@@ -12,6 +13,7 @@ declare var Morris: any;
   selector: 'service-intervals',
   styleUrls: ['./service-intervals.component.scss'],
   templateUrl: './service-intervals.component.html',
+  providers: [ CurrencyPipe ]
 })
 export class ServiceIntervalsComponent implements AfterViewChecked {
   displayedColumns = ['select', 'service', 'interval', 'parts', 'labor', 'price'];
@@ -19,30 +21,52 @@ export class ServiceIntervalsComponent implements AfterViewChecked {
   selection = new SelectionModel<Element>(true, []);
   chartNotInitialized = true;
 
+  constructor(
+    private currency: CurrencyPipe
+  ) { }
+
   ngAfterViewChecked() {
     isElementRendered('intervals-chart') && this.chartNotInitialized && this.initChart();
   }
 
   initChart() {
+    // Prevent initalizing chart thousands of times
     this.chartNotInitialized = false;
 
     Morris.Bar({
       element: 'intervals-chart',
       data: [
-        { y: '2006', a: 100, b: 90 },
-        { y: '2007', a: 75,  b: 65 },
-        { y: '2008', a: 50,  b: 40 },
-        { y: '2009', a: 75,  b: 65 },
-        { y: '2010', a: 50,  b: 40 },
-        { y: '2011', a: 75,  b: 65 },
-        { y: '2012', a: 100, b: 90 }
+        { name: 'Commissioning...', parts: 1521, labor: 0 },
+        { name: 'Emergency Spare Parts', parts: 21758,  labor: 0 },
+        { name: 'Lube Oil Change', parts: 581,  labor: 200 },
+        { name: 'Planned Service A', parts: 635,  labor: 600 },
+        { name: 'Planned Service B', parts: 1756, labor: 1155 },
+        { name: 'Planned Service C', parts: 1521,  labor: 750 },
+        { name: 'Top End Overhaul', parts: 20468,  labor: 16260 },
+        { name: 'Bottom End Overhaul', parts: 56708,  labor: 26835 }
       ],
-      xkey: 'y',
-      ykeys: ['a', 'b'],
-      labels: ['Series A', 'Series B'],
-      stacked: true
+      xkey: 'name',
+      ykeys: ['parts', 'labor'],
+      labels: ['Parts', 'Labor'],
+      barColors: ['cyan', 'orange'],
+      hideHover: false,
+      stacked: true,
+      hoverCallback: (index, options, content, row) => `
+        <strong>${this.cashOut(row.parts)}</strong>
+      `,
+      axes: true,
+      grid: true,
+      gridTextColor: "#2F3133",
+      gridTextSize: 12,
+      gridTextFamily: 'inherit',
+      gridTextWeight: 'normal',
+      resize: true,
+      barSizeRatio: 0.25,
+      barGap: 1
     });
   }
+
+  cashOut = (num) => this.currency.transform(num);
 }
 
 export interface Element {
