@@ -3,6 +3,10 @@
     font-size: 12px;
     border-top: 1px solid var(--gray1);
   }
+  .chart-container {
+    width: 99%;
+    height: 99%;
+  }
   .data-row {
     border-bottom: 1px solid var(--gray);
   }
@@ -71,17 +75,8 @@
     <px-dropdown class="u-mh" items='["Hours","Years"]' selected="0"></px-dropdown>
   </div>
 
-  <div class="box box--large wide">
-    <!-- px-simplr-area-chart https://www.predix-ui.com/#/elements/vis/px-simple-area-chart:property-seriesColorList -->
-    <px-simple-area-chart
-      width="500"
-      height="250"
-      x-axis-type="linear"
-      [chartData]="chartData"
-      [seriesConfig]="chartConfig"
-      [seriesColorList]="['var(--orange)', 'var(--cyan)', 'var(--yellow)', 'var(--violet)']"
-    >
-    </px-simple-area-chart>
+  <div class="box box--large chart-container">
+    <div id="lifecycle-chart"></div>
   </div>
 
   <lifecycle-table></lifecycle-table>
