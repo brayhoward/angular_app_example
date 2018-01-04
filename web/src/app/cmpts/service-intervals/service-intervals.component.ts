@@ -2,6 +2,7 @@ import { Component, AfterViewChecked } from '@angular/core';
 import { CurrencyPipe } from '@angular/common';
 import { MatTableDataSource } from '@angular/material';
 import { SelectionModel } from '@angular/cdk/collections';
+import { blue, orange, black } from '../../constants/graph-color-pallet';
 
 // Make typescript stop complaining
 declare var Morris: any;
@@ -36,33 +37,44 @@ export class ServiceIntervalsComponent implements AfterViewChecked {
     Morris.Bar({
       element: 'intervals-chart',
       data: [
-        { name: 'Commissioning...', parts: 1521, labor: 0 },
-        { name: 'Emergency Spare Parts', parts: 21758,  labor: 0 },
-        { name: 'Lube Oil Change', parts: 581,  labor: 200 },
-        { name: 'Planned Service A', parts: 635,  labor: 600 },
-        { name: 'Planned Service B', parts: 1756, labor: 1155 },
-        { name: 'Planned Service C', parts: 1521,  labor: 750 },
-        { name: 'Top End Overhaul', parts: 20468,  labor: 16260 },
-        { name: 'Bottom End Overhaul', parts: 56708,  labor: 26835 }
+        { name: 'Commis...', parts: 1521, labor: 0 },
+        { name: 'Emergency', parts: 21758,  labor: 0 },
+        { name: 'Lube Oil', parts: 581,  labor: 200 },
+        { name: 'Planned A', parts: 635,  labor: 600 },
+        { name: 'Planned B', parts: 1756, labor: 1155 },
+        { name: 'Planned C', parts: 1521,  labor: 750 },
+        { name: 'Top End', parts: 20468,  labor: 16260 },
+        { name: 'Bottom End', parts: 56708,  labor: 26835 }
       ],
       xkey: 'name',
       ykeys: ['parts', 'labor'],
       labels: ['Parts', 'Labor'],
-      barColors: ['cyan', 'orange'],
+      barColors: [blue, orange],
       hideHover: false,
       stacked: true,
-      hoverCallback: (index, options, content, row) => `
-        <strong>${this.cashOut(row.parts)}</strong>
+      hoverCallback: (index, options, content, { labor, parts }) => `
+        <div style="color: ${black};" class="txt-left">
+          <div>
+            <strong>parts: </strong> ${this.cashOut(parts)}
+          </div>
+
+          <div>
+            <strong>labor: </strong>${this.cashOut(labor)}
+          </div>
+
+          <div class="hr u-mt-- u-mb--"></div>
+
+          <strong>total: ${this.cashOut(parts + labor)}</strong>
+        <div>
       `,
       axes: true,
       grid: true,
-      gridTextColor: "#2F3133",
+      gridTextColor: black,
       gridTextSize: 12,
       gridTextFamily: 'inherit',
       gridTextWeight: 'normal',
       resize: true,
-      barSizeRatio: 0.25,
-      barGap: 1
+      barSizeRatio: 0.50
     });
   }
 

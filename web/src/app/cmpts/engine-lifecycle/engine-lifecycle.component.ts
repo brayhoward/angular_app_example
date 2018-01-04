@@ -1,7 +1,7 @@
 import { Component, OnInit, AfterViewChecked } from '@angular/core';
 import { DecimalPipe, CurrencyPipe } from '@angular/common';
 import { AfterContentChecked } from '@angular/core/src/metadata/lifecycle_hooks';
-import { yellow, orange, blue, violet, green } from '../../constants/graph-color-pallet';
+import { yellow, orange, blue, violet, black } from '../../constants/graph-color-pallet';
 
 // Make typescript stop complaining
 declare var Morris: any;
@@ -85,7 +85,7 @@ export class EngineLifecycleComponent implements OnInit, AfterContentChecked {
               <strong>fuel: </strong>$${this.numberFormatter.transform(fuel)}
             </div>
 
-            <hr>
+            <div class="hr u-mt-- u-mb-- "></div>
 
             <div>
               <strong>total: $${this.numberFormatter.transform(
@@ -100,7 +100,7 @@ export class EngineLifecycleComponent implements OnInit, AfterContentChecked {
       ),
       axes: true,
       grid: true,
-      gridTextColor: "#2F3133",
+      gridTextColor: black,
       gridTextSize: 12,
       gridTextFamily: 'inherit',
       gridTextWeight: 'normal',

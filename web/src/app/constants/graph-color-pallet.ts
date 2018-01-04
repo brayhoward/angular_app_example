@@ -7,3 +7,5 @@ export const blue = '#BFEAFE';
 export const violet = '#BB27DD';
 
 export const green = '#93EC94';
+
+export const black = '#2F3133';
