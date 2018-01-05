@@ -63,8 +63,10 @@ export class EngineLifecycleComponent implements OnInit, AfterContentChecked {
       preUnits: "$",
       goals: [],
       goalStrokeWidth: 2,
-      lineColors: ['yellow', 'violet', 'cyan', 'orange'],
-      lineWidth: 1,
+      // This graph takes the line colors and mutates them which looks bad when trying to use the pre defined color values
+      lineColors: ['#fbf301', '#8a04a9', '#43e4ff', 'orange'],
+      // lineColors: [yellow, violet, blue, orange],
+      lineWidth: 3,
       pointSize: 4,
       pointFillColors: ['#000', '#000', '#000', '#000'],
       hideHover: false,

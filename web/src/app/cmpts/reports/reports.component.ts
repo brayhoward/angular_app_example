@@ -14,7 +14,7 @@ export class ReportsComponent {
   dataSource: any;
   selectedRows: number[] = [];
   availableRows: number[] = [];
-  displayedColumns: String[] = ['engineModel', 'name', 'contactName', 'company', 'date', 'edit'];
+  displayedColumns = ['engineModel', 'name', 'contactName', 'company', 'date', 'edit'];
   masterSelected: boolean = false;
   dataPool: Report[]
   readonly menuItems: any[] = [

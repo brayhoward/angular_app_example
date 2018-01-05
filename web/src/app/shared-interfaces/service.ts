@@ -11,23 +11,17 @@ export interface Service {
 export interface Part {
   description: String,
   number: String,
-  id?: number | String
   price: number,
   quantity: number,
-  extendedPrice: number
+  extendedPrice: number,
+  category?: String,
+  type?: String,
+  id?: number | String
 }
 export interface Labor {
   description: String,
   price: number,
   id?: number | String
 }
-
-// export class PartTemplate implements Part {
-//   description = '';
-//   number = '';
-//   price: number;
-//   quantity: number;
-//   extendedPrice: number;
-// }
 
 export default Service;

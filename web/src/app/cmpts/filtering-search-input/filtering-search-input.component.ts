@@ -78,14 +78,6 @@ export class FilteringSearchInputComponent {
   }
 
   dirty = () => !!this.searchTerm
-
-  // TODO: Remove after done developing
-  jsonify = node => JSON.stringify(node);
-
-  log = (node, name = 'node') => {
-    console.log(name, 'LOGGED BELLOW');
-    console.log(node);
-  }
 }
 
 

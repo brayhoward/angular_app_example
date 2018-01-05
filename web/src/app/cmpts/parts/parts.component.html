@@ -1,243 +1,113 @@
 <style>
+  mat-header-cell { text-transform: uppercase; }
+  .mat-column-description { flex-basis: 15%; }
+  .mat-column-more { flex-basis: 1%; }
+  .mat-column-price { text-align: right; }
 
+  .mat-cell, .mat-header-cell { font-size: 1em; }
 </style>
+
 <div class="Parts">
   <div class="layout u-p">
     <div class="layout__item">
-      <px-data-table
-        table-data='[
-        {
-            "part description":"Kit, Admission Valve Repair",
-            "part #":"211665D",
-            "part category":"Oil Filter",
-            "part type":"Waukesha",
-            "list price":"$25.78",
-            "":"overflow menu"
-        },
-        {
-            "part description":"Kit, Admission Valve Repair",
-            "part #":"211665D",
-            "part category":"Oil Filter",
-            "part type":"Waukesha",
-            "list price":"$25.78",
-            "":"overflow menu"
-        },
-        {
-            "part description":"Kit, Admission Valve Repair",
-            "part #":"211665D",
-            "part category":"Oil Filter",
-            "part type":"Waukesha",
-            "list price":"$25.78",
-            "":"overflow menu"
-        },
-        {
-            "part description":"Kit, Admission Valve Repair",
-            "part #":"211665D",
-            "part category":"Oil Filter",
-            "part type":"Waukesha",
-            "list price":"$25.78",
-            "":"overflow menu"
-        },
-        {
-            "part description":"Kit, Admission Valve Repair",
-            "part #":"211665D",
-            "part category":"Oil Filter",
-            "part type":"Waukesha",
-            "list price":"$25.78",
-            "":"overflow menu"
-        },
-        {
-            "part description":"Kit, Admission Valve Repair",
-            "part #":"211665D",
-            "part category":"Oil Filter",
-            "part type":"Waukesha",
-            "list price":"$25.78",
-            "":"overflow menu"
-        },
-        {
-            "part description":"Kit, Admission Valve Repair",
-            "part #":"211665D",
-            "part category":"Oil Filter",
-            "part type":"Waukesha",
-            "list price":"$25.78",
-            "":"overflow menu"
-        },
-        {
-            "part description":"Kit, Admission Valve Repair",
-            "part #":"211665D",
-            "part category":"Oil Filter",
-            "part type":"Waukesha",
-            "list price":"$25.78",
-            "":"overflow menu"
-        },
-        {
-            "part description":"Kit, Admission Valve Repair",
-            "part #":"211665D",
-            "part category":"Oil Filter",
-            "part type":"Waukesha",
-            "list price":"$25.78",
-            "":"overflow menu"
-        },
-        {
-            "part description":"Kit, Admission Valve Repair",
-            "part #":"211665D",
-            "part category":"Oil Filter",
-            "part type":"Waukesha",
-            "list price":"$25.78",
-            "":"overflow menu"
-        },
-        {
-            "part description":"Kit, Admission Valve Repair",
-            "part #":"211665D",
-            "part category":"Oil Filter",
-            "part type":"Waukesha",
-            "list price":"$25.78",
-            "":"overflow menu"
-        },
-        {
-            "part description":"Kit, Admission Valve Repair",
-            "part #":"211665D",
-            "part category":"Oil Filter",
-            "part type":"Waukesha",
-            "list price":"$25.78",
-            "":"overflow menu"
-        },
-        {
-            "part description":"Kit, Admission Valve Repair",
-            "part #":"211665D",
-            "part category":"Oil Filter",
-            "part type":"Waukesha",
-            "list price":"$25.78",
-            "":"overflow menu"
-        },
-        {
-            "part description":"Kit, Admission Valve Repair",
-            "part #":"211665D",
-            "part category":"Oil Filter",
-            "part type":"Waukesha",
-            "list price":"$25.78",
-            "":"overflow menu"
-        },
-        {
-            "part description":"Kit, Admission Valve Repair",
-            "part #":"211665D",
-            "part category":"Oil Filter",
-            "part type":"Waukesha",
-            "list price":"$25.78",
-            "":"overflow menu"
-        },
-        {
-            "part description":"Kit, Admission Valve Repair",
-            "part #":"211665D",
-            "part category":"Oil Filter",
-            "part type":"Waukesha",
-            "list price":"$25.78",
-            "":"overflow menu"
-        },
-        {
-            "part description":"Kit, Admission Valve Repair",
-            "part #":"211665D",
-            "part category":"Oil Filter",
-            "part type":"Waukesha",
-            "list price":"$25.78",
-            "":"overflow menu"
-        },
-        {
-            "part description":"Kit, Admission Valve Repair",
-            "part #":"211665D",
-            "part category":"Oil Filter",
-            "part type":"Waukesha",
-            "list price":"$25.78",
-            "":"overflow menu"
-        },
-        {
-            "part description":"Kit, Admission Valve Repair",
-            "part #":"211665D",
-            "part category":"Oil Filter",
-            "part type":"Waukesha",
-            "list price":"$25.78",
-            "":"overflow menu"
-        },
-        {
-            "part description":"Kit, Admission Valve Repair",
-            "part #":"211665D",
-            "part category":"Oil Filter",
-            "part type":"Waukesha",
-            "list price":"$25.78",
-            "":"overflow menu"
-        },
-        {
-            "part description":"Kit, Admission Valve Repair",
-            "part #":"211665D",
-            "part category":"Oil Filter",
-            "part type":"Waukesha",
-            "list price":"$25.78",
-            "":"overflow menu"
-        },
-        {
-            "part description":"Kit, Admission Valve Repair",
-            "part #":"211665D",
-            "part category":"Oil Filter",
-            "part type":"Waukesha",
-            "list price":"$25.78",
-            "":"overflow menu"
-        },
-        {
-            "part description":"Kit, Admission Valve Repair",
-            "part #":"211665D",
-            "part category":"Oil Filter",
-            "part type":"Waukesha",
-            "list price":"$25.78",
-            "":"overflow menu"
-        },
-        {
-            "part description":"Kit, Admission Valve Repair",
-            "part #":"211665D",
-            "part category":"Oil Filter",
-            "part type":"Waukesha",
-            "list price":"$25.78",
-            "":"overflow menu"
-        },
-        {
-            "part description":"Kit, Admission Valve Repair",
-            "part #":"211665D",
-            "part category":"Oil Filter",
-            "part type":"Waukesha",
-            "list price":"$25.78",
-            "":"overflow menu"
-        },
-        {
-            "part description":"Kit, Admission Valve Repair",
-            "part #":"211665D",
-            "part category":"Oil Filter",
-            "part type":"Waukesha",
-            "list price":"$25.78",
-            "":"overflow menu"
-        },
-        {
-            "part description":"Kit, Admission Valve Repair",
-            "part #":"211665D",
-            "part category":"Oil Filter",
-            "part type":"Waukesha",
-            "list price":"$25.78",
-            "":"overflow menu"
-        },
-        {
-            "part description":"Kit, Admission Valve Repair",
-            "part #":"211665D",
-            "part category":"Oil Filter",
-            "part type":"Waukesha",
-            "list price":"$25.78",
-            "":"overflow menu"
-        }]'
-        language="en"
-        striped
-        filterable
-        sortable
-        include-all-columns
-        hide-pagination-control
-        data-remote>
-      </px-data-table>
+      <div class="flex flex--row flex--justify flex--middle u-mt u-mb">
+           <filtering-search-input
+            [searchPool]="searchPool"
+            [searchResultsCallback]="searchCallback"
+          >
+          </filtering-search-input>
+
+        <call-to-action>
+          Add part
+        </call-to-action>
+      </div>
+
+
+      <mat-table [dataSource]="partsList">
+        <!-- Hours Column -->
+        <ng-container matColumnDef="description">
+          <mat-header-cell *matHeaderCellDef>
+              Description
+          </mat-header-cell>
+
+          <mat-cell *matCellDef="let part">
+              <div>{{part.description}}</div>
+          </mat-cell>
+        </ng-container>
+
+        <!-- Part Number Column -->
+        <ng-container matColumnDef="number">
+          <mat-header-cell *matHeaderCellDef> Part # </mat-header-cell>
+
+          <mat-cell *matCellDef="let part">
+              {{part.number}}
+          </mat-cell>
+        </ng-container>
+
+        <!-- Part category -->
+        <ng-container matColumnDef="category">
+          <mat-header-cell *matHeaderCellDef> Part category </mat-header-cell>
+
+          <mat-cell *matCellDef="let part">
+              {{part.category}}
+          </mat-cell>
+        </ng-container>
+
+        <!-- Part Number type -->
+        <ng-container matColumnDef="type">
+          <mat-header-cell *matHeaderCellDef> Part type</mat-header-cell>
+
+          <mat-cell *matCellDef="let part">
+              {{part.type}}
+          </mat-cell>
+        </ng-container>
+
+        <!-- Price Column -->
+        <ng-container matColumnDef="price">
+          <mat-header-cell *matHeaderCellDef> List price </mat-header-cell>
+
+          <mat-cell *matCellDef="let part">
+            <div class="flex flex--row flex--right flex--top">
+              <format-cash [money]="part.price"></format-cash>
+            </div>
+          </mat-cell>
+        </ng-container>
+
+        <!-- More Options -->
+        <ng-container matColumnDef="more">
+          <mat-header-cell *matHeaderCellDef></mat-header-cell>
+
+          <mat-cell *matCellDef="let part">
+              <div class="flex flex--row flex--center flex--bottom">
+                <px-dropdown
+                  icon="px-nav:more"
+                  items='[
+                    { "val": "Edit" },
+                    { "val": "Delete" }
+                  ]'
+                  select-by="val"
+                  button-style="icon"
+                  (selected-changed)="menuItemSelected($event, part)"
+                >
+                </px-dropdown>
+              </div>
+          </mat-cell>
+        </ng-container>
+
+        <!-- TABLE HEADERS -->
+        <mat-header-row
+          *matHeaderRowDef="displayedColumns"
+        >
+        </mat-header-row>
+
+        <!-- TABLE ROWS -->
+        <mat-row
+          *matRowDef="let row; columns: displayedColumns;"
+          (click)="onPartClick(row)"
+          [class.highlight]="isPartSelected(row)"
+        >
+        </mat-row>
+      </mat-table>
     </div>
   </div>
 </div>
