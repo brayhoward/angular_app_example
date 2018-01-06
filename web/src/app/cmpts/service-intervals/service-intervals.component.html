@@ -50,7 +50,9 @@
       <!-- Service Column -->
       <ng-container matColumnDef="service">
         <mat-header-cell *matHeaderCellDef> Service </mat-header-cell>
-        <mat-cell *matCellDef="let element"> <a href="#">{{element.service}}</a> </mat-cell>
+        <mat-cell *matCellDef="let element">
+          <a (click)="onViewServiceDetail(element.service)">{{element.service}}</a>
+        </mat-cell>
       </ng-container>
 
       <!-- Interval Column -->

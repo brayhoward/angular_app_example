@@ -1,8 +1,11 @@
-import { Component, AfterViewChecked. OnInit } from '@angular/core';
+import { Service } from './../../shared-interfaces/service';
+import { Component, AfterViewChecked, OnInit } from '@angular/core';
 import { CurrencyPipe } from '@angular/common';
 import { MatTableDataSource } from '@angular/material';
+import { MatDialog } from '@angular/material/dialog';
 import { SelectionModel } from '@angular/cdk/collections';
 import { blue, orange, black } from '../../constants/graph-color-pallet';
+import { ServiceDetailComponent } from '../service-detail/service-detail.component';
 
 // Make typescript stop complaining
 declare var Morris: any;
@@ -23,7 +26,8 @@ export class ServiceIntervalsComponent implements AfterViewChecked, OnInit {
   selectedRows: number[]
 
   constructor(
-    private currency: CurrencyPipe
+    private currency: CurrencyPipe,
+    private dialog: MatDialog
   ) { }
 
   ngOnInit() {
@@ -35,6 +39,22 @@ export class ServiceIntervalsComponent implements AfterViewChecked, OnInit {
 
   ngAfterViewChecked() {
     isElementRendered('intervals-chart') && this.chartNotInitialized && this.initChart();
+  }
+
+  onViewServiceDetail(meta = {}): void {
+    this.dialog.open(
+      ServiceDetailComponent,
+      {
+        data: { ...meta },
+        width: '90%',
+        height: '75%',
+        ariaLabel: 'service-detail-dialog'
+      }
+    )
+    .afterClosed()
+    .subscribe(result => {
+      console.log('The dialog was closed');
+    });
   }
 
   initChart() {
