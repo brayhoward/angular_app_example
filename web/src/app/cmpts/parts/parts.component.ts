@@ -29,6 +29,18 @@ export class PartsComponent implements OnInit {
     this.availableRows = parts.map(row => (row.id));
   }
 
+   onAddPart() {
+    // Open modal with Report Form
+    this.dialog.open(
+      PartFormComponent,
+      { data: {} }
+    )
+    .afterClosed()
+    .subscribe(result => {
+      console.log('The dialog was closed');
+    });
+  };
+
   editPart(part) {
     // Open modal with Report Form
     this.dialog.open(
