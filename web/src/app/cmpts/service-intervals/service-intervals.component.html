@@ -40,8 +40,8 @@
         <mat-cell *matCellDef="let row">
           <px-toggle
             size="small"
-            (click)="selection.toggle(row)"
-            [checked]="selection.isSelected(row)"
+            (checked-changed)="toggleRow($event, row)"
+            [checked]="isSelected(row)"
           >
           </px-toggle>
         </mat-cell>
