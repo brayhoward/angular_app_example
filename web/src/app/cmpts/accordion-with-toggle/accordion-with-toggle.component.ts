@@ -12,7 +12,7 @@ export class AccordionWithToggleComponent implements OnInit {
   private hasToggleSwitch: boolean = false;
 
   @Input() headerValue: String
-  @Input() toggleSwitchCallback: (event: MouseEvent) => void
+  @Input() toggleSwitchCallback: (event: MouseEvent) => void = e => console.log('Pass a cb function to toggleSwitchCallback attr on the <accordion-with-toggle /> cmpt to tap into this event', e);
   @Input() expanded: boolean = false;
   @Input() checked: boolean;
 
