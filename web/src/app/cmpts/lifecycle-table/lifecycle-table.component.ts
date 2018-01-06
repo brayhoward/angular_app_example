@@ -44,6 +44,7 @@ export class LifecycleTableComponent {
       data: { ...meta },
       width: '90%',
       height: '75%',
+      ariaLabel: 'service-detail-dialog'
     });
 
     dialogRef.afterClosed().subscribe(result => {

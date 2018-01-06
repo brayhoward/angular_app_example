@@ -3,6 +3,7 @@
     font-size: .7em !important;
   }
   mat-header-cell { text-transform: uppercase; }
+  mat-header-row, mat-row { min-height: 2.5em }
   .heading--page { margin-bottom: .1em !important;}
   .heading--page, strong { font-size: 1.5em; }
   .total div:first-of-type { font-size: .8em; }
@@ -14,7 +15,7 @@
   .mat-cell, .mat-header-cell { font-size: 1em; }
   .total-container {
     padding: 0 13% 0 1.7em ;
-    height: 5em;
+    height: 4em;
   }
   .top-shadow {
     margin-top: 3em;
@@ -22,12 +23,15 @@
     width: 104.9%;
     margin-left: -2.5%;
   }
+  .table-label {
+    font-size: 1.1em;
+  }
 </style>
 
 <div class="container">
-  <div class="heading--page u-m">{{service.name}}</div>
+  <div class="heading--page u-mb">{{service.name}}</div>
 
-  <div class="u-ml u-mr u-mb total">
+  <div class="u-mb total">
     <div>Total Service Interval Cost</div>
 
     <div>
@@ -36,7 +40,7 @@
   </div>
 
   <!-- PARTS TABLE -->
-  <div class="heading--section u-m">Parts</div>
+  <div class="u-mb-- u-mt">Parts</div>
 
   <mat-table [dataSource]="partsDataSource">
     <!-- Hours Column -->
@@ -126,7 +130,7 @@
 
   <!-- LABOR TABLE -->
   <div class="labor-table u-mt">
-    <div class="heading--section u-m">Labor</div>
+    <div class="table-label u-mb-- u-mt">Labor</div>
 
     <mat-table [dataSource]="laborDataSource">
       <ng-container matColumnDef="laborDescription">
