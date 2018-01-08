@@ -6,10 +6,10 @@ import { Component, OnInit, Input } from '@angular/core';
   styleUrls: ['./accordion-with-toggle.component.scss']
 })
 export class AccordionWithToggleComponent implements OnInit {
-  private add: String = "px-utl:add";
-  private remove: String = "px-utl:remove";
-  private icon: String = this.add;
-  private hasToggleSwitch: boolean = false;
+  add: String = "px-utl:add";
+  remove: String = "px-utl:remove";
+  icon: String = this.add;
+  hasToggleSwitch: boolean = false;
 
   @Input() headerValue: String
   @Input() toggleSwitchCallback: (event: MouseEvent) => void = e => console.log('Pass a cb function to toggleSwitchCallback attr on the <accordion-with-toggle /> cmpt to tap into this event', e);

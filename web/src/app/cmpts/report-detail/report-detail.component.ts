@@ -15,6 +15,7 @@ export class ReportDetailComponent implements OnInit {
   showFuel: boolean = true;
   showLabor: boolean = true;
   selected: String = '';
+  report: Report = reportMock;
 
   constructor(
     private dialog: MatDialog
@@ -23,7 +24,7 @@ export class ReportDetailComponent implements OnInit {
   ngOnInit() {
   }
 
-  onEdit(report: Report = reportMock) {
+  onEdit(report: Report) {
     // Open modal with Report Form
     let dialogRef = this.dialog.open(
       ReportFormComponent,
@@ -35,7 +36,7 @@ export class ReportDetailComponent implements OnInit {
     });
   }
 
-  onShare(report: Report = reportMock) {
+  onShare(report: Report) {
     this.dialog.open(
       ReportShareComponent,
       { data: { report } }

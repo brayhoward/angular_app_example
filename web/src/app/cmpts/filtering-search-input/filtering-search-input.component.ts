@@ -73,7 +73,7 @@ export class FilteringSearchInputComponent {
     this.clearSuggestions();
   }
 
-  onKeyUpEnter(searchTerm) {
+  onKeyUpEnter() {
     this.clearSuggestions();
   }
 

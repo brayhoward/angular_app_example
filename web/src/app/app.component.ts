@@ -10,7 +10,7 @@ export class AppComponent {
 
   constructor( private router: Router ) {}
 
-  private handleRouteChanged = ({ detail: { value: route_array } }) => {
+  handleRouteChanged = ({ detail: { value: route_array } }) => {
     // Convert [ 'dash', 'sub' ] => '/dash/sub'
     const path = route_array.reduce((acc, val ) => `${acc}/${val}`, '');
 
