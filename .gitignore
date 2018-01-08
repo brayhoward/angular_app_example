@@ -2,6 +2,9 @@
 web/src/assets/bower_components
 web/node_modules
 
+# client build
+web/dist
+
 /bin/
 /.gradle/
 .history/
