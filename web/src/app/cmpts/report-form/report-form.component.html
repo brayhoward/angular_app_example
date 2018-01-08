@@ -56,11 +56,12 @@
     >
   </label>
 
-  <call-to-action
-    type="submit"
-    class="u-m"
-    [disabled]="!reportForm.form.valid"
-  >
-    Continue
-  </call-to-action>
+  <div class="flex flex--row flex--center flex--middle u-m--">
+    <call-to-action
+      type="submit"
+      [disabled]="!reportForm.form.valid"
+    >
+      Continue
+    </call-to-action>
+  </div>
 </form>
