@@ -1,42 +1,42 @@
-<div>
-    <!-- Styles added like this are scoped to this component level -->
-    <!-- This is the Angular convention for small components with minimal, component specific styles -->
-  <style>
-    /* Need to make sure that the app-nav shows up above everything else, especially when expanded */
-    px-app-nav {
-        margin-top: 2em;
-        z-index: 2;
-        position: relative;
-        text-transform: uppercase;
-    }
-  </style>
+<!-- Styles added like this are scoped to this component level -->
+<!-- This is the Angular convention for small components with minimal, component specific styles -->
+<style>
+/* Need to make sure that the app-nav shows up above everything else, especially when expanded */
+  px-app-nav {
+    /* margin-top: 2em; */
+    /* z-index: 2; */
+    /* position: relative; */
+    text-transform: uppercase;
+  }
+  .nav { min-height: 6em; }
+</style>
 
-  <px-app-header>
-    <px-app-nav
-        (selected-route-changed)="handleRouteChanged($event)"
-        slot="app-nav"
-        [items]='[
-            {
-                "label": "Dashboard",
-                "path": "dashboard",
-                "id": "dashboard"
-            },
-            {
-                "label": "Reports",
-                "path": "reports",
-                "id": "reports"
-            },
-            {
-                "label": "Settings",
-                "path": "settings",
-                "id": "settings"
-            }
-        ]'
-    >
-    </px-app-nav>
+<div class="nav flex flex--col flex--justify">
+  <px-app-header></px-app-header>
 
-    <!-- Render Children -->
-    <ng-content></ng-content>
-
-  </px-app-header>
+  <px-app-nav
+    (selected-route-changed)="handleRouteChanged($event)"
+    slot="app-nav"
+    [items]='[
+        {
+            "label": "Dashboard",
+            "path": "dashboard",
+            "id": "dashboard"
+        },
+        {
+            "label": "Reports",
+            "path": "reports",
+            "id": "reports"
+        },
+        {
+            "label": "Settings",
+            "path": "settings",
+            "id": "settings"
+        }
+    ]'
+  >
+  </px-app-nav>
 </div>
+
+<!-- Render Children -->
+<ng-content></ng-content>
