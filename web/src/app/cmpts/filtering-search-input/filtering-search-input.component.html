@@ -15,42 +15,41 @@
 
 <div class="wrapper">
   <!-- Turn autocomplete back on after development -->
-  <form autocomplete="off">
-    <div>
-      <px-icon
-        *ngIf="!dirty()"
-        icon="px-nav:search"
-      >
-      </px-icon>
-
-      <input
-        type="search"
-        name="searchTerm"
-        [value]="searchTerm"
-        (change)="onChange($event)"
-        (keyup)="onChange($event)"
-        (keyup.enter)="onKeyUpEnter()"
-        (focusout)="focusOutFunction($event)"
-        class="text-input input--auto"
-      >
-    </div>
-
-    <ul
-      class="list-ui border"
-      [@searchExpand]="hasResults() ? 'expanded' : 'collapsed'"
+  <div>
+    <px-icon
+      *ngIf="!dirty()"
+      icon="px-nav:search"
     >
-      <li
-        class="list-ui__item"
-        *ngFor="let suggestion of suggestions"
-        (click)="onSelectSuggestion(suggestion)"
-        (focusout)="focusOutFunction($event)"
-      >
-        <!-- Let it be known that the suggestion class bellow is being targeted by some Javascript in this cmpts ts file.
-        you can safely add other classes but do NOT remove the suggestion class -->
-        <a tabindex="0" class="suggestion">
-          {{suggestion.value}}
-        </a>
-      </li>
-    </ul>
-  </form>
+    </px-icon>
+
+    <input
+      type="search"
+      name="searchTerm"
+      [value]="searchTerm"
+      (change)="onChange($event)"
+      (keyup)="onChange($event)"
+      (keyup.enter)="onKeyUpEnter()"
+      (focusout)="focusOutFunction($event)"
+      class="text-input input--auto"
+    >
+  </div>
+
+  <ul
+    class="list-ui"
+    [@searchExpand]="hasResults() ? 'expanded' : 'collapsed'"
+    [class.border]="hasResults()"
+  >
+    <li
+      class="list-ui__item"
+      *ngFor="let suggestion of suggestions"
+      (click)="onSelectSuggestion(suggestion)"
+      (focusout)="focusOutFunction($event)"
+    >
+      <!-- Let it be known that the suggestion class bellow is being targeted by some Javascript in this cmpts ts file.
+      you can safely add other classes but do NOT remove the suggestion class -->
+      <a tabindex="0" class="suggestion">
+        {{suggestion.value}}
+      </a>
+    </li>
+  </ul>
 </div>
