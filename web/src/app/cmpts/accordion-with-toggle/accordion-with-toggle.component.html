@@ -1,42 +1,27 @@
-<style>
-  .accordion__header {
-    background-color: white;
-    border-bottom: 1px solid var(--gray1);
-    margin-bottom: 0;
-  }
-  .accordion__header px-icon{
-    width: 13px;
-  }
-  .accordion__body {
-    background-color: #f4f9fd;
-  }
-</style>
 
-<section class="AccordionWithToggle">
-  <div
-    id="header"
-    class="accordion__header heading--subsection flex flex--row flex--justify u-p-"
-  >
-    <div class="flex flex--middle wide" (click)="toggleExpanded()">
-      <px-icon class="accordion__icon actionable--action" [icon]="icon"></px-icon>
-      <span id="header-value">{{headerValue}}</span>
-    </div>
-
-    <div class="flex flex--middle" *ngIf="hasToggleSwitch">
-      <px-toggle
-        size="small"
-        id="accordion-toggle-switch"
-        [checked]="checked"
-        (checked-changed)="toggleSwitchCallback($event)"
-      >
-      </px-toggle>
-    </div>
+<div
+  id="header"
+  class="accordion__header heading--subsection flex flex--row flex--justify u-p-"
+>
+  <div class="flex flex--middle wide" (click)="toggleExpanded()">
+    <px-icon class="accordion__icon actionable--action" [icon]="icon"></px-icon>
+    <span id="header-value">{{headerValue}}</span>
   </div>
 
-  <iron-collapse id="collapse" [opened]="expanded">
-    <div class="accordion__body u-p-">
-      <!-- Render Children -->
-      <ng-content></ng-content>
-    </div>
-  </iron-collapse>
-</section>
+  <div class="flex flex--middle" *ngIf="hasToggleSwitch">
+    <px-toggle
+      size="small"
+      id="accordion-toggle-switch"
+      [checked]="checked"
+      (checked-changed)="toggleSwitchCallback($event)"
+    >
+    </px-toggle>
+  </div>
+</div>
+
+<iron-collapse id="collapse" [opened]="expanded">
+  <div class="accordion__body u-p-">
+    <!-- Render Children -->
+    <ng-content></ng-content>
+  </div>
+</iron-collapse>

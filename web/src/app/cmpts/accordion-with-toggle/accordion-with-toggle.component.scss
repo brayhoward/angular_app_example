@@ -710,12 +710,23 @@ a {
   overflow: auto;
 }
 
-.u-p-- {
-  padding: 0.33333rem !important;
-}
-
+// Custome styles
 #header-value {
   color: var(--royal-blue, #007acc);
   font-weight: bold;
   margin-left: .5em;
+}
+
+.accordion__header {
+  background-color: white;
+  border-bottom: 1px solid var(--gray1, gray);
+  margin-bottom: 0;
+}
+
+.accordion__header px-icon{
+  width: 13px;
+}
+
+.accordion__body {
+  background-color: #f4f9fd;
 }
