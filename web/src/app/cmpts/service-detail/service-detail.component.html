@@ -20,15 +20,15 @@
   .top-shadow {
     margin-top: 3em;
     padding-right: 1em;
-    width: 104.9%;
-    margin-left: -2.5%;
+    width: 109.9%;
+    margin-left: -5%;
   }
   .table-label {
     font-size: 1.1em;
   }
 </style>
 
-<div class="container">
+<div class="container tall flex flex--col flex--justify">
   <div class="heading--page u-mb">{{service.name}}</div>
 
   <div class="u-mb total">
@@ -191,7 +191,7 @@
   </div>
 
   <!-- ACTION BUTTONS -->
-  <div class="flex flex--row flex--right flex--middle top-shadow">
+  <div class="flex flex--row flex--right flex--middle top-shadow u-p">
     <call-to-action
       (click)="onCancel()"
       [secondary]="true"
