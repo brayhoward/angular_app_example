@@ -79,14 +79,6 @@ app-header-layout[fullbleed] {
     padding: 2em;
 }
 
-// A footer for the demo
-.footer {
-  bottom: 0;
-  width: 100%;
-  height: 3rem;
-  background: $gray16;
-}
-
 // The main content views of the px-lcc-app
 .Dashboard, .Reports, .ReportDetail, .Settings {
   display: block;
@@ -173,4 +165,9 @@ a {
 // Service detail dialog styles
 mat-dialog-container[aria-label="service-detail-dialog"] {
   padding: 0;
+}
+
+// Morris js data vis library overides
+.morris-hover.morris-default-style {
+  background-color: rgba(245, 242, 242, 0.8);
 }
