@@ -16,7 +16,7 @@ Run `ng build` to build the project. The build artifacts will be stored in the `
 
 ## Staging
 
-When building for the Signal staging server run the build as instructed above then edit all the href and src attributes by adding __"/GEPW0020/draft_01/"__ to the beginning of each path.
+When building for the Signal staging server run the build as instructed then edit `<base href="/">` in `dist/index.html` to equal `<base href="/GEPW0020/draft_01/">`. Then you are good to upload the contents of the dist directory to the staging server.
 
 ## Running unit tests
 
