@@ -7,7 +7,7 @@ import { style } from '@angular/animations';
     <button
       [name]="name"
       [type]="type"
-      class="btn u-m flex flex--row flex--center flex--middle"
+      class="btn u-mt u-mb u-mr flex flex--row flex--center flex--middle"
       [ngStyle]="{'font-size': (large ? '1.1em' : 'inherit')}"
       [class.btn--call-to-action]="isPrimary"
 
