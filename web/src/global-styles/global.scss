@@ -100,9 +100,14 @@ app-header-layout[fullbleed] {
 // TODO: move back to report-detail specific styles once angular fixes its scoping bugs
 .report-inputs {
   label {
-    font-size: 12px !important;
+    font-size: 9px;
     width: 50%;
   }
+  px-dropdown, input {
+    font-size: 12px;
+  }
+
+  input { max-width: 5em; }
 }
 .Reports aha-table .tr.rows {
   padding: 20px 7px;

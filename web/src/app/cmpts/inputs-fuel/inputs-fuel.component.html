@@ -4,9 +4,10 @@
     <px-dropdown [items]='["Natural Gas","Other","Other"]' selected="0"></px-dropdown>
   </div>
 
-  <div class="flex flex--row flex--justify flex--middle u-mv">
+  <div class="flex flex--col flex--justify u-mv">
     <label for="fuel-input">Fuel Cost</label>
-    <div class="flex">
+
+    <div class="flex flex--justify wide u-mb">
       <input id="fuel-input" value="1.00" class="text-input input--tiny u-mr--" type="text" step="any"/>
       <px-dropdown [items]='["MMBTU","Other","Other","Other"]' selected="0" button-style="bare"></px-dropdown>
     </div>

@@ -1,20 +1,22 @@
 <section class="InputsLubrication">
-  <div class="flex flex--row flex--justify flex--middle u-mb">
+  <div class="flex flex--justify wide u-mb">
     <label class="label--inline" for="">Oil Type</label>
     <px-dropdown id="" items='["Synthetic","Other","Other"]' selected="0"></px-dropdown>
   </div>
 
-  <div class="flex flex--row flex--justify flex--middle u-mv">
+  <div class="flex flex--col flex--justify flex--top u-mv">
     <label for="comp-input">Oil Consumption</label>
-    <div class="flex">
+
+    <div class="flex flex--justify wide">
       <input id="comp-input" value="0.05" class="text-input input--tiny u-mr--" type="number" />
       <px-dropdown items='["lb/bhp-hr","Other","Other","Other"]' selected="0" button-style="bare"></px-dropdown>
     </div>
   </div>
 
-  <div class="flex flex--row flex--justify flex--middle u-mv">
+  <div class="flex flex--col flex--justify flex--top u-mv">
     <label for="cost-input">Oil Cost</label>
-    <div class="flex">
+
+    <div class="flex flex--justify wide">
       <input id="cost-input" value="6.00" class="text-input input--tiny u-mr--" type="number" step="any" />
       <px-dropdown items='["US Gallon","Other","Other","Other"]' selected="0" button-style="bare"></px-dropdown>
     </div>
