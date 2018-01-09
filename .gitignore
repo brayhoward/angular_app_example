@@ -3,7 +3,8 @@ web/src/assets/bower_components
 web/node_modules
 
 # client build
-web/dist
+web/dist/*
+!web/dist/index.html
 
 /bin/
 /.gradle/
