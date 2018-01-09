@@ -49,13 +49,14 @@
 .txt-center { text-align: center; }
 .txt-left { text-align: left; }
 
-// Flex helpers to suppliment Predix helpers found here -> https://www.predix-ui.com/#/css/layout/px-flexbox-design
-.flex--space-between {
-  justify-content: space-between
-}
-
 .hr {
   width: 100%;
   height: 1px;
   border-top: 1px solid #8c8b8b;
 }
+
+// augment predix helper classes
+.flex--space-between {
+  justify-content: space-between
+}
+.u-mb0 { margin-bottom: 0; }

@@ -1,76 +1,98 @@
+<style>
+  .labor-rate-currency {
+    font-size: .8em
+  }
+</style>
+
 <div class="Settings">
   <div class="spine u-p++">
     <span class="heading--page">Settings</span>
   </div>
+
   <div class="layout layout--large u-p">
-    <div class="layout__item u-1/2 u-p">
+    <div class="layout__item u-2/3 u-p">
       <span class="heading--subsection">Units of Measurement</span>
       <!-- UOM -->
       <div class="layout u-p">
         <div class="layout__item u-1/4 u-p">
-          <label for="">Gas</label>
-          <px-dropdown id="" button-style="bare" items='["MMBTU","Other","Other"]' selected="0"></px-dropdown>
+          <label>Gas
+            <px-dropdown button-style="bare" items='["MMBTU","Other","Other"]' selected="0"></px-dropdown>
+          </label>
         </div>
         <div class="layout__item u-1/4 u-p">
-          <label for="">Energy</label>
-          <px-dropdown id="" button-style="bare" items='["BTU","Other","Other"]' selected="0"></px-dropdown>
+          <label>Energy
+            <px-dropdown button-style="bare" items='["BTU","Other","Other"]' selected="0"></px-dropdown>
+          </label>
         </div>
         <div class="layout__item u-1/4 u-p">
-          <label for="">Volume</label>
-          <px-dropdown id="" button-style="bare" items='["US Gallon","Other","Other"]' selected="0"></px-dropdown>
+          <label>Volume
+            <px-dropdown button-style="bare" items='["US Gallon","Other","Other"]' selected="0"></px-dropdown>
+          </label>
         </div>
         <div class="layout__item u-1/4 u-p">
-          <label for="">Power</label>
-          <px-dropdown id="" button-style="bare" items='["Horsepower","Other","Other"]' selected="0"></px-dropdown>
+          <label>Power
+            <px-dropdown button-style="bare" items='["Horsepower","Other","Other"]' selected="0"></px-dropdown>
+          </label>
         </div>
         <div class="layout__item u-1/4 u-p">
-          <label for="">Weight</label>
-          <px-dropdown id="" button-style="bare" items='["Pound","Other","Other"]' selected="0"></px-dropdown>
+          <label>Weight
+            <px-dropdown button-style="bare" items='["Pound","Other","Other"]' selected="0"></px-dropdown>
+          </label>
         </div>
       </div>
     </div>
 
-    <div class="layout__item u-1/2 u-p"></div><!-- BLANK -->
+    <div class="layout__item u-1/3 u-p"></div><!-- BLANK -->
 
-    <div class="layout__item u-1/2 u-p">
+    <div class="layout__item u-2/3 u-p">
       <span class="heading--subsection">Pricing</span>
       <!-- PRICING -->
       <div class="layout u-p">
         <div class="layout__item u-1/4 u-p">
-          <label for="">Currency</label>
-          <px-dropdown id="" button-style="bare" items='["USD","Other","Other"]' selected="0"></px-dropdown>
+          <label>Currency
+            <px-dropdown button-style="bare" items='["USD","Other","Other"]' selected="0"></px-dropdown>
+          </label>
         </div>
         <div class="layout__item u-1/4 u-p">
-          <label for="">Labor Rate</label>
-          <div class="flex">
-            <input id="" value="$150.00" class="text-input input--tiny u-mr--" type="text" />
-            <px-dropdown button-style="bare" items='["USD/Hour","Other","Other","Other"]' selected="0" button-style="bare"></px-dropdown>
+          <label class="u-mb0">Labor Rate </label>
+
+          <div class="flex flex--justify flex--top">
+            <input value="$150.00" class="text-input input--tiny u-mr--" type="text" />
+            <px-dropdown class="labor-rate-currency" button-style="bare" items='["USD/Hour","Other","Other","Other"]' selected="0" ></px-dropdown>
           </div>
         </div>
         <div class="layout__item u-1/4 u-p">
-          <label for="">Pricing</label>
-          <px-dropdown id="" button-style="bare" items='["List Price","Other","Other"]' selected="0"></px-dropdown>
+          <label>Pricing
+            <px-dropdown button-style="bare" items='["List Price","Other","Other"]' selected="0"></px-dropdown>
+          </label>
         </div>
         <div class="layout__item u-1/4 u-p">
-          <label for="">Discount Off List Price</label>
-          <px-dropdown id="" button-style="bare" items='["5%","6%","7%","ETC."]' selected="0"></px-dropdown>
+          <label>Discount Off List Price
+            <px-dropdown button-style="bare" items='["5%","6%","7%","ETC."]' selected="0"></px-dropdown>
+          </label>
         </div>
+
         <div class="layout__item u-1/3 u-p">
-          <label for="" >Natural Gas(USD/MMBTU)</label>
-          <input id="" placeholder="Enter Gas Price..." class="text-input input--regular" type="text">
+          <label>Natural Gas(USD/MMBTU)
+            <input placeholder="Enter Gas Price..." class="text-input input--regular u-mt" type="text">
+          </label>
         </div>
+
         <div class="layout__item u-1/3 u-p">
-          <label for="" >Synthetic Oil(USD/Gallon)</label>
-          <input id="" placeholder="Enter Oil Price..." class="text-input input--regular" type="text">
+          <label>Synthetic Oil(USD/Gallon)
+            <input placeholder="Enter Oil Price..." class="text-input input--regular u-mt" type="text">
+          </label>
         </div>
+
         <div class="layout__item u-1/3 u-p">
-          <label for="" >Mineral Oil(USD/Gallon)</label>
-          <input id="" placeholder="Enter Oil Price..." class="text-input input--regular" type="text">
+          <label>Mineral Oil(USD/Gallon)
+            <input placeholder="Enter Oil Price..." class="text-input input--regular u-mt" type="text">
+          </label>
         </div>
       </div>
     </div>
 
-    <div class="layout__item u-1/2 u-p"></div><!-- BLANK -->
+    <div class="layout__item u-1/3 u-p"></div><!-- BLANK -->
 
     <div class="flex flex--left u-p">
       <call-to-action [secondary]="true" class="u-mv+">Cancel</call-to-action>
