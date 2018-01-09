@@ -16,8 +16,7 @@ Run `ng build` to build the project. The build artifacts will be stored in the `
 
 ## Staging
 
-When building for the Signal staging server run the build as instructed above then run
-`cp staging_index.html.copy dist/index.html` or if there are new links in index.html edit all the href and src attributes by adding __"/GEPW0020/draft_01/"__ to the beginning of each path.
+When building for the Signal staging server run the build as instructed above then edit all the href and src attributes by adding __"/GEPW0020/draft_01/"__ to the beginning of each path.
 
 ## Running unit tests
 
