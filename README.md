@@ -1,22 +1,31 @@
-Issue Creation Service
-===================================
+# Web
 
-[![Quality Gate](https://dp-myplant-build-sonar1.dev.power.ge.com/sonar/api/badges/gate?key=myplant-issue-creation-rules-service)](https://dp-myplant-build-sonar1.dev.power.ge.com/sonar/dashboard/index/myplant-issue-creation-rules-service)  
+This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.6.1.
 
-The Issue Creation Service is a myPlant micro-service. It allows to manage issue rules. These rules are used to 
-define whether an Issue should be automatically created. The rules are related to certain assets and analytic items.
+## Development server
 
+Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
 
+## Code scaffolding
 
-### API documentation
-The API documentation can be found under [http://domain:port/swagger-ui.html](http://domain:port/swagger-ui.html)
+Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
 
-### Start the application
-`java -jar issue-creation-rules.jar -Dspring.profiles.active=dev`
+## Build
 
-### Configuration
-The configuration depends on the environment variable `spring.profiles.active=dev`. Supported values are dev, staging 
-and production. Based in the value of the environment variable, the corresponding properties file gets picked up. The 
-technical and common configuration settings are in `application.properties`. Environment specific settings are stored in 
-the related application-(dev|staging|production).properties file. 
+Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `-prod` flag for a production build.
 
+## Staging
+
+When building for the Signal staging server run the build as instructed then edit `<base href="/">` in `dist/index.html` to equal `<base href="/GEPW0020/draft_01/">`. Then you are good to upload the contents of the dist directory to the staging server.
+
+## Running unit tests
+
+Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+
+## Running end-to-end tests
+
+Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+
+## Further help
+
+To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).

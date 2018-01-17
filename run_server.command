@@ -1,1 +1,0 @@
-sh gradlew local processResources bootRun
