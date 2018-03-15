@@ -1,0 +1,67 @@
+{
+  "name": "px-simple-bar-chart",
+  "version": "2.1.1",
+  "main": [
+    "px-simple-bar-chart.html"
+  ],
+  "ignore": [
+    "*.enc",
+    ".*",
+    "npm-debug.log",
+    "gulpfile.js",
+    "sass",
+    "bower_components",
+    "node_modules",
+    "test",
+    "OSS_Notice.pdf",
+    "scripts",
+    ".github",
+    "px-demo.png",
+    "*.md",
+    ".jshintrc",
+    ".editorconfig",
+    "monogram-wdmk.png",
+    "*.png",
+    "wct.conf.json"
+  ],
+  "dependencies": {
+    "polymer": "#1.9 - 2",
+    "d3": "^3.0.0",
+    "iron-ajax": "^2.0.0",
+    "px-simple-chart-common-behavior": "^2.0.0",
+    "es6-promise": "^3.3.1"
+  },
+  "devDependencies": {
+    "px-normalize-design": "^1.0.0",
+    "px-box-sizing-design": "^1.0.0",
+    "px-theme": "^3.0.0",
+    "px-demo": "^3.0.0",
+    "web-component-tester": "^6.4.0"
+  },
+  "resolutions": {
+    "webcomponentsjs": "^1.0.0"
+  },
+  "variants": {
+    "1.x": {
+      "dependencies": {
+        "polymer": "^1.9.0"
+      },
+      "devDependencies": {
+        "web-component-tester": "^5.0.0"
+      },
+      "resolutions": {
+        "webcomponentsjs": "^0.7.0"
+      }
+    }
+  },
+  "homepage": "https://github.com/predixdesignsystem/px-simple-bar-chart",
+  "_release": "2.1.1",
+  "_resolution": {
+    "type": "version",
+    "tag": "v2.1.1",
+    "commit": "8ee53bd3ed35290ae5aff5b5f593d5ff47e4f309"
+  },
+  "_source": "https://github.com/predixdesignsystem/px-simple-bar-chart.git",
+  "_target": "^2.0.2",
+  "_originalSource": "px-simple-bar-chart"
+}
