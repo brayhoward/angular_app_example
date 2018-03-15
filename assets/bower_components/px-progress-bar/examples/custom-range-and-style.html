@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>px-progress-bar Custom Range and Style Demo</title>
+  <!-- Load polyfills and Polymer library -->
+  <script src="../webcomponentsjs/webcomponents-lite.js"></script>
+  <link rel="import" href="../polymer/polymer.html"/>
+  <!-- Load theme -->
+  <link rel="import" href="../px-theme/px-theme-styles.html"/>
+  <custom-style>
+    <style is="custom-style" include="px-theme-styles"></style>
+  </custom-style>
+  <!-- Load components -->
+  <link rel="import" href="../px-progress-bar.html"/>
+  <!-- Custom styles for this example -->
+  <custom-style>
+    <style is="custom-style">
+      body {
+        margin: 2rem;
+      }
+      .container {
+        display: flex;
+        align-items: center;
+      }
+      .custom-progress-bar {
+        flex: 1 1 auto;
+        --px-progress-bar-height: 50px;
+        --px-progress-bar-fill-color: salmon; /* mmm, salmon */
+        --px-progress-bar-background-color: lightgray;
+      }
+      .label {
+        font-size: 2.5rem;
+        padding-left: 1rem;
+      }
+      .button {
+        margin-left: 1rem;
+      }
+    </style>
+  </custom-style>
+</head>
+<body>
+  <div class="container">
+    <px-progress-bar class="custom-progress-bar" id="progress" min="0" max="100" value="20"></px-progress-bar>
+    <span class="label" id="percentage">20%</span>
+    <button class="button" id="increase">Increase Value</button>
+    <button class="button" id="decrease">Decrease Value</button>
+  </div>
+
+  <script>
+    var progressBar = document.getElementById('progress');
+    var percentageLabel = document.getElementById('percentage');
+    var increaseBtn = document.getElementById('increase');
+    var decreaseBtn = document.getElementById('decrease');
+
+    increaseBtn.addEventListener('click', function() {
+      var newValue = progressBar.value + 10;
+      progressBar.value = newValue;
+      updateLabel(newValue);
+    });
+
+    decreaseBtn.addEventListener('click', function() {
+      var newValue = progressBar.value - 10;
+      progressBar.value = newValue;
+      updateLabel(newValue);
+    });
+
+    function updateLabel(newValue) {
+      var percent = (newValue / 100) * 100;
+      percentageLabel.textContent = percent + '%';
+    };
+  </script>
+</body>
+</html>

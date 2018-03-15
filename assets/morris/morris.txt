@@ -1,0 +1,1 @@
+morris.js is also dependent on jQuery 1.9.0 which was added through npm

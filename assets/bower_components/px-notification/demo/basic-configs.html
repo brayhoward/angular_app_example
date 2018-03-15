@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Notification -- Basic Configurations</title>
+
+  <script src="../../webcomponentsjs/webcomponents-lite.js"></script>
+  <link rel="import" href="../../polymer/polymer.html"/>
+  <link rel="import" href="../../px-theme/px-theme-styles.html">
+  <link rel="import" href="../px-notification.html"/>
+  <link rel="import" href="../../px-icon-set/px-icon-set.html"/>
+  <link rel="import" href="../../px-chip/px-chip.html"/>
+
+  <custom-style>
+    <style is="custom-style">
+        .auto-size-notification {
+          --px-notification-height: auto;
+        }
+        .btn--light {
+          border: 1px solid white;
+          box-shadow: none;
+          background-color: transparent;
+          color: white;
+          outline: none;
+          cursor: pointer;
+          font-family: "GE Inspira Sans", sans-serif; // need this to get correct font in IE and Edge for slotted elements
+        }
+        .btn--light:hover {
+          background-color: rgba(255,255,255,0.2);
+        }
+        .btn--light:active {
+          background-color: rgba(255,255,255,0.4);
+        }
+        .btn--dark {
+          border: 1px solid var(--px-alert-label-text-color--error, black);
+          box-shadow: none;
+          background-color: transparent;
+          color: var(--px-alert-label-text-color--error, black);
+          outline: none;
+          cursor: pointer;
+          font-family: "GE Inspira Sans", sans-serif; // need this to get correct font in IE and Edge for slotted elements
+        }
+        .btn--dark:hover{
+          background-color: rgba(0,0,0,0.2);
+        }
+        .btn--dark:active{
+          background-color: rgba(0,0,0,0.4);
+        }
+        .chips {
+          display: flex;
+          flex-wrap: wrap;
+        }
+        px-chip {
+          padding-right: 10px;
+          padding-top: 2px;
+          padding-bottom: 2px;
+        }
+        .chip--light {
+          --px-chip-border-color: white;
+          --px-chip-border-color--hover: white;
+          --px-chip-text-color: white;
+          --px-chip-icon-color: white;
+          --px-chip-icon-color--hover: white;
+          --px-chip-background-color--hover: rgba(255,255,255,0.2);
+        }
+        .chip--dark {
+          --px-chip-border-color: var(--px-alert-label-text-color--error, black);
+          --px-chip-border-color--hover: var(--px-alert-label-text-color--error, black);
+          --px-chip-text-color: var(--px-alert-label-text-color--error, black);
+          --px-chip-icon-color: var(--px-alert-label-text-color--error, black);
+          --px-chip-icon-color--hover: var(--px-alert-label-text-color--error, black);
+          --px-chip-background-color--hover: rgba(0,0,0,0.2);
+        }
+    </style>
+  </custom-style>
+</head>
+
+<body>
+  <custom-style>
+    <style include="px-theme-styles" is="custom-style"></style>
+  </custom-style>
+
+  <h2>A static notification</h2>
+  <px-notification
+    type="info"
+    status-icon="px-utl:filter"
+    content="26 Filters 2,479,322 Devices"
+    opened>
+  </px-notification>
+
+  <h2>A confirmation notification with actions</h2>
+  <px-notification
+    type="healthy"
+    status-icon="px-utl:confirmed"
+    content="Your dashboard has been successfully created."
+    action-icon="px-nav:close"
+    opened>
+  </px-notification>
+  <br>
+  <px-notification
+    type="important"
+    status-icon="px-utl:delete"
+    content="Widget has been removed from your dashboard."
+    opened>
+    <button slot="right" class="btn--light">Undo</button>
+  </px-notification>
+
+  <h2>An informational notification with actions</h2>
+  <px-notification
+    type="error"
+    opened>
+    <div slot="content" class="chips">
+      <px-chip class="chip--dark" content="Name" show-icon not-selectable></px-chip>
+      <px-chip class="chip--dark" content="Location" show-icon not-selectable></px-chip>
+      <px-chip class="chip--dark" content="Date" show-icon not-selectable></px-chip>
+    </div>
+    <button slot="right" class="btn--dark">Clear All</button>
+  </px-notification>
+
+  <h2>A small notification with no icons</h2>
+  <px-notification
+    small
+    type="info"
+    content="26 Filters"
+    opened>
+  </px-notification>
+
+  <h2>A notification with overflowing content</h2>
+  <px-notification
+    class="auto-size-notification"
+    type="healthy"
+    content="Lorem ipsum dolor amet literally af food truck portland 8-bit asymmetrical. Typewriter tumblr VHS kombucha hashtag street art butcher iPhone biodiesel cray squid drinking vinegar brunch. Ugh street art gentrify bicycle rights palo santo godard. Lyft blue bottle readymade keffiyeh green juice pok pok poutine enamel pin letterpress flannel DIY. Man braid air plant XOXO biodiesel cred. Celiac tote bag XOXO kitsch heirloom literally banjo blue bottle humblebrag disrupt waistcoat. Etsy organic pabst shaman fashion axe vaporware, coloring book activated charcoal jean shorts fingerstache keffiyeh."
+    opened>
+  </px-notification>
+  <br>
+  <px-notification
+    class="auto-size-notification"
+    type="info"
+    opened>
+    <div slot="content" class="chips">
+      <px-chip class="chip--light" content="Name" show-icon not-selectable></px-chip>
+      <px-chip class="chip--light" content="Location" show-icon not-selectable></px-chip>
+      <px-chip class="chip--light" content="Date" show-icon not-selectable></px-chip>
+      <px-chip class="chip--light" content="Status" show-icon not-selectable></px-chip>
+      <px-chip class="chip--light" content="Status" show-icon not-selectable></px-chip>
+      <px-chip class="chip--light" content="Location" show-icon not-selectable></px-chip>
+      <px-chip class="chip--light" content="Date" show-icon not-selectable></px-chip>
+      <px-chip class="chip--light" content="Status" show-icon not-selectable></px-chip>
+      <px-chip class="chip--light" content="Name" show-icon not-selectable></px-chip>
+      <px-chip class="chip--light" content="Location" show-icon not-selectable></px-chip>
+      <px-chip class="chip--light" content="Date" show-icon not-selectable></px-chip>
+      <px-chip class="chip--light" content="Status" show-icon not-selectable></px-chip>
+      <px-chip class="chip--light" content="Name" show-icon not-selectable></px-chip>
+      <px-chip class="chip--light" content="Location" show-icon not-selectable></px-chip>
+      <px-chip class="chip--light" content="Date" show-icon not-selectable></px-chip>
+      <px-chip class="chip--light" content="Status" show-icon not-selectable></px-chip>
+      <px-chip class="chip--light" content="Name" show-icon not-selectable></px-chip>
+      <px-chip class="chip--light" content="Location" show-icon not-selectable></px-chip>
+      <px-chip class="chip--light" content="Date" show-icon not-selectable></px-chip>
+      <px-chip class="chip--light" content="Status" show-icon not-selectable></px-chip>
+      <px-chip class="chip--light" content="Name" show-icon not-selectable></px-chip>
+      <px-chip class="chip--light" content="Location" show-icon not-selectable></px-chip>
+      <px-chip class="chip--light" content="Date" show-icon not-selectable></px-chip>
+      <px-chip class="chip--light" content="Status" show-icon not-selectable></px-chip>
+    </div>
+    <button slot="right" class="btn--light">Clear All</button>
+  </px-notification>
+
+  <script>
+    const notificationsNodeList = document.querySelectorAll('px-notification');
+    const notificationsArray = Array.prototype.slice.call(notificationsNodeList);
+
+    notificationsArray.forEach(notif => {
+      notif.addEventListener('px-notification-action-tapped', () => {
+        console.log(`Event fired: 'px-notification-action-tapped'`);
+      });
+    });
+  </script>
+</body>
+</html>

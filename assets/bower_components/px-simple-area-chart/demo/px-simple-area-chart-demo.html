@@ -1,0 +1,372 @@
+<!-- Common imports -->
+<link rel="import" href="../../polymer/polymer.html" />
+<link rel="import" href="../../px-icon-set/px-icon-set.html" />
+
+<!-- Common demo imports -->
+<link rel="import" href="../../px-demo/px-demo-header.html" />
+<link rel="import" href="../../px-demo/px-demo-api-viewer.html" />
+<link rel="import" href="../../px-demo/px-demo-footer.html" />
+<link rel="import" href="../../px-demo/px-demo-configs.html" />
+<link rel="import" href="../../px-demo/px-demo-props.html" />
+<link rel="import" href="../../px-demo/px-demo-interactive.html" />
+<link rel="import" href="../../px-demo/px-demo-component-snippet.html" />
+
+<!-- Imports for this component -->
+ 
+<link rel="import" href="../px-simple-area-chart.html" />
+
+<!-- Demo DOM module -->
+<dom-module id="px-simple-area-chart-demo">
+  <template>
+ 
+
+    <!-- Header -->
+    <px-demo-header
+        module-name="px-simple-area-chart"
+        description="The px-simple-area-chart component creates a simple stacked area chart."
+        mobile tablet desktop>
+    </px-demo-header>
+
+    <!-- Interactive -->
+    <px-demo-interactive>
+      <!-- Configs -->
+      <px-demo-configs slot="px-demo-configs" configs="[[configs]]" props="{{props}}" chosen-config="{{chosenConfig}}"></px-demo-configs>
+
+      <!-- Props -->
+      <px-demo-props slot="px-demo-props" props="{{props}}" config="[[chosenConfig]]"></px-demo-props>
+
+      <!-- Component ---------------------------------------------------------->
+      <px-demo-component slot="px-demo-component">
+        <px-simple-area-chart
+          prevent-resize="[[props.preventResize.value]]"
+          width="[[props.width.value]]"
+          height="[[props.height.value]]"
+          x-axis-type="[[props.xAxisType.value]]"
+          chart-data="[[props.chartData.value]]"
+          series-config="[[props.seriesConfig.value]]"
+          >
+        </px-simple-area-chart>
+      </px-demo-component>
+      <!-- END Component ------------------------------------------------------>
+
+      <px-demo-component-snippet
+          slot="px-demo-component-snippet"
+          element-properties="{{props}}"
+          element-name="px-simple-area-chart"
+          codepen-link="https://glitch.com/edit/#!/px-simple-area-chart-demo">
+      </px-demo-component-snippet>
+    </px-demo-interactive>
+
+    <!-- API Viewer -->
+    <px-demo-api-viewer source="px-simple-area-chart"></px-demo-api-viewer>
+
+    <!-- Footer -->
+    <px-demo-footer></px-demo-footer>
+
+  </template>
+
+</dom-module>
+<script>
+  Polymer({
+    is: 'px-simple-area-chart-demo',
+
+    properties: {
+
+      /**
+       * Note: The actual data/values for `props` are placed in `this.demoProps`
+       * to create a static reference that Polymer shouldn't overwrite.
+       *
+       * On object containing all the properties the user can configure for this
+       * demo. Usually a pretty similar copy of the component's `properties` block
+       * with some additional sugar added to describe what kind of input the
+       * user will be shown and how that input should be configured.
+       *
+       * Note that `value` for each property is the default that will be set
+       * unless a config from `configs` is applied by default.
+       *
+       * @example
+       *
+       * `demoProps` is an object containing multipe objects. Each sub-object has
+       * should have a key with the name of the configurable property, and a set
+       * of values that describe that property. At a high level, you might have:
+       *
+       * ```
+       *     {
+       *       preventRangeSelection: { ... },
+       *       displayMode: { ... },
+       *       blockDatesBefore: { ... }
+       *     }
+       * ```
+       *
+       * Each sub-object should contain information about the configurable property's
+       * `type` (a reference to the JavaScript literal), a default value, and a set
+       * of additional keys that describe the input it can be changed with.
+       * The following inputs types are currently available:
+       *
+       * - 'toggle' - A toggle switch input to set Boolean values
+       * - 'text' - A simple single-line text input to set String or stringified Array/Object values
+       * - 'dropdown' - A dropdown picker that can be used to select any kind of value from a list of available options
+       *
+       * Full examples for each input:
+       *
+       * ```
+       *     {
+       *       preventRangeSelection: {
+       *         type: Boolean,
+       *         value: false,
+       *         inputType: 'toggle'
+       *       },
+       *       displayMode: {
+       *         type: String,
+       *         value: 'day',
+       *         inputType: 'dropdown',
+       *         inputChoices: ['day', 'month', 'year']
+       *       },
+       *       blockDatesBefore: {
+       *         type: String,
+       *         value: '2016-10-10T00:00:00.000Z',
+       *         inputType: 'text',
+       *         inputPlaceholder: 'ISO 8601 String'
+       *       }
+       *     }
+       * ```
+       *
+       * By default, the configurable property names are converted from camelCase
+       * to Title Case and used as input labels (e.g. 'displayMode' -> 'Display Mode').
+       * Labels can be set manually through the key `inputLabel`:
+       *
+       * ```
+       *     {
+       *       preventRangeSelection: {
+       *         type: Boolean,
+       *         value: false,
+       *         inputType: 'toggle',
+       *         inputLabel: "Stop range selection"
+       *       }
+       *     }
+       * ```
+       *
+       * @property demoProps
+       * @type {Object}
+       */
+      props: {
+        type: Object,
+        value: function(){ return this.demoProps; }
+      },
+
+      /**
+       * An array of pre-configured `props` that can be used to provide the user
+       * with a set of common examples. These configs will be made available
+       * as a set of tabs the user can click that will automatically change
+       * the `props` to specific values.
+       *
+       * @example
+       *
+       * Each config is an object. Its keys should be the names of the configurable
+       * properties defined in your `demoProps` above. Each key's value should
+       * be the new prop value for the configuration. You can also include these
+       * optional keys:
+       *
+       * - `configName` - a String value that will be used for the title of the tab
+       * - `configReset` - a Boolean, if `true` resets all props (even those not specified in the config) when this config is selected. Defaults to `false`.
+       *
+       * Example of two configs:
+       *
+       * ```
+       *     [
+       *       {
+       *         configName: "Basic",
+       *         preventRangeSelection: true,
+       *         displayMode: 'year',
+       *         blockDatesBefore: '2016-10-10T00:00:00.000Z'
+       *       },
+       *       {
+       *         configName: "Advanced",
+       *         preventRangeSelection: false,
+       *         displayMode: 'day',
+       *         blockDatesBefore: '2010-10-10T00:00:00.000Z'
+       *       }
+       *     ]
+       * ```
+       *
+       * @property demoProps
+       * @type {Array}
+       */
+      configs: {
+        type: Array,
+        value: function(){
+          return [
+            { configName: "Default",
+              configReset: true }
+          ]
+        }
+      },
+
+      apiHide: {
+        type: Array,
+        value: function() {
+          return [
+            'chartExtents',
+            'chartHorizontalAlignment',
+            'chartVerticalAlignment',
+            'defaultSeriesConfig',
+            'domainChanged',
+            'generateLayers',
+            'hideRegister',
+            'includeAllSeries',
+            'layer',
+            'numberOfLayers',
+            'pxSvgElem',
+            'tooltipConfig'
+          ]
+        }
+      },
+
+      apliMarkReadOnly: {
+        type: Array,
+        value: function() {
+          return [
+            'svg',
+            'tooltipData',
+            'x',
+            'y'
+          ]
+        }
+      },
+
+
+      apiChangeDescription: {
+        type: Array,
+        value: function() {
+          return [{
+            "name": "seriesConfig",
+            "desc": 'An optional configuration file to associate series name, units, and colors.\n\n{\n\n"seriesKey": {  //seriesKey is a unique identifier for the configuration\n\n"name": "My Series",  //human readable name\n\n"x": "x",  //index or key name for independent variable\n\n"y": "y",  //index or key name for dependent variable\n\n"xAxisUnit": "Volt" //Unit to be used for the X axis. Can be ignored if x axis is time based\n\n"yAxisUnit": "Oranges" //unit to be used for the Y axis.\n\n"color": "rgb(0,0,0)", //color you want the chart\n\n}\n\n}'
+          }]
+        }
+      },
+    },
+
+    /**
+     * A reference for `this.props`. Read the documentation there.
+     */
+    demoProps: {
+      preventResize: {
+        type: Boolean,
+        defaultValue: true,
+        inputType: 'toggle'
+      },
+
+      //we need inputDisabled: false to be able to dynamically turn it on
+      width: {
+        type: Number,
+        defaultValue: 700,
+        inputDisabled: false,
+        inputType: 'text'
+      },
+      //we need inputDisabled: false to be able to dynamically turn it on
+      height: {
+        type: Number,
+        defaultValue: 450,
+        inputDisabled: false,
+        inputType: 'text'
+      },
+
+      xAxisType: {
+        type: String,
+        defaultValue: 'time',
+        inputType: 'dropdown',
+        inputChoices: ['time', 'timeLocal', 'linear']
+      },
+
+      chartData: {
+        type: Array,
+        defaultValue: [{
+            "x": 1397102460000,
+            "y2": 23,
+            "y1": 30,
+            "y": 56
+          },{
+            "x": 1397139660000,
+            "y2": 20,
+            "y1": 35,
+            "y": 40
+          },{
+            "x": 1397177400000,
+            "y2": 28,
+            "y1": 40,
+            "y": 43
+          },{
+            "x": 1397228040000,
+            "y2": 25,
+            "y1": 38,
+            "y": 33
+          },{
+            "x": 1397248260000,
+            "y2": 26,
+            "y1": 33,
+            "y": 47
+          },{
+            "x": 1397291280000,
+            "y2": 30,
+            "y1": 40,
+            "y": 41
+          },{
+            "x": 1397318100000,
+            "y2": 32,
+            "y1": 30,
+            "y": 26
+          },{
+            "x": 1397342100000,
+            "y2": 28,
+            "y1": 35,
+            "y": 42
+          },{
+            "x": 1397390820000,
+            "y2": 35,
+            "y1": 40,
+            "y": 27
+          },{
+            "x": 1397408100000,
+            "y2": 35,
+            "y1": 34,
+            "y": 38
+          },{
+            "x": 1397458800000,
+            "y2": 40,
+            "y1": 38,
+            "y": 36
+          },{
+            "x": 1397522940000,
+            "y2": 35,
+            "y1": 40,
+            "y": 32
+        }],
+        inputType: 'code:JSON'
+      },
+      seriesConfig: {
+        type: Object,
+        defaultValue: {
+          "fistSeries":{
+            "name":"First",
+            "x":"x",
+            "y":"y",
+            "yAxisUnit":"bofs"
+          },
+          "secondSeries":{
+            "name":"Second",
+            "x":"x",
+            "y":"y1",
+            "yAxisUnit":"bofs"
+          },
+          "thirdSeries":{
+            "name":"Third",
+            "x":"x",
+            "y":"y2",
+            "yAxisUnit":"bofs"
+          }
+        },
+        inputType: 'code:JSON'
+      },
+    }
+  });
+</script>

@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Notification -- Simple Demo</title>
+
+  <script src="../../webcomponentsjs/webcomponents-lite.js"></script>
+  <link rel="import" href="../../polymer/polymer.html"/>
+  <!-- <link rel="import" href="../../polymer/lib/elements/dom-bind.html"> -->
+  <link rel="import" href="../../px-theme/px-theme-styles.html">
+  <link rel="import" href="../px-notification.html"/>
+  <link rel="import" href="../../px-icon-set/px-icon-set.html"/>
+  <link rel="import" href="../../px-chip/px-chip.html"/>
+
+  <custom-style>
+    <style is="custom-style">
+      .auto-size-notification {
+        --px-notification-height: auto;
+      }
+      .btn--light {
+        border: 1px solid white;
+        box-shadow: none;
+        background-color: transparent;
+        color: white;
+        outline: none;
+        cursor: pointer;
+        font-family: "GE Inspira Sans", sans-serif; // need this to get correct font in IE and Edge for slotted elements
+      }
+      .btn--light:hover {
+        background-color: rgba(255,255,255,0.2);
+      }
+      .btn--light:active {
+        background-color: rgba(255,255,255,0.4);
+      }
+      .chips {
+        display: flex;
+        flex-wrap: wrap;
+      }
+      px-chip {
+        padding-right: 10px;
+        padding-top: 2px;
+        padding-bottom: 2px;
+      }
+      .chip--light {
+        --px-chip-border-color: white;
+        --px-chip-border-color--hover: white;
+        --px-chip-text-color: white;
+        --px-chip-icon-color: white;
+        --px-chip-icon-color--hover: white;
+        --px-chip-background-color--hover: rgba(255,255,255,0.2);
+      }
+    </style>
+  </custom-style>
+</head>
+
+<body>
+  <custom-style>
+    <style include="px-theme-styles" is="custom-style"></style>
+  </custom-style>
+  <dom-bind>
+    <template is="dom-bind">
+      <h2>There should only ever be one notification within a given context (e.g. in an app, context browser panel, etc.)</h2>
+      <px-notification
+        type=[[type]]
+        status-icon=[[status]]
+        content=[[contentString]]
+        action-icon=[[action]]
+        opened=[[opened]]
+        small=[[small]]>
+        <template is="dom-if" if="[[showUndoButton]]" restamp>
+          <button slot="right" class="btn--light">Undo</button>
+        </template>
+        <template is="dom-if" if="[[showClearAllButton]]" restamp>
+          <button slot="right" class="btn--light">Clear All</button>
+        </template>
+        <template is="dom-if" if="[[showChips]]" restamp>
+          <div slot="content" class="chips">
+            <px-chip class="chip--light" content="Name" show-icon not-selectable></px-chip>
+            <px-chip class="chip--light" content="Location" show-icon not-selectable></px-chip>
+            <px-chip class="chip--light" content="Date" show-icon not-selectable></px-chip>
+          </div>
+        </template>
+      </px-notification>
+      <br>
+      <div>
+        <button class="btn u-mt" on-click="_static">
+          Static notification
+        </button>
+        <button class="btn u-mt" on-click="_dismissible">
+          Dismissable notification
+        </button>
+        <button class="btn u-mt" on-click="_withActions">
+          Notification with actions
+        </button>
+        <button class="btn u-mt" on-click="_withChips">
+          Notification with chips
+        </button>
+        <button class="btn u-mt" on-click="_autosized">
+          Autosized notification
+        </button>
+      </div>
+    </template>
+  </dom-bind>
+</body>
+</html>
+
+<script>
+  document.addEventListener('WebComponentsReady', function () {
+
+    let app = Polymer.Element ? document.querySelector('dom-bind') : document.querySelector('template[is="dom-bind"]');
+    app.type = 'info';
+    app.status = 'px-utl:filter';
+    app.contentString = '26 Filters 2,479,322 Devices';
+    app.action = '';
+    app.opened = true;
+
+    app._static = function() {
+      app.type = 'info';
+      app.status = 'px-utl:filter';
+      app.contentString = '26 Filters 2,479,322 Devices';
+      app.action = '';
+      app.opened = true;
+      app.showUndoButton = false;
+      app.showChips = false;
+      app.showClearAllButton = false;
+      notification.classList.remove('auto-size-notification');
+      notification.updateStyles();
+    }
+
+    app._dismissible = function() {
+      app.type = 'healthy';
+      app.status = 'px-utl:confirmed';
+      app.contentString = 'Your dashboard has been successfully created.';
+      app.action = 'px-nav:close';
+      app.opened = true;
+      app.showUndoButton = false;
+      app.showChips = false;
+      app.showClearAllButton = false;
+      notification.classList.remove('auto-size-notification');
+      notification.updateStyles();
+    }
+
+    app._withActions = function() {
+      app.type = 'important';
+      app.status = 'px-utl:delete';
+      app.contentString = 'Widget has been removed from your dashboard.';
+      app.action = '';
+      app.opened = true;
+      app.showUndoButton = true;
+      app.showChips = false;
+      app.showClearAllButton = false;
+      notification.classList.remove('auto-size-notification');
+      notification.updateStyles();
+    }
+
+    app._withChips = function() {
+      app.type = 'info';
+      app.status = '';
+      app.contentString = '';
+      app.action = '';
+      app.opened = true;
+      app.showUndoButton = false;
+      app.showChips = true;
+      app.showClearAllButton = true;
+      notification.classList.remove('auto-size-notification');
+      notification.updateStyles();
+    }
+
+    app._autosized = function() {
+      app.type = 'error';
+      app.status = '';
+      app.contentString = "Lorem ipsum dolor amet literally af food truck portland 8-bit asymmetrical. Typewriter tumblr VHS kombucha hashtag street art butcher iPhone biodiesel cray squid drinking vinegar brunch. Ugh street art gentrify bicycle rights palo santo godard. Lyft blue bottle readymade keffiyeh green juice pok pok poutine enamel pin letterpress flannel DIY. Man braid air plant XOXO biodiesel cred. Celiac tote bag XOXO kitsch heirloom literally banjo blue bottle humblebrag disrupt waistcoat. Etsy organic pabst shaman fashion axe vaporware, coloring book activated charcoal jean shorts fingerstache keffiyeh.";
+      app.action = '';
+      app.opened = true;
+      app.showUndoButton = false;
+      app.showChips = false;
+      app.showClearAllButton = false;
+      notification.classList.add('auto-size-notification');
+      notification.updateStyles();
+    }
+
+    function _handleActionIconButtonTapped() {
+      if (app.showUndoButton) {
+        console.log('Undo');
+      } else if (app.showClearAllButton) {
+        console.log('Clear All');
+      } else if (app.action === 'px-nav:close') {
+        console.log('Dismiss');
+        app.opened = false;
+      }
+    }
+
+    const notification = document.querySelector('px-notification');
+    notification.addEventListener('px-notification-action-tapped', _handleActionIconButtonTapped);
+  });
+
+</script>
