@@ -142,6 +142,10 @@ $inuit-enable-validation-states : true;
   }
 }
 
+.px-ge-svg-logo-0 svg.px-ge-svg-logo {
+  display: none;
+}
+
 
 // Import predix styles
 @import "px-spacing-design/_trumps.spacing.scss";
